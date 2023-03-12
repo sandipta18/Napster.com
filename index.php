@@ -5,29 +5,40 @@ $url = rtrim($url);
 
 switch ($url) {
     case '/' :
-        require 'application/controllers/login.php';
+        require_once 'application/controllers/login.php';
         break;
 
     case '/login' :
-        require 'application/controllers/login.php';
+        require_once 'application/controllers/login.php';
         break;
 
     case '/signin' :
-        require 'application/controllers/login.php';
+        require_once 'application/controllers/login.php';
         break;
     
     case '/register' :
-        require 'application/controllers/register.php';
+        require_once 'application/controllers/signup.php';
         break;
 
     case '/signup' :
-        require 'application/controllers/register.php';
+        require_once 'application/controllers/signup.php';
         break;
     
+    case '/registration' :
+        require_once 'application/controllers/signup.php';
+        break;
 
+    case '/welcome' :
+        require_once 'application/controllers/validate_login.php';
+        break;
+
+    case '/home' :
+        require_once 'application/controllers/welcome.php';
+        break;
+  
     default :
-        // header('location: application/controllers/error.php');
         require 'application/controllers/error.php';
 }
+
 
 ?>

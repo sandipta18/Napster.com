@@ -1,3 +1,6 @@
+<?php 
+require_once 'loader.html'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,8 +26,7 @@
         <div class="bl_page404__el1"></div>
         <div class="bl_page404__el2"></div>
         <div class="bl_page404__el3"></div>
-        <!-- <a class="bl_page404__link" href="../controllers/login.php">go home</a> -->
-        <a class="bl_page404__link" href="./application/controllers/login.php">go home</a>
+        <a class="bl_page404__link" href="../../">go home</a>
       </div>
     </main>
   </div>

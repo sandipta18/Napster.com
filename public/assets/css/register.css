@@ -10,7 +10,7 @@
 section {
   position: relative;
   min-height: 100vh;
-  background-color: #f8dd30;
+  background-color: #1d3041;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -169,4 +169,8 @@ section .container.active .signinBx .imgBx {
   section .container .user .formBx {
     width: 100%;
   }
+}
+
+.option:hover{
+   cursor: pointer;
 }

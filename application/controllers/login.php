@@ -1,6 +1,5 @@
 <?php 
 
-
-require './application/views/login.html';
+require_once './application/views/login.php'
 
 ?>

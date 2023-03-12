@@ -1,6 +1,6 @@
 <?php 
 
 
-require './application/views/error.html';
+require_once './application/views/error.php';
 
 ?>
