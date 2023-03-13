@@ -61,7 +61,7 @@ class User extends Database{
       $this->username = $username;
       $this->$password = $password;
 
-      $sql="SELECT Uid from Users WHERE Username='".$username."' and Password='".md5($password)."'";
+      $sql="SELECT Uid from Users WHERE Email='".$username."' and Password='".md5($password)."'";
       $output=mysqli_query($this->link,$sql);
       $data=mysqli_fetch_array($output);
       $row_count=$output->num_rows;

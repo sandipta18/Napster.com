@@ -3,9 +3,8 @@
 
 
 require_once './vendor/autoload.php';
-use Database\Database;
 
-require_once './vendor/autoload.php';
+use Database\Database;
 use User\User;
 
 $Object_database = new Database();
@@ -17,11 +16,13 @@ $Signup = $Object_user->Signup_User($_POST['username'],$_POST['email'],$_POST['p
 
 if($Signup){
   $_SESSION['signup'] = true;
+  require_once './application/views/signup.php';
 }
 else{
   $_SESSION['signup'] = false;
+  require_once './application/views/signup.php';
 }
-require_once './application/views/login.php';
+
 
 }
 

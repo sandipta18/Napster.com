@@ -21,7 +21,7 @@ switch ($url) {
         break;
 
     case '/signup' :
-        require_once 'application/controllers/signup.php';
+        require_once 'application/controllers/login.php';
         break;
     
     case '/registration' :
@@ -31,13 +31,23 @@ switch ($url) {
     case '/welcome' :
         require_once 'application/controllers/validate_login.php';
         break;
+        
+    case '/check' :
+         require_once 'application/controllers/signin.php';
+         break;
 
     case '/home' :
         require_once 'application/controllers/welcome.php';
         break;
-  
+    
+    case '/signout':
+        require 'application/controllers/logout.php';
+        break;
+        
     default :
         require 'application/controllers/error.php';
+
+   
 }
 
 

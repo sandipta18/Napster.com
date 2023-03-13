@@ -1,6 +1,7 @@
 <?php 
 
-require_once 'application/views/welcome.php'
+require_once './application/views/welcome.php';
+
 
 
 ?>
