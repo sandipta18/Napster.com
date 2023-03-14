@@ -41,10 +41,14 @@ switch ($url) {
         break;
     
     case '/signout':
-        require 'application/controllers/logout.php';
+        require_once 'application/controllers/logout.php';
+        break;
+    
+    case '/profile' :
+        require_once 'application/controllers/profile.php';
         break;
         
-    default :
+     default :
         require 'application/controllers/error.php';
 
    

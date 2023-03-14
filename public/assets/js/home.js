@@ -83,7 +83,7 @@ async function createPost(postContent) {
 
 	let post = `
 		<article class="post">
-			<img class="post__avatar" src="https://raw.githubusercontent.com/Javieer57/create-post-component/design/2010/img/avatar-tumblr.png" alt="" />
+			
 		
 			<div class="post__content">
 				${header}
@@ -99,7 +99,7 @@ async function createPost(postContent) {
 function generateHeader() {
 	let header = `
 		<header class="post__header">
-			<p class="post__user">galactiqangel</p>
+			<p class="post__user"></p>
 
 			<div class="post__meta">
 				<p class="post__reblogs">3,908</p>
@@ -167,13 +167,8 @@ function generatePostImg(fileImg) {
 }
 
 function generateFooter() {
-	let footer = `
-	<div class="post__footer">
-		<span>#2010s</span>
-		<span>#tumblr</span>
-		<span>#codepen</span>
-	</div>
-	`;
+	let footer = 'napster.com';
+
 
 	return footer;
 }

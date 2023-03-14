@@ -15,13 +15,13 @@ if(isset($_POST['submit_login'])){
 $Login = $Object_user->Validate_Login($_POST['username'],$_POST['password']);
 if($Login){
   $_SESSION['Login'] = true;
-  $_SESSION['name'] = $_POST['username'];
-  require_once './application/views/welcome.php';
+  $_SESSION['name'] = $Object_user->Get_Name($_POST['username']);
+  header('Location: home');
 }
 else{
 $_SESSION['Login'] = false;
-$_SESSION['message'] = "Error while logging in";
-require_once './application/views/login.php';
+$_SESSION['message'] = "Invalid Credentials";
+header('Location: /');
 }
 }
 

@@ -11,26 +11,33 @@ use Database\Database;
  * 
  */
 class User extends Database{
+
         
     private $username;
     private $password;
     private $email;
+    private $gender;
+    private $bio;
 
     /**
      * 
      * @param mixed $email
      * @param mixed $username
      * @param mixed $password
+     * @param mixed gender
+     * @param mixed bio
      * 
      * @return boolean
      * 
      */
 
-    public function Signup_User($username,$email,$password) {
+    public function Signup_User($username,$email,$password,$gender,$bio) {
 
         $this->username = $username;
         $this->$password = $password;
         $this->email = $email;
+        $this->gender = $gender;
+        $this->bio = $bio;
         
         $sql="SELECT * FROM Users WHERE Email='".$email."'";
         
@@ -38,7 +45,7 @@ class User extends Database{
         $row_count=$check->num_rows;
         
         if($row_count == 0){
-            $sql1="INSERT INTO Users (Username,Password,Email) VALUES ('".$username."','".md5($password)."','".$email."')";
+            $sql1="INSERT INTO Users (Username,Password,Email,Gender,Bio) VALUES ('".$username."','".md5($password)."','".$email."','".$gender."','".$bio."')";
             $result=mysqli_query($this->link,$sql1);
             return $result;
         }
@@ -78,7 +85,79 @@ class User extends Database{
   }
 
 
+  /*
+    Regular Expression: $\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$
+    $ = beginning of string
+    \S* = any set of characters
+    (?=\S{8,}) = of at least length 8
+    (?=\S*[a-z]) = containing at least one lowercase letter
+    (?=\S*[A-Z]) = and at least one uppercase letter
+    (?=\S*[\d]) = and at least one number
+    (?=\S*[\W]) = and at least a special character (non-word characters)
+    $ = end of the string
+ */
+  /**
+   * This function will be used to validate the password entered by user
+   * 
+   * @param mixed $password
+   * 
+   * @return boolean
+   * 
+   */
+
+  public function Validate_Password($password){
+
+    if (!preg_match_all('$\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$', $password)) {
+      return FALSE;
+    } 
+    else {
+      return TRUE;
+    }
+
+  }
+
+  /**
+   * @param mixed $email
+   * 
+   */
+  public function Get_Name($email){
+    $sql="SELECT Username from Users WHERE Email='".$email."'";
+      $output=mysqli_query($this->link,$sql);
+      $data=mysqli_fetch_array($output);
+      return $data[0];
+      
+  }
+  public $message;
+
+  public function Validate_Image($imagename,$imagesize,$imagetype){
+      //If there's no image name that means that no image was uploaded so displaying error
+      if (!$imagename) {
+        $this->message = "No image was uploaded";
+        return false;
+      }
+      //If image size is greater than 6MB
+      else if ($imagesize > 6000000) {
+        $this->message = "File size too large";
+          return false;
+      }
+      
+      elseif($imagetype != "jpg" or $imagetype !="png" or $imagetype!= "jpeg"){
+        $this->message = "Invalid file type";
+        return false;
+      }
+      else{
+        $this->message = "Success";
+        return true;
+      }
+      
+  }
+
+
 }
+
+
+
+
 ?>
 
 

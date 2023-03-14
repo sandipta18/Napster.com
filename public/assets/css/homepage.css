@@ -292,3 +292,7 @@ https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
 .create-post__submit:disabled {
   background-color: #baebff;
 }
+textarea{
+  outline: none;
+  padding-top: 10px;
+}

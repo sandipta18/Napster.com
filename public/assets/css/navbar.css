@@ -17,7 +17,7 @@ body {
   position: fixed;
   width: 60px;
   height: 100%;
-  background: #DE970B;
+  background: #FAF5EF;
   overflow: hidden;
   transition: 0.2s;
 }
@@ -42,7 +42,7 @@ body {
 }
 
 .navigation ul li:hover {
-  background: #3e3e3e;
+  background: #5596e6;
 }
 
 .navigation ul li a {
