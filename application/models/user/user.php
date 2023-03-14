@@ -55,11 +55,11 @@ class User extends Database{
     }
 
     /**
-     * 
+     * This function is used to validate the login process
      * @param mixed $username
      * @param mixed $password
      * 
-     * @return bool
+     * @return boolean
      * 
      */
 
@@ -117,6 +117,8 @@ class User extends Database{
   }
 
   /**
+   * 
+   * This function is being used to fetch data from the field
    * @param mixed $email
    * 
    */
@@ -127,8 +129,23 @@ class User extends Database{
       return $data[0];
       
   }
-  public $message;
 
+  
+  /**
+   * @var string
+   * This string will return the error messages related to validation of image
+   */
+  public string $message;
+
+  /**
+   * 
+   * This function will be used to validate the image
+   * @param mixed $imagename
+   * @param mixed $imagesize
+   * @param mixed $imagetype
+   * 
+   * @return boolean
+   */
   public function Validate_Image($imagename,$imagesize,$imagetype){
       //If there's no image name that means that no image was uploaded so displaying error
       if (!$imagename) {
@@ -141,15 +158,27 @@ class User extends Database{
           return false;
       }
       
-      elseif($imagetype != "jpg" or $imagetype !="png" or $imagetype!= "jpeg"){
+      elseif($imagetype != 'image/jpg' && $imagetype !='image/png' && $imagetype!= 'image/jpeg'){
         $this->message = "Invalid file type";
         return false;
       }
       else{
-        $this->message = "Success";
         return true;
       }
       
+  }
+
+  public function Upload_Image($filepath,$email){
+    $sql="Update Users SET Image = '".$filepath."' WHERE Email='".$email."' " ;
+    $result=mysqli_query($this->link,$sql);
+    if($result){
+      return true;
+    }
+    else{
+      return false;
+    }
+    
+
   }
 
 

@@ -17,10 +17,11 @@ session_start();
 <div class="container">
 	<div class="box">
 		<h1>Update Profile</h1>
-		<form method="POST" class="form">
+		<form enctype="multipart/form-data" method="POST" action="upload" class="form"  >
 			<input id="demo1" class="demo1" type="file"  placeholder="Update Image" name="image" />
-      <input type="submit" class="btn btn-primary submit"  name="submit">
+      <input type="submit" class="btn btn-primary submit"  name="submit_upload">
 		</form>
+    <span class="message">
 	<?php 
   if(isset($_SESSION['message'])){
     echo $_SESSION['message'];
@@ -28,6 +29,7 @@ session_start();
     unset($_SESSION['message']);
   }
   ?>
+  </span>
 	</div>
 </div>
 </body>
