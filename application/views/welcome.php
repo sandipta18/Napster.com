@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if($_SESSION['Login'] == FALSE){
+	header('location:/	');
+}
 require_once 'loader.html';
 require_once 'navbar.php';
 ?>
