@@ -52,7 +52,6 @@ session_start();
       <?php
       if (isset($_SESSION['validate']) && $_SESSION['validate'] == false) {
         echo $_SESSION['password_message'];
-        $_SESSION['password_message'] = "";
         unset($_SESSION['validate']);
         unset($_SESSION['password']);
       }
@@ -60,12 +59,10 @@ session_start();
       <?php
       if (isset($_SESSION['signup']) && $_SESSION['signup'] == false) {
         echo $_SESSION['signup_message'];
-        $_SESSION['signup_message'] = "";
         unset($_SESSION['signup_message']);
         unset($_SESSION['signup']);
       } elseif (isset($_SESSION['signup']) && $_SESSION['signup'] == true) {
         echo '<span class="success">' . $_SESSION["signup_message"] . '</span>';
-        $_SESSION['signup_message'] = "";
         unset($_SESSION['signup_message']);
         unset($_SESSION['signup']);
       }

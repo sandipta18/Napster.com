@@ -20,7 +20,6 @@ if($Login){
   header('Location: home');
 }
 else{
-// $_SESSION['Login'] = FALSE;
 $_SESSION['message'] = "Invalid Credentials";
 header('Location: /');
 }
