@@ -211,3 +211,12 @@ code {
   padding-top: 10px;
   font-size: 18px;
 }
+a{
+  list-style-type: none;
+  text-decoration: none;
+  color: white;
+}
+a:hover{
+  color: white;
+  text-decoration: none;
+}

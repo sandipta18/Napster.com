@@ -21,6 +21,7 @@ session_start();
 			<input id="demo1" class="demo1" type="file"  placeholder="Update Image" name="image" />
       <input type="submit" class="btn btn-primary submit"  name="submit_upload">
 		</form>
+    <button class="btn btn-primary submit"> <a href="/home">Go back</a></button>
     <span class="message">
 	<?php 
   if(isset($_SESSION['message'])){
