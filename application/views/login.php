@@ -33,9 +33,7 @@ session_start();
             <div id="error">
               <?php
               if (isset($_SESSION['Login'])) {
-
                 if ($_SESSION['Login'] == false) {
-
                   if (isset($_SESSION['message'])) {
                     echo $_SESSION['message'];
                     unset($_SESSION['Login']);

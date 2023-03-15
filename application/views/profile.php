@@ -1,7 +1,8 @@
-<?php 
+<?php
 session_start();
 ?>
 <html>
+
 <head>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="profileone.css">
@@ -14,24 +15,24 @@ session_start();
 
 <body>
 
-<div class="container">
-	<div class="box">
-		<h1>Update Profile</h1>
-		<form enctype="multipart/form-data" method="POST" action="upload" class="form"  >
-			<input id="demo1" class="demo1" type="file"  placeholder="Update Image" name="image" />
-      <input type="submit" class="btn btn-primary submit"  name="submit_upload">
-		</form>
-    <button class="btn btn-primary submit"> <a href="/home">Go back</a></button>
-    <span class="message">
-	<?php 
-  if(isset($_SESSION['message'])){
-    echo $_SESSION['message'];
-    unset($_SESSION['message']);
-  }
-  ?>
-  </span>
-	</div>
-</div>
+  <div class="container">
+    <div class="box">
+      <h1>Update Profile</h1>
+      <form enctype="multipart/form-data" method="POST" action="upload" class="form">
+        <input id="demo1" class="demo1" type="file" placeholder="Update Image" name="image" />
+        <input type="submit" class="btn btn-primary submit" name="submit_upload">
+      </form>
+      <button class="btn btn-primary submit"> <a href="/home">Go back</a></button>
+      <span class="message">
+        <?php
+        if (isset($_SESSION['message'])) {
+          echo $_SESSION['message'];
+          unset($_SESSION['message']);
+        }
+        ?>
+      </span>
+    </div>
+  </div>
 </body>
 <script src="../../public/assets/js/profile.js"></script>
 

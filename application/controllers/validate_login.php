@@ -13,18 +13,19 @@ $_SESSION['Login'] = FALSE;
 
 if(isset($_POST['submit_login'])){
 
-$Login = $Object_user->Validate_Login($_POST['username'],$_POST['password']);
+$Login = $Object_user->validate_login($_POST['username'],$_POST['password']);
+
 if($Login){
   $_SESSION['Login'] = TRUE;
   $_SESSION['info'] = $_POST['username'];
   $_SESSION['name'] = $Object_user->Get_Name($_POST['username']);
   header('Location: home');
 }
-else{
-$_SESSION['message'] = "Invalid Credentials";
-header('Location: /');
-}
+else {
+  $_SESSION['message'] = "Invalid Credentials";
+  header('Location: /');
 }
 
+}
 
 ?>

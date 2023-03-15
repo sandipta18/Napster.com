@@ -13,46 +13,48 @@ use Database\Database;
 class User extends Database{
 
         
-    private $username;
-    private $password;
-    private $email;
-    private $gender;
-    private $bio;
+  private $username;
+  private $password;
+  private $email;
+  private $gender;
+  private $bio;
 
-    /**
-     * 
-     * @param mixed $email
-     * @param mixed $username
-     * @param mixed $password
-     * @param mixed gender
-     * @param mixed bio
-     * 
-     * @return boolean
-     * 
-     */
+  /**
+   * 
+   * @param mixed $email
+   * @param mixed $username
+   * @param mixed $password
+   * @param mixed gender
+   * @param mixed bio
+   * 
+   * @return boolean
+   * 
+   */
 
-    public function Signup_User($username,$email,$password,$gender,$bio) {
+  public function Signup_User($username, $email, $password, $gender, $bio) {
 
-        $this->username = $username;
-        $this->$password = $password;
-        $this->email = $email;
-        $this->gender = $gender;
-        $this->bio = $bio;
+    $this->username = $username;
+    $this->$password = $password;
+    $this->email = $email;
+    $this->gender = $gender;
+    $this->bio = $bio;
         
-        $sql="SELECT * FROM Users WHERE Email='".$email."'";
+    $sql="SELECT * FROM Users WHERE Email='".$email."'";
         
-        $check= $this->link->query($sql);
-        $row_count=$check->num_rows;
+    $check= $this->link->query($sql);
+    $row_count=$check->num_rows;
         
-        if($row_count == 0){
-            $sql1="INSERT INTO Users (Username,Password,Email,Gender,Bio) VALUES ('".$username."','".md5($password)."','".$email."','".$gender."','".$bio."')";
-            $result=mysqli_query($this->link,$sql1);
-            return $result;
-        }
-        else{
-            return false;
-        }
+    if($row_count == 0) {
+      $sql1="INSERT INTO Users (Username,Password,Email,Gender,Bio) VALUES ('".$username."','".md5($password)."','".$email."','".$gender."','".$bio."')";
+      $result=mysqli_query($this->link,$sql1);
+      return $result;
     }
+
+    else{
+      return false;
+    }
+
+}
 
     /**
      * This function is used to validate the login process
@@ -63,26 +65,27 @@ class User extends Database{
      * 
      */
 
-    public function Validate_Login($username,$password) {
+  public function validate_login($username,$password) {
       
-      $this->username = $username;
-      $this->$password = $password;
+    $this->username = $username;
+    $this->$password = $password;
+    
+    // The md5 functions is being used to encrypt the password inside database
+    $sql="SELECT Uid from Users WHERE Email='".$username."' and Password='".md5($password)."'";
+    $output=mysqli_query($this->link,$sql);
+    $data=mysqli_fetch_array($output);
+    $row_count=$output->num_rows;
+      
+    if($row_count==1){
+      $_SESSION['logged_in']=true;
+      $_SESSION['User_id']=$data['Uid'];
+      return true;
+    }
+    else {
+      return false;
+    }
 
-      $sql="SELECT Uid from Users WHERE Email='".$username."' and Password='".md5($password)."'";
-      $output=mysqli_query($this->link,$sql);
-      $data=mysqli_fetch_array($output);
-      $row_count=$output->num_rows;
-      
-      if($row_count==1){
-          $_SESSION['logged_in']=true;
-          $_SESSION['User_id']=$data['Uid'];
-          return true;
-      }
-      else
-      {
-          return false;
-      }
-  }
+}
 
 
   /*
@@ -135,9 +138,10 @@ class User extends Database{
 
   
   /**
-   * @var string
+   * @var string $message
    * This string will return the error messages related to validation of image
    */
+  
   public string $message;
 
   /**
@@ -190,15 +194,8 @@ class User extends Database{
       return false;
     }
     
-
-  }
-
+}
 
 }
 
-
-
-
 ?>
-
-

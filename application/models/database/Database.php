@@ -7,9 +7,9 @@ namespace Database;
  * It will  initialize connection with database
  * 
  */
-class Database{
+class Database
+{
     
-   
     protected $link;
     
     function __construct(){

@@ -44,7 +44,7 @@ session_start();
       <input type="radio" name="gender" id="others" value="others">
     </div>
     <div class="wrapper">
-      <textarea spellcheck="false" placeholder="Enter Bio..." name= "bio" required ></textarea>
+      <textarea spellcheck="false" placeholder="Enter Bio..." name="bio" required></textarea>
     </div>
     <button name="submit_register" id="btn">Sign up</button>
     <div class="message">

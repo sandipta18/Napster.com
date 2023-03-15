@@ -51,11 +51,9 @@ switch ($url) {
     case '/profile' :
         require_once 'application/controllers/profile.php';
         break;
-    
-  
-        
-     default :
-        require 'application/controllers/error.php';
+
+    default :
+        require_once 'application/controllers/error.php';
 
    
 }
