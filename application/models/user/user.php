@@ -119,7 +119,10 @@ class User extends Database{
   /**
    * 
    * This function is being used to fetch data from the field
+   * 
    * @param mixed $email
+   * 
+   * @return string
    * 
    */
   public function Get_Name($email){
@@ -168,6 +171,15 @@ class User extends Database{
       
   }
 
+  /**
+   * 
+   * This function is used to store the image file location in database
+   * 
+   * @param mixed $filepath
+   * @param mixed $email
+   * 
+   * @return boolean
+   */
   public function Upload_Image($filepath,$email){
     $sql="Update Users SET Image = '".$filepath."' WHERE Email='".$email."' " ;
     $result=mysqli_query($this->link,$sql);

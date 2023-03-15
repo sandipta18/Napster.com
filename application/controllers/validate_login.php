@@ -12,6 +12,7 @@ $_SESSION['message'] = "";
 $_SESSION['Login'] = FALSE;
 
 if(isset($_POST['submit_login'])){
+
 $Login = $Object_user->Validate_Login($_POST['username'],$_POST['password']);
 if($Login){
   $_SESSION['Login'] = TRUE;
