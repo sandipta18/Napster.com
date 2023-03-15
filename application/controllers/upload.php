@@ -2,19 +2,16 @@
 
 session_start();
 require_once './vendor/autoload.php';
-
 use Database\Database;
-
-require_once './vendor/autoload.php';
-
 use User\User;
 
 $Object_database = new Database();
 $Object_user = new User;
 
-
+$_SESSION['upload_succesful'] = false;
 // Facilitating image upload 
 if (isset($_POST['submit_upload'])) {
+  $bio = $_POST['bio'];
   $imagename = $_FILES['image']['name'];
   $tempname = $_FILES['image']['tmp_name'];
   $imagesize = $_FILES['image']['size'];
@@ -25,8 +22,12 @@ if (isset($_POST['submit_upload'])) {
     // as well as inside the database
     $filePath = "public/assets/img/" . $imagename;
     move_uploaded_file($tempname, $filePath);
+    $Object_user->Upload_bio($bio,$_SESSION['info']);
     $Object_user->Upload_Image($filePath, $_SESSION['info']);
-    $_SESSION['message'] = "Image Uploaded Succesfully";
+    $_SESSION['message'] = "Profile Updated";
+    $_SESSION['upload_succesful'] = true;
+    $_SESSION['filepath'] = $Object_user->get_image($_SESSION['info']);
+    $_SESSION['Bio'] = $Object_user->get_bio($_SESSION['info']);
     header('Location: profile');
   } else {
     $_SESSION['message'] = $Object_user->message;

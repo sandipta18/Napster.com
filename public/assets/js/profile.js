@@ -93,3 +93,29 @@
 jQuery(document).ready(function ($) {
   $(".demo1").kwtFileUpload();
 });
+
+
+function enable_Input() {
+  let input = document.getElementById('bio');
+  if(input.disabled == true){
+    input.disabled = false;
+  }
+  else{
+    input.disabled = true;
+  }
+}
+
+function disable_Input(){
+  let input = document.getElementById('bio');
+  if(input.disabled == false){
+    input.disabled = true;
+  }
+  
+}
+
+function enable(){
+  let input = document.getElementById('bio');
+  if(input.disabled == true){
+    input.disabled = false;
+  }
+}

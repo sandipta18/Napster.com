@@ -97,23 +97,7 @@ async function createPost(postContent) {
 }
 
 function generateHeader() {
-  let header = `
-    <header class="post__header">
-      <p class="post__user"></p>
-
-      <div class="post__meta">
-        <p class="post__reblogs">3,908</p>
-
-        <button class="post__header-btn">
-          <img src="https://raw.githubusercontent.com/Javieer57/create-post-component/43c8008a45b699957d2070cc23362f1953c65d78/icons/reblog-tumblr.svg" alt="" />
-        </button>
-        <button class="post__header-btn">
-          <img src="https://raw.githubusercontent.com/Javieer57/create-post-component/43c8008a45b699957d2070cc23362f1953c65d78/icons/heart-tumblr.svg" alt="" />
-        </button>
-      </div>
-    </header>
-  `;
-
+  let header ='';
   return header;
 }
 
@@ -130,7 +114,7 @@ async function generateBody(postContent) {
 }
 
 async function generateBodyContent(postContent) {
-  // https://benhoyt.com/writings/dont-sanitize-do-escape/
+ 
   let content = "";
 
   if (postContent.img) {
@@ -138,7 +122,6 @@ async function generateBodyContent(postContent) {
   }
 
   if (postContent.text) {
-    // https://stackoverflow.com/questions/863779/how-to-add-line-breaks-to-an-html-textarea
     content += `
       <p class="post__text">
         ${sanitizeText(postContent.text)}
@@ -150,7 +133,6 @@ async function generateBodyContent(postContent) {
 }
 
 function generatePostImg(fileImg) {
-  // https://codepen.io/Anveio/pen/XzYBzX
   let reader = new FileReader();
 
   return new Promise((resolve, reject) => {
@@ -173,15 +155,15 @@ function generateFooter() {
   return footer;
 }
 
-/* Sanitization functions  */
+
 function sanitizeText(text) {
-  // https://remarkablemark.org/blog/2019/11/29/javascript-sanitize-html/
+
   var element = document.createElement("div");
   element.innerText = text.trim();
   return element.innerHTML;
 }
 
-/* Clean functions */
+
 function cleanCreatePost() {
   createPostText.value = "";
   removeCreatePostImg();
@@ -194,7 +176,7 @@ function removeCreatePostImg() {
   watchInputs();
 }
 
-/* Image validation images */
+
 function isValidImage(file) {
   let isValid = isValidFileSize(file) && isValidFileSize(file);
   return isValid;

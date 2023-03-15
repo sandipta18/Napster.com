@@ -220,3 +220,43 @@ a:hover{
   color: white;
   text-decoration: none;
 }
+.camera
+{
+  width: 200px;
+  height: 200px;
+  border-radius: 100%; 
+   overflow: hidden;
+   /* border: 1px solid black; */
+   background-position: center;
+   background-repeat: no-repeat;
+ 
+}
+
+.textarea {
+  
+  resize: none;
+  height: 59px;
+  outline: none;
+  padding: 15px;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 5px;
+  max-height: 330px;
+  caret-color: #4671ea;
+  border: 1px solid #bfbfbf;
+  text-align: center;
+}
+.textarea::placeholder {
+  color: #b3b3b3;
+}
+.textarea:is(:focus, :valid) {
+  padding: 14px;
+  border: 2px solid #385774;;
+}
+.textarea::-webkit-scrollbar {
+  width: 0px;
+}
+.edit{
+  font-size: 20px;
+  padding-left: 5px;
+}

@@ -185,6 +185,7 @@ class User extends Database{
    * @return boolean
    */
   public function Upload_Image($filepath,$email){
+
     $sql="Update Users SET Image = '".$filepath."' WHERE Email='".$email."' " ;
     $result=mysqli_query($this->link,$sql);
     if($result){
@@ -195,6 +196,53 @@ class User extends Database{
     }
     
 }
+
+  /**
+   * This function is used to facilitate Image from database
+   * 
+   * @param mixed $email
+   * 
+   * @return string
+   */
+  public function get_image($email) {
+
+    $sql="Select Image from Users WHERE Email='".$email."'" ;
+    $output=mysqli_query($this->link,$sql);
+    $data=mysqli_fetch_array($output);
+    return $data[0];
+  }
+
+  /**
+   * @param mixed $email
+   * 
+   * @return [type]
+   */
+  public function get_bio($email) {
+
+    $sql="Select Bio from Users WHERE Email='".$email."'" ;
+    $output=mysqli_query($this->link,$sql);
+    $data=mysqli_fetch_array($output);
+    return $data[0];
+
+  }
+
+  /**
+   * @param mixed $bio
+   * @param mixed $email
+   * 
+   * @return boolean
+   */
+  public function Upload_bio($bio,$email){
+
+    $sql="Update Users SET Bio = '".$bio."' WHERE Email='".$email."' " ;
+    $result=mysqli_query($this->link,$sql);
+    if($result){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 
 }
 
