@@ -15,7 +15,7 @@
 
     <p>
       <label for="password">Password</label>
-      <input id="password" name="password" type="password">
+      <input id="password" name="password" type="password" onkeypress="validatePassword()" onblur="removeBorder()">
       <span>Enter a password longer than 7 characters</span>
     </p>
     <p>
@@ -25,18 +25,21 @@
     </p>
     <p>
       <input id="submit" type="submit" value="SUBMIT" name="submit">
+      </p>
+      <div class="error">
       <?php
-  if (isset($GLOBALS['updated'])) {
-    if (($GLOBALS['updated']) == true) {
-      echo $GLOBALS['success'];
-    } else {
-      echo $GLOBALS['error'];
-    }
-  }
-  ?>
-    </p>
+      if (isset($GLOBALS['updated'])) {
+        if (($GLOBALS['updated']) == true) {
+          echo $GLOBALS['success'];
+        } else {
+          echo $GLOBALS['error'];
+        }
+      }
+      ?>
+      </div>
+    
   </form>
-  
+
 
   <script src="../../public/assets/js/reset.js"></script>
 </body>

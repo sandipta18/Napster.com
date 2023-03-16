@@ -66,10 +66,7 @@ require_once 'navbar.php';
 
   <section id="posts-container">
   <article class="post">
-      <!-- <img class="post__avatar" src="" alt="" /> -->
-      <?php
-        // echo "<img class='post_avatar' src=" . $_SESSION['filepath'] . " height=60 width=60 />";
-        ?>
+      <img class="post__avatar" src="<?php echo $_SESSION['filepath']; ?>" alt="" />
       <div class="post__content">
         <header class="post__header">
           <p class="post__user">

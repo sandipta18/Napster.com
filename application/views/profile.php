@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'loader.html'; 
+require_once 'loader.html';
 ?>
 <html>
 
@@ -19,21 +19,16 @@ require_once 'loader.html';
 
   <div class="container">
     <div class="box">
-     
       <div id="camera" class="camera">
         <?php
         echo "<img src=" . $_SESSION['filepath'] . " height=300 width=auto />";
         ?>
       </div>
-      <form enctype="multipart/form-data" method="POST" action="upload" class="form" >
-      <!-- <h1></h1> -->
-      <input type="text" class="textarea" name="name" value="<?php echo  ucwords(strtolower($_SESSION['name'])); ?>">
-      <input class="textarea" type="text" name="bio" id="bio" value="<?php echo $_SESSION['Bio']; ?> ">
-      <input type="submit" value= "Update Bio" class="btn btn-primary submit" name="submit_bio">
-      </form>
       <form enctype="multipart/form-data" method="POST" action="upload" class="form">
+        <input type="text" class="textarea" name="name" value="<?php echo  ucwords(strtolower($_SESSION['name'])); ?>">
+        <input class="textarea" type="text" name="bio" id="bio" value="<?php echo $_SESSION['Bio']; ?> ">
         <input id="demo1" class="demo1" type="file" placeholder="Update Image" name="image" />
-        <input type="submit" value= "Upload Image" class="btn btn-primary submit" name="submit_upload">
+        <input type="submit" value="Save Changes" class="btn btn-primary submit" name="submit_upload">
       </form>
       <button class="btn btn-primary submit"> <a href="/home">Go back</a></button>
       <div class="message">
@@ -51,4 +46,3 @@ require_once 'loader.html';
 <script src="../../public/assets/js/profile.js"></script>
 
 </html>
-

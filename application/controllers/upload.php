@@ -16,6 +16,7 @@ if (isset($_POST['submit_upload'])) {
   $tempname = $_FILES['image']['tmp_name'];
   $imagesize = $_FILES['image']['size'];
   $imagetype = $_FILES['image']['type'];
+  if($imagename) {
   // Calling function Validate_Image to validate the image entered by user
   if ($Object_user->Validate_Image($imagename, $imagesize, $imagetype)) {
     // If image upload is succesfull storing the image in local directory
@@ -33,7 +34,7 @@ if (isset($_POST['submit_upload'])) {
   }
 }
 
-if(isset($_POST['submit_bio'])) {
+else{
   $bio = $_POST['bio'];
   $name = $_POST['name'];
   $Object_user->Upload_bio($bio,$_SESSION['info']);
@@ -41,6 +42,7 @@ if(isset($_POST['submit_bio'])) {
   $_SESSION['Bio'] = $Object_user->get_bio($_SESSION['info']);
   $_SESSION['name'] = $Object_user->Get_Name($_SESSION['info']);
   header('Location: profile');
+}
 }
 
 ?>

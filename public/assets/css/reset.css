@@ -82,3 +82,11 @@ input[type="submit"] {
   text-shadow: 0 1px #68B25B;
 
 }
+.error{
+  color: red;
+  margin: auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bolder;
+  font-family: sans-serif;
+}

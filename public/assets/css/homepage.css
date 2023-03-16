@@ -32,7 +32,7 @@ img {
 .create-post__avatar {
   width: 65px;
   height: 65px;
-  border-radius: 5px;
+  border-radius: 50%;
 }
 
 .create-post__form {
@@ -149,9 +149,9 @@ https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
 }
 
 .post__avatar {
-  width: 65px;
-  height: 65px;
-  border-radius: 5px;
+  width: 70px;
+  height:70px;
+  border-radius: 50%;
 }
 
 .post__content {
