@@ -26,7 +26,7 @@ require_once 'navbar.php';
     <form id="create-post-form" class="create-post__form" action="">
       <span class="welcome"><?php echo 'Hello ' . ucwords(strtolower($_SESSION['name'])); ?> </span>
       <div class="create-post__text-wrap">
-        <textarea aria-label="Share something ..." name="post-text" id="create-post-txt" oninput="this.parentNode.dataset.replicatedValue = this.value" placeholder="Write something about you..."></textarea>
+        <textarea aria-label="Share something ..." name="post-text" id="create-post-txt" oninput="this.parentNode.dataset.replicatedValue = this.value" placeholder="Write something here..."></textarea>
       </div>
 
       <div class="create-post__media-wrap" id="create-post-media-wrap"></div>

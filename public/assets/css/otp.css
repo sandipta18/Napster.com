@@ -44,3 +44,15 @@ body {
   font-size: 20px;
   font-weight: bolder;
 }
+#hideMeAfter5Seconds {
+  animation: hideAnimation 0s ease-in 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}

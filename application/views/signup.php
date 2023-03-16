@@ -46,7 +46,7 @@ require_once 'loader.html';
       <textarea spellcheck="false" placeholder="Enter Bio..." name="bio" required></textarea>
     </div>
     <button name="submit_register" id="btn">Sign up</button>
-    <div class="message">
+    <div class="message" id="hideMeAfter5Seconds">
 
       <?php
       if (isset($GLOBALS['validate']) && $GLOBALS['validate'] == false) {

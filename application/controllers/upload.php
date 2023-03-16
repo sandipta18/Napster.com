@@ -41,6 +41,7 @@ else{
   $Object_user->upload_name($name,$_SESSION['info']);
   $_SESSION['Bio'] = $Object_user->get_bio($_SESSION['info']);
   $_SESSION['name'] = $Object_user->Get_Name($_SESSION['info']);
+  $_SESSION['message'] = "Profile Updated";
   header('Location: profile');
 }
 }

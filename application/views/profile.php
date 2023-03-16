@@ -31,7 +31,7 @@ require_once 'loader.html';
         <input type="submit" value="Save Changes" class="btn btn-primary submit" name="submit_upload">
       </form>
       <button class="btn btn-primary submit"> <a href="/home">Go back</a></button>
-      <div class="message">
+      <div class="message" id="hideMeAfter5Seconds">
         <?php
         if (isset($_SESSION['message'])) {
           echo $_SESSION['message'];

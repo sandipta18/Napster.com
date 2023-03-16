@@ -1,4 +1,6 @@
-
+<?php 
+require_once 'loader.html'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +26,7 @@
 	<input type="text" id="digit-6" name="digit-6" data-previous="digit-5" />
 	<button  type="submit" name="submit"></button>
 </form>
-<div class="error">
+<div class="error" id="hideMeAfter5Seconds">
 	<?php 
   if(isset($GLOBALS['error'])){
 		echo $GLOBALS['error'];

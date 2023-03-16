@@ -275,8 +275,10 @@ class User extends Database{
    * @param mixed $password
    * 
    * @return boolean
+   * 
    */
   public function update_password($email,$password) {
+    
     $this->email = $email;
     $this->password = $password;
     $sql="Update Users SET Password = '".md5($password)."' WHERE Email='".$email."' " ;
@@ -289,6 +291,16 @@ class User extends Database{
     }
   }
 
+  /**
+   * This function is used to upload image file
+   * 
+   * @param mixed $name
+   * 
+   * @param mixed $email
+   * 
+   * @return boolean
+   * 
+   */
   public function upload_name($name,$email) {
     $this->email = $email;
     $sql="Update Users SET Username = '".$name."' WHERE Email='".$email."' " ;

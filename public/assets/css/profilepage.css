@@ -271,3 +271,15 @@ a:hover{
   border-radius: 40px;
   box-shadow: 0px 0px 25px 2px grey;
 }
+#hideMeAfter5Seconds {
+  animation: hideAnimation 0s ease-in 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}
