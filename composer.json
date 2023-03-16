@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        
+        "classmap": [
+            "application/models/"
+            
+        ]
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}
