@@ -225,7 +225,7 @@ class User extends Database{
     return $data[0];
 
   }
-
+  
   /**
    * This functions helps to update the bio based upon the data entered by user
    * @param mixed $bio
@@ -289,9 +289,22 @@ class User extends Database{
     }
   }
 
+  public function upload_name($name,$email) {
+    $this->email = $email;
+    $sql="Update Users SET Username = '".$name."' WHERE Email='".$email."' " ;
+    $result=mysqli_query($this->link,$sql);
+    if($result){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  }
   
 
 
-}
+
 
 ?>
