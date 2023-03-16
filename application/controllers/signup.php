@@ -1,7 +1,5 @@
 <?php 
 
-
-session_start();
 require_once './vendor/autoload.php';
 
 use Database\Database;
@@ -23,25 +21,25 @@ if($Object_user->Validate_Password($_POST['password'])){
 // If validation is succesfull store data inside the database and send a message
 $Signup = $Object_user->Signup_User($_POST['username'],$_POST['email'],$_POST['password'],$_POST['gender'],$_POST['bio']);
 if($Signup){
-  $_SESSION['signup'] = true;
-  $_SESSION['signup_message'] = "Signed up succesfully";
-  header('Location: /check');
-  
+
+  $GLOBALS['signup'] = true;
+  $GLOBALS['signup_message'] = "Signed up succesfully";
+
 
 }
 
 // If validation has failed send error message
 else{
-  $_SESSION['signup'] = false;
-  $_SESSION['signup_message'] = "Account alreay Exists";
-  header('Location: /check');
  
+  $GLOBALS['signup'] = false;
+  $GLOBALS['signup_message'] = "Account alreay Exists";
 }
 }
 else{
-$_SESSION['validate'] = false;
-$_SESSION['password_message'] = "Password not strong enough";
-header('Location: /check');
+
+$GLOBALS['validate'] = false;
+$GLOBALS['password_message'] = "Password not strong enough";
 }
 
 }
+require_once './application/views/signup.php';

@@ -52,6 +52,26 @@ switch ($url) {
         require_once 'application/controllers/profile.php';
         break;
 
+    case '/forgot' :
+        require_once 'application/controllers/forgot.php';
+        break;
+    
+    case '/reset' :
+        require_once 'application/controllers/reset.php';
+        break;
+
+    case '/validateotp' :
+        require_once 'application/controllers/validate_otp.php';
+        break;
+
+    case '/resetpassword' :
+        require_once 'application/controllers/resetpassword.php';
+        break;
+    
+    case '/resetpage' :
+        require_once 'application/controllers/resetemplate.php';
+        break;
+        
     default :
         require_once 'application/controllers/error.php';
 

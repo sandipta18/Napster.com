@@ -1,8 +1,6 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+require_once 'loader.html'; 
 ?>
 <html>
 
@@ -21,19 +19,21 @@ error_reporting(E_ALL);
 
   <div class="container">
     <div class="box">
-    <h1>Update Profile</h1> 
-    <div id="camera" class="camera">
-    <?php 
-        echo "<img src=" . $_SESSION['filepath'] . " height=200 width=250 />";
-    ?>
-    </div>
+     
+      <div id="camera" class="camera">
+        <?php
+        echo "<img src=" . $_SESSION['filepath'] . " height=300 width=auto />";
+        ?>
+      </div>
+      <form enctype="multipart/form-data" method="POST" action="upload" class="form" >
+      <!-- <h1></h1> -->
+      <input type="text" class="textarea" name="name" value="<?php echo  ucwords(strtolower($_SESSION['name'])); ?>">
+      <input class="textarea" type="text" name="bio" id="bio" value="<?php echo $_SESSION['Bio']; ?> ">
+      <input type="submit" value= "Update Bio" class="btn btn-primary submit" name="submit_bio">
+      </form>
       <form enctype="multipart/form-data" method="POST" action="upload" class="form">
-      <input class="textarea" type="text" name = "bio" id="bio"   value="<?php echo $_SESSION['Bio']; ?> "> 
-    <span>
-      <i class="fas fa-edit edit o"  ></i>
-    </span>
         <input id="demo1" class="demo1" type="file" placeholder="Update Image" name="image" />
-        <input type="submit" class="btn btn-primary submit" name="submit_upload">
+        <input type="submit" value= "Upload Image" class="btn btn-primary submit" name="submit_upload">
       </form>
       <button class="btn btn-primary submit"> <a href="/home">Go back</a></button>
       <div class="message">
@@ -51,6 +51,4 @@ error_reporting(E_ALL);
 <script src="../../public/assets/js/profile.js"></script>
 
 </html>
-<?php 
-echo $_POST['bio'];
-?>
+

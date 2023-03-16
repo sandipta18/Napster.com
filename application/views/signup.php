@@ -1,9 +1,8 @@
-<?php
-session_start();
+<?php 
+require_once 'loader.html'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,21 +49,22 @@ session_start();
     <div class="message">
 
       <?php
-      if (isset($_SESSION['validate']) && $_SESSION['validate'] == false) {
-        echo $_SESSION['password_message'];
-        unset($_SESSION['validate']);
-        unset($_SESSION['password']);
+      if (isset($GLOBALS['validate']) && $GLOBALS['validate'] == false) {
+        echo $GLOBALS['password_message'];
+        unset($GLOBALS['validate']);
+        unset($GLOBALS['password']);
       }
+      
       ?>
       <?php
-      if (isset($_SESSION['signup']) && $_SESSION['signup'] == false) {
-        echo $_SESSION['signup_message'];
-        unset($_SESSION['signup_message']);
-        unset($_SESSION['signup']);
-      } elseif (isset($_SESSION['signup']) && $_SESSION['signup'] == true) {
-        echo '<span class="success">' . $_SESSION["signup_message"] . '</span>';
-        unset($_SESSION['signup_message']);
-        unset($_SESSION['signup']);
+      if (isset($GLOBALS['signup']) && $GLOBALS['signup'] == false) {
+        echo $GLOBALS['signup_message'];
+        unset($GLOBALS['signup_message']);
+        unset($GLOBALS['signup']);
+      } elseif (isset($GLOBALS['signup']) && $GLOBALS['signup'] == true) {
+        echo '<span class="success">' . $GLOBALS["signup_message"] . '</span>';
+        unset($GLOBALS['signup_message']);
+        unset($GLOBALS['signup']);
       }
 
       ?>

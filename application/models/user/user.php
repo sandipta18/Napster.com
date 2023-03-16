@@ -12,7 +12,7 @@ use Database\Database;
  */
 class User extends Database{
 
-        
+  
   private $username;
   private $password;
   private $email;
@@ -227,13 +227,14 @@ class User extends Database{
   }
 
   /**
+   * This functions helps to update the bio based upon the data entered by user
    * @param mixed $bio
    * @param mixed $email
    * 
    * @return boolean
    */
   public function Upload_bio($bio,$email){
-
+    $this->email = $email;
     $sql="Update Users SET Bio = '".$bio."' WHERE Email='".$email."' " ;
     $result=mysqli_query($this->link,$sql);
     if($result){
@@ -243,6 +244,53 @@ class User extends Database{
       return false;
     }
   }
+
+  /**
+   * This function checks whether account exists or not
+   * 
+   * @param mixed $email
+   * 
+   * @return boolean
+   * 
+   */
+  public function account_exists($email) {
+    $this->email = $email;
+    $sql="SELECT * from Users WHERE Email='".$email."' ";
+    $output=mysqli_query($this->link,$sql);
+    $row_count=$output->num_rows;
+      
+    if($row_count==1){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  /**
+   * This function is used to update user password
+   * 
+   * @param mixed $email
+   * 
+   * @param mixed $password
+   * 
+   * @return boolean
+   */
+  public function update_password($email,$password) {
+    $this->email = $email;
+    $this->password = $password;
+    $sql="Update Users SET Password = '".md5($password)."' WHERE Email='".$email."' " ;
+    $result=mysqli_query($this->link,$sql);
+    if($result){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  
+
 
 }
 

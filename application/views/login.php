@@ -1,6 +1,5 @@
 <?php
 require_once 'loader.html'; 
-session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,20 +31,30 @@ session_start();
             <input type="submit" name="submit_login" value="Login" />
             <div id="error">
               <?php
-              if (isset($_SESSION['Login'])) {
-                if ($_SESSION['Login'] == false) {
-                  if (isset($_SESSION['message'])) {
-                    echo $_SESSION['message'];
-                    unset($_SESSION['Login']);
+              if (isset($GLOBALS['Login'])) {
+                if ($GLOBALS['Login'] == false) {
+                  if (isset($GLOBALS['message'])) {
+                    echo $GLOBALS['message'];
+                    $GLOBALS['message'] = "";
+                    unset($GLOBALS['Login']);
                   } 
                 }
               }
+              elseif(isset($GLOBALS['updated'])){
+                if($GLOBALS['updated'] == true){
+                 echo '<span class="success">' . $GLOBALS["success"] . '</span>';
+                }
+              }
               ?>
-
+               
             </div>
             <p class="signup">
               Don't have an account ?
               <a href="../../check" class="option">Sign Up.</a>
+            </p>
+            <p class="reset">
+              Forgot your Password ?
+              <a href="../../forgot" class="option2">Reset Password.</a>
             </p>
           </form>
         </div>
