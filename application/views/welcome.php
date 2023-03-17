@@ -6,6 +6,7 @@ if ($_SESSION['Login'] == FALSE) {
 require_once 'loader.html';
 require_once 'navbar.php';
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,25 +23,39 @@ require_once 'navbar.php';
 
 <body>
   <section class="create-post">
-
+  <img class="post__avatar" src="<?php echo  $_SESSION['filepath']; ?>" alt="" />
     <form enctype="multipart/form-data" id="create-post-form" class="create-post__form" action="home" method="POST" >
       <span class="welcome"><?php echo 'Hello ' . ucwords(strtolower($_SESSION['name'])); ?> </span>
       <div class="create-post__text-wrap">
         <textarea aria-label="Share something ..." name="post-text" id="create-post-txt" oninput="this.parentNode.dataset.replicatedValue = this.value" placeholder="Write something here..."></textarea>
       </div>
-
       <div class="create-post__media-wrap" id="create-post-media-wrap"></div>
-
       <div class="create-post__buttons">
         <div class="create-post__assets-buttons">
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
-            <i class="fa-solid fa-image"></i>
+            <i class="fa-solid fa-image post-icon"></i>
             Photo
             <input type="file" name="post-img" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
+          </button>
+          <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
+          <i class="fa-solid fa-video post-icon"></i>
+            Video
+            <input type="file"  id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
+          </button>
+          <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
+          <i class="fa-solid fa-location-dot post-icon"></i>
+            Checkin
+            <input type="file"  id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
+          </button>
+          <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
+          <i class="fa-solid fa-user-tag post-icon"></i>
+            TagUsers
+            <input type="file"  id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
           </button>
         </div>
         <button class="create-post__submit" type="submit"  id="create-post-submit-btn" name="submit">Post</button>
       </div>
+      
     </form>
   </section>
   <?php 
