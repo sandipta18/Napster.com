@@ -25,11 +25,13 @@ require_once 'loader.html';
         ?>
       </div>
       <form enctype="multipart/form-data" method="POST" action="upload" class="form">
-        <input type="text" class="textarea" name="name" value="<?php echo  ucwords(strtolower($_SESSION['name'])); ?>">
-        <input class="textarea" type="text" name="bio" id="bio" value="<?php echo $_SESSION['Bio']; ?> ">
+        <input type="text" placeholder = "Enter Username" class="textarea" name="name" value="<?php echo ucwords(strtolower($_SESSION['name'])); ?>">
+        <input type="text" placeholder = "Enter Email" class="textarea" name="email" value="<?php echo $_SESSION['info']; ?>">
+        <input class="textarea" placeholder = "Enter Bio" type="text" name="bio" id="bio" value="<?php echo $_SESSION['Bio']; ?> ">
         <input id="demo1" class="demo1" type="file" placeholder="Update Image" name="image" />
         <input type="submit" value="Save Changes" class="btn btn-primary submit" name="submit_upload">
       </form>
+     
       <button class="btn btn-primary submit"> <a href="/home">Go back</a></button>
       <div class="message" id="hideMeAfter5Seconds">
         <?php

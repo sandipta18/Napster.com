@@ -37,8 +37,11 @@ if (isset($_POST['submit_upload'])) {
 else{
   $bio = $_POST['bio'];
   $name = $_POST['name'];
+  $email = $_POST['email'];
   $Object_user->Upload_bio($bio,$_SESSION['info']);
   $Object_user->upload_name($name,$_SESSION['info']);
+  $Object_user->uploadEmail($email,$_SESSION['info']);
+  $_SESSION['info'] = $email;
   $_SESSION['Bio'] = $Object_user->get_bio($_SESSION['info']);
   $_SESSION['name'] = $Object_user->Get_Name($_SESSION['info']);
   $_SESSION['message'] = "Profile Updated";

@@ -292,7 +292,7 @@ class User extends Database{
   }
 
   /**
-   * This function is used to upload image file
+   * This function is used to update username
    * 
    * @param mixed $name
    * 
@@ -304,6 +304,17 @@ class User extends Database{
   public function upload_name($name,$email) {
     $this->email = $email;
     $sql="Update Users SET Username = '".$name."' WHERE Email='".$email."' " ;
+    $result=mysqli_query($this->link,$sql);
+    if($result){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  public function uploadEmail($emailToupdate,$email) {
+    $sql="Update Users SET Email = '".$emailToupdate."' WHERE Email='".$email."' " ;
     $result=mysqli_query($this->link,$sql);
     if($result){
       return true;

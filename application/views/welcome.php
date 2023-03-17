@@ -68,7 +68,7 @@ require_once 'navbar.php';
       <div class="post__content">
         <header class="post__header">
           <p class="post__user">
-            <?php echo $array[$i]['Username']; ?>
+            <?php echo ucwords(strtolower($array[$i]['Username'])); ?>
           </p>
           <div class="post__meta">
           
