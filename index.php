@@ -72,6 +72,10 @@ switch ($url) {
         require_once 'application/controllers/resetemplate.php';
         break;
         
+    case '/post' :
+        require_once 'application/controllers/post.php';
+        break;
+        
     default :
         require_once 'application/controllers/error.php';
 

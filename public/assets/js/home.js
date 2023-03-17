@@ -36,7 +36,7 @@ function generateImgPreview(file) {
     let preview = `
       <figure class="create-post__media-item">
         <button type="button" aria-label="delete image">
-          <img src="https://raw.githubusercontent.com/Javieer57/create-post-component/43c8008a45b699957d2070cc23362f1953c65d78/icons/close.svg" alt="" />
+          
         </button>
         <img src="${reader.result}" alt="" />
       </figure>	
@@ -148,12 +148,12 @@ function generatePostImg(fileImg) {
   });
 }
 
-function generateFooter() {
-  let footer = 'napster.com';
+// function generateFooter() {
+//   let footer = 'napster.com';
 
 
-  return footer;
-}
+//   return footer;
+// }
 
 
 function sanitizeText(text) {

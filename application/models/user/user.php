@@ -313,10 +313,43 @@ class User extends Database{
     }
   }
 
+  /**
+   * This function is used to uploadd data to the database
+   * 
+   * @param mixed $username
+   * @param mixed $content
+   * @param mixed $image
+   * 
+   * @return boolean
+   * 
+   */
+  public function makePost($username,$content,$image,$display) {
+    $sql="INSERT INTO Posts (Username,Content,Image,Display) VALUES ('".$username."','".$content."','".$image."','".$display."')";
+    $result=mysqli_query($this->link,$sql);
+    if($result){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  /**
+   * This function is used to retrieve data from the database
+   * 
+   * @return array
+   * 
+   */
+  public function getContent() {
+
+    // $sql = "SELECT Users.Image, Users.Username, Posts.Image , Posts.Content, Posts.Content , FROM Posts join Users where Users.Email = Posts.Email";
+    $sql = "SELECT * from Posts";
+    return ($this->link->query($sql)->fetch_all(MYSQLI_ASSOC));
+
   }
   
 
 
-
+}
 
 ?>

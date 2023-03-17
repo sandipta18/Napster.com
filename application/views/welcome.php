@@ -5,6 +5,7 @@ if ($_SESSION['Login'] == FALSE) {
 }
 require_once 'loader.html';
 require_once 'navbar.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,6 @@ require_once 'navbar.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../public/assets/css/homepage.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <title>Home</title>
 </head>
@@ -23,7 +23,7 @@ require_once 'navbar.php';
 <body>
   <section class="create-post">
 
-    <form id="create-post-form" class="create-post__form" action="">
+    <form enctype="multipart/form-data" id="create-post-form" class="create-post__form" action="home" method="POST" >
       <span class="welcome"><?php echo 'Hello ' . ucwords(strtolower($_SESSION['name'])); ?> </span>
       <div class="create-post__text-wrap">
         <textarea aria-label="Share something ..." name="post-text" id="create-post-txt" oninput="this.parentNode.dataset.replicatedValue = this.value" placeholder="Write something here..."></textarea>
@@ -34,43 +34,26 @@ require_once 'navbar.php';
       <div class="create-post__buttons">
         <div class="create-post__assets-buttons">
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
-
             <i class="fa-solid fa-image"></i>
             Photo
             <input type="file" name="post-img" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
           </button>
-          <button type="button" aria-label="Add a video to the post" class="create-post__asset-btn" for="create-post-media">
-            <i class="fa-solid fa-video"></i>
-            Video
-          </button>
-          <button type="button" aria-label="Add a video to the post" class="create-post__asset-btn" for="create-post-media">
-
-            <i class="fa-solid fa-location-dot"></i>
-            Location
-          </button>
-          <button type="button" aria-label="Add a video to the post" class="create-post__asset-btn" for="create-post-media">
-
-            <i class="fa-solid fa-tag"></i>
-            Tag
-          </button>
-          <button type="button" aria-label="Add a video to the post" class="create-post__asset-btn" for="create-post-media">
-
-            <i class="fa-solid fa-headphones"></i>
-            Audio
-          </button>
         </div>
-        <button class="create-post__submit" type="submit" disabled id="create-post-submit-btn">Post</button>
+        <button class="create-post__submit" type="submit"  id="create-post-submit-btn" name="submit">Post</button>
       </div>
     </form>
   </section>
+  <?php 
+  for($i=count($array)-1; $i>=0; $i--) { ?>
+   <section id="posts-container">
+    
+    <article class="post">
 
-  <section id="posts-container">
-  <article class="post">
-      <img class="post__avatar" src="<?php echo $_SESSION['filepath']; ?>" alt="" />
+      <img class="post__avatar" src="<?php echo $array[$i]['Display']; ?>" alt="" />
       <div class="post__content">
         <header class="post__header">
           <p class="post__user">
-            <?php echo $_SESSION['name']; ?>
+            <?php echo $array[$i]['Username']; ?>
           </p>
           <div class="post__meta">
           
@@ -83,8 +66,8 @@ require_once 'navbar.php';
           </div>
         </header>
         <div class="post__body">
-        <p class="caption">Chilling at sea</p>
-          <img class="post__img" src="../../public/assets/img/self.jpeg" alt="">
+        <p class="caption"><?php echo $array[$i]['Content']; ?></p>
+          <img class="post__img" src="<?php echo $array[$i]['Image'] ;?>" alt="">
           
         </div>
         <div class="post__footer">
@@ -93,10 +76,13 @@ require_once 'navbar.php';
         <i class="fa-sharp fa-solid fa-share iconss"></i>
         </div>
       </div>
-    </article>
-  </section>
 
+    </article>
+  </section> 
+<?php } ?>
 </body>
 
 </html>
-<script src="../../public/assets/js/home.js"></script>
+
+
+<!-- <script src="../../public/assets/js/home.js"></script> -->
