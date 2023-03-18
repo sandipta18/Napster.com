@@ -334,8 +334,8 @@ class User extends Database{
    * @return boolean
    * 
    */
-  public function makePost($username,$content,$image,$display) {
-    $sql="INSERT INTO Posts (Username,Content,Image,Display) VALUES ('".$username."','".$content."','".$image."','".$display."')";
+  public function makePost($username,$content,$image,$display,$video) {
+    $sql="INSERT INTO Posts (Username,Content,Image,Display,Video) VALUES ('".$username."','".$content."','".$image."','".$display."','".$video."')";
     $result=mysqli_query($this->link,$sql);
     if($result){
       return true;

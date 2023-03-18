@@ -18,10 +18,17 @@ if (isset($_POST['submit'])) {
   $content = $_POST['post-text'];
   $filePath = "public/assets/img/" . $imagename;
   move_uploaded_file($tempname, $filePath);
-  if ($Object_user->makePost($_SESSION['name'], $content, $filePath,$_SESSION['filepath'])) {
+
+
+  $videoname= $_FILES['video']['name'];
+  $path = "public/assets/video/".$videoname;
+  $tmp_name= $_FILES['video']['tmp_name'];
+  move_uploaded_file($tmp_name,$path);
+
+  if ($Object_user->makePost($_SESSION['name'], $content, $filePath,$_SESSION['filepath'],$path)) {
     header('Location: home');
   } 
-  // echo "hello world";
+  
   
 }
 $array = $Object_user->getContent();

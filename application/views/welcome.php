@@ -40,7 +40,7 @@ require_once 'navbar.php';
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
           <i class="fa-solid fa-video post-icon"></i>
             Video
-            <input type="file"  id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
+            <input type="file" name="video" id="create-post-media" accept=".mp4" />
           </button>
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
           <i class="fa-solid fa-location-dot post-icon"></i>
@@ -83,7 +83,11 @@ require_once 'navbar.php';
         <div class="post__body">
         <p class="caption"><?php echo $array[$i]['Content']; ?></p>
           <img class="post__img" src="<?php echo $array[$i]['Image'] ;?>" alt="">
-          
+          <?php 
+          if($array[$i]['Video']){
+          ?>
+          <video class="post__img" controls src="<?php echo $array[$i]['Video']; ?>"></video>  
+          <?php } ?>
         </div>
         <div class="post__footer">
         <i class="fa-sharp fa-solid fa-heart iconss"></i>
