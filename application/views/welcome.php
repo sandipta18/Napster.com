@@ -84,7 +84,7 @@ require_once 'navbar.php';
         <p class="caption"><?php echo $array[$i]['Content']; ?></p>
           <img class="post__img" src="<?php echo $array[$i]['Image'] ;?>" alt="">
           <?php 
-          if($array[$i]['Video']){
+          if(strlen($array[$i]['Video']) > 20){
           ?>
           <video class="post__img" controls src="<?php echo $array[$i]['Video']; ?>"></video>  
           <?php } ?>
