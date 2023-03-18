@@ -354,7 +354,7 @@ class User extends Database{
   public function getContent() {
 
     // $sql = "SELECT Users.Image, Users.Username, Posts.Image , Posts.Content, Posts.Content , FROM Posts join Users where Users.Email = Posts.Email";
-    $sql = "SELECT * from Posts";
+    $sql = "SELECT * from Posts order by Pid DESC ";
     return ($this->link->query($sql)->fetch_all(MYSQLI_ASSOC));
 
   }

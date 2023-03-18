@@ -59,7 +59,7 @@ require_once 'navbar.php';
     </form>
   </section>
   <?php 
-  for($i=count($array)-1; $i>=0; $i--) { ?>
+  for($i=0;$i<count($array);$i++) { ?>
    <section id="posts-container">
     
     <article class="post">
@@ -90,9 +90,8 @@ require_once 'navbar.php';
           <?php } ?>
         </div>
         <div class="post__footer">
-        <i class="fa-sharp fa-solid fa-heart iconss"></i>
-        <i class="fa-sharp fa-solid fa-comment iconss"></i>
-        <i class="fa-sharp fa-solid fa-share iconss"></i>
+        <i class="fa-regular fa-heart iconss"></i>
+        <i class="fa-regular fa-comment iconss"></i>
         </div>
       </div>
 

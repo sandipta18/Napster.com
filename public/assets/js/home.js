@@ -193,3 +193,8 @@ function isValidFileSize(file) {
   }
   return file.size < 1048576;
 }
+
+function darkmode() {
+  var element = document.body;
+  element.classList.toggle("darkmode");
+}

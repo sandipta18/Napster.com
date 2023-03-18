@@ -7,14 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../../public/assets/css/navbar.css">
-  <script src ="../../public/assets/js/navbar.js"></script>
+  <script src ="../../public/assets/js/home.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-  
 </head>
-<body>
-
-
-<body>
   <div class="navigation">
     <ul>
       <li>
@@ -59,10 +54,13 @@
           <span class="title">SignOut</span>
         </a>
       </li>
+      <li>
+        <a>
+          <span class="icon" onclick="darkmode()"><i class="fa-solid fa-moon"></i></span>
+          <span class="title">DarkMode</span>
+        </a>
+      </li>
     </ul>
   </div>
- 
-</body>
-
 </html>
 
