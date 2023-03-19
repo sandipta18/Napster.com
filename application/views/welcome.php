@@ -23,8 +23,8 @@ require_once 'navbar.php';
 
 <body>
   <section class="create-post">
-  <img class="post__avatar" src="<?php echo  $_SESSION['filepath']; ?>" alt="" />
-    <form enctype="multipart/form-data" id="create-post-form" class="create-post__form" action="home" method="POST" >
+    <img class="post__avatar" src="<?php echo  $_SESSION['filepath']; ?>" alt="" />
+    <form enctype="multipart/form-data" id="create-post-form" class="create-post__form" action="home" method="POST">
       <span class="welcome"><?php echo 'Hello ' . ucwords(strtolower($_SESSION['name'])); ?> </span>
       <div class="create-post__text-wrap">
         <textarea aria-label="Share something ..." name="post-text" id="create-post-txt" oninput="this.parentNode.dataset.replicatedValue = this.value" placeholder="Write something here..."></textarea>
@@ -38,66 +38,70 @@ require_once 'navbar.php';
             <input type="file" name="post-img" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
           </button>
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
-          <i class="fa-solid fa-video post-icon"></i>
+            <i class="fa-solid fa-video post-icon"></i>
             Video
             <input type="file" name="video" id="create-post-media" accept=".mp4" />
           </button>
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
-          <i class="fa-solid fa-location-dot post-icon"></i>
+            <i class="fa-solid fa-location-dot post-icon"></i>
             Checkin
-            <input type="file"  id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
+            <input type="file" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
           </button>
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
-          <i class="fa-solid fa-user-tag post-icon"></i>
+            <i class="fa-solid fa-user-tag post-icon"></i>
             TagUsers
-            <input type="file"  id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
+            <input type="file" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
           </button>
         </div>
-        <button class="create-post__submit" type="submit"  id="create-post-submit-btn" name="submit">Post</button>
+        <button class="create-post__submit" type="submit" id="create-post-submit-btn" name="submit">Post</button>
       </div>
-      
+
     </form>
   </section>
-  <?php 
-  for($i=0;$i<count($array);$i++) { ?>
-   <section id="posts-container">
-    
-    <article class="post">
+  <?php
+  for ($i = 0; $i < count($array); $i++) { ?>
+    <section id="posts-container">
 
-      <img class="post__avatar" src="<?php echo $array[$i]['Display']; ?>" alt="" />
-      <div class="post__content">
-        <header class="post__header">
-          <p class="post__user">
-            <?php echo ucwords(strtolower($array[$i]['Username'])); ?>
-          </p>
-          <div class="post__meta">
-          
-            <button class="post__header-btn">
-              
-            </button>
-            <button class="post__header-btn">
-            
-            </button>
+      <article class="post">
+
+        <img class="post__avatar" src="<?php echo $array[$i]['Display']; ?>" alt="" />
+        <div class="post__content">
+          <header class="post__header">
+            <p class="post__user">
+              <?php echo ucwords(strtolower($array[$i]['Username'])); ?>
+            </p>
+            <div class="post__meta">
+
+              <button class="post__header-btn">
+
+              </button>
+              <button class="post__header-btn">
+
+              </button>
+            </div>
+          </header>
+          <div class="post__body">
+            <p class="caption"><?php echo $array[$i]['Content']; ?></p>
+            <img class="post__img" src="<?php echo $array[$i]['Image']; ?>" alt="">
+            <?php
+            if (strlen($array[$i]['Video']) > 20) {
+            ?>
+              <video class="post__img" controls src="<?php echo $array[$i]['Video']; ?>"></video>
+            <?php } ?>
           </div>
-        </header>
-        <div class="post__body">
-        <p class="caption"><?php echo $array[$i]['Content']; ?></p>
-          <img class="post__img" src="<?php echo $array[$i]['Image'] ;?>" alt="">
-          <?php 
-          if(strlen($array[$i]['Video']) > 20){
-          ?>
-          <video class="post__img" controls src="<?php echo $array[$i]['Video']; ?>"></video>  
-          <?php } ?>
+          <div class="post__footer">
+            <i class="fa-regular fa-heart iconss"></i>
+            <i class="fa-regular fa-comment iconss"></i>
+          </div>
         </div>
-        <div class="post__footer">
-        <i class="fa-regular fa-heart iconss"></i>
-        <i class="fa-regular fa-comment iconss"></i>
-        </div>
-      </div>
 
-    </article>
-  </section> 
-<?php } ?>
+      </article>
+    </section>
+  <?php } ?>
+
+  <form enctype="multipart/form-data" action="home" method="POST">
+    <button name="loadmore" id="loadbtn">Load More</button>
+  </form>
 </body>
 
 </html>

@@ -335,3 +335,21 @@ textarea{
  color: rgb(53, 53, 223);
  transform: scale(1.05);
 }
+#loadbtn{
+  width: 200px;
+    color: #fff;
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-color: #5596e6;;
+    transition: .3s;
+}
+#loadbtn:hover {
+  color: #5596e6;
+  background-color: #fff;
+  border: 1px solid #5596e6;
+  text-decoration: none;
+}
