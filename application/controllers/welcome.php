@@ -39,5 +39,10 @@ $array = $Object_user->getContent($a,$b+10);
 else{
   $array = $Object_user->getContent($a,$b);
 }
+// if (isset($loadmore)) {
+//   $array = $Object_user->getContent($a, $b + 10);
+// } else {
+//   $array = $Object_user->getContent($a, $b);
+// }
 require_once './application/views/welcome.php';
 ?>

@@ -93,6 +93,12 @@ require_once 'navbar.php';
           <div class="post__footer">
             <i class="fa-regular fa-heart iconss"></i>
             <i class="fa-regular fa-comment iconss"></i>
+            <span class="time">
+              <?php echo round(abs(time() - strtotime($array[$i]['Post_time'])) /
+                3600) . " hours ago";
+              // echo $array[$i]['Pid'];
+              ?>
+            </span>
           </div>
         </div>
 
@@ -105,6 +111,6 @@ require_once 'navbar.php';
 </body>
 
 </html>
-
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="../../public/assets/js/home.js"></script>
