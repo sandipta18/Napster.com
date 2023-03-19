@@ -17,11 +17,12 @@ require_once 'navbar.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../public/assets/css/homepage.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
   <title>Home</title>
 </head>
 
 <body>
+  <a href="#" id="scroll"><span></span></a>
   <section class="create-post">
     <img class="post__avatar" src="<?php echo  $_SESSION['filepath']; ?>" alt="" />
     <form enctype="multipart/form-data" id="create-post-form" class="create-post__form" action="home" method="POST">
@@ -98,7 +99,6 @@ require_once 'navbar.php';
       </article>
     </section>
   <?php } ?>
-
   <form enctype="multipart/form-data" action="home" method="POST">
     <button name="loadmore" id="loadbtn">Load More</button>
   </form>
@@ -107,4 +107,4 @@ require_once 'navbar.php';
 </html>
 
 
-<!-- <script src="../../public/assets/js/home.js"></script> -->
+<script src="../../public/assets/js/home.js"></script>

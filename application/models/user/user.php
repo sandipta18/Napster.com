@@ -353,15 +353,16 @@ class User extends Database{
     }
   }
 
+
   /**
-   * This function is used to retrieve data from the database
+   * This function is used to retrieve posts from the database
+   * @param mixed $a
+   * @param mixed $b
    *
-   * @return array
-   *
+   * @return [type]
    */
   public function getContent($a,$b) {
 
-    // $sql = "SELECT Users.Image, Users.Username, Posts.Image , Posts.Content, Posts.Content , FROM Posts join Users where Users.Email = Posts.Email";
     $sql = "SELECT * from Posts order by Pid DESC limit $a,$b ";
     return ($this->link->query($sql)->fetch_all(MYSQLI_ASSOC));
 
