@@ -6,7 +6,6 @@ if ($_SESSION['Login'] == FALSE) {
 require_once 'loader.html';
 require_once 'navbar.php';
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +46,7 @@ require_once 'navbar.php';
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
             <i class="fa-solid fa-music post-icon"></i>
             Audio
-            <input type="file" name = "audio" id="create-post-media" accept=".mp3" />
+            <input type="file" name="audio" id="create-post-media" accept=".mp3" />
           </button>
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
             <i class="fa-solid fa-user-tag post-icon"></i>
@@ -90,6 +89,17 @@ require_once 'navbar.php';
             ?>
               <video class="post__img" controls src="<?php echo $array[$i]['Video']; ?>"></video>
             <?php } ?>
+            <?php
+            if (strlen($array[$i]['Audio']) > 20) {
+            ?>
+              <audio class="post__img" controls type="audio/mpeg" src="<?php echo $array[$i]['Audio']; ?>"></audio>
+              <marquee direction="right">
+              <?php
+              $size = strlen($array[$i]['Audio']);
+              echo substr($array[$i]['Audio'], 20, $size);
+            }
+              ?>
+              </marquee>
           </div>
           <div class="post__footer">
             <i class="fa-regular fa-heart iconss"></i>
@@ -114,3 +124,4 @@ require_once 'navbar.php';
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="../../public/assets/js/home.js"></script>
+

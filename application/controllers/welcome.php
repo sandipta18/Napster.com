@@ -26,11 +26,11 @@ if (isset($_POST['submit'])) {
   move_uploaded_file($tmp_name,$path);
 
   $audioname = $_FILES['audio']['name'];
-  $path = "public/assets/audio/" . $audioname;
+  $audiopath = "public/assets/audio/" . $audioname;
   $tmp_name = $_FILES['audio']['tmp_name'];
-  move_uploaded_file($tmp_name, $path);
+  move_uploaded_file($tmp_name, $audiopath);
 
-  if ($Object_user->makePost($_SESSION['name'], $content, $filePath,$_SESSION['filepath'],$path)) {
+  if ($Object_user->makePost($_SESSION['name'], $content, $filePath,$_SESSION['filepath'],$path,$audiopath)) {
     header('Location: home');
   }
 
@@ -44,10 +44,6 @@ $array = $Object_user->getContent($a,$b+10);
 else{
   $array = $Object_user->getContent($a,$b);
 }
-// if (isset($loadmore)) {
-//   $array = $Object_user->getContent($a, $b + 10);
-// } else {
-//   $array = $Object_user->getContent($a, $b);
-// }
+
 require_once './application/views/welcome.php';
 ?>

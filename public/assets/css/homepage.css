@@ -435,3 +435,7 @@ textarea{
   width: 60px;
   height: 60px;
 }
+marquee {
+ width: 50%;
+ color: grey;
+}
