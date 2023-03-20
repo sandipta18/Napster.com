@@ -36,6 +36,7 @@ require_once 'navbar.php';
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
             <i class="fa-solid fa-image post-icon"></i>
             Photo
+            <img id="imagePreview" />
             <input type="file" name="post-img" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
           </button>
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">

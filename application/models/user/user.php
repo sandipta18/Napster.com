@@ -76,7 +76,7 @@ class User extends Database{
     $data=mysqli_fetch_array($output);
     $row_count=$output->num_rows;
 
-    if($row_count==1){
+    if($row_count==1) {
       $_SESSION['logged_in']=true;
       $_SESSION['User_id']=$data['Uid'];
       return true;
@@ -128,7 +128,7 @@ class User extends Database{
    * @return string
    *
    */
-  public function Get_Name($email){
+  public function Get_Name($email) {
     $sql="SELECT Username from Users WHERE Email='".$email."'";
       $output=mysqli_query($this->link,$sql);
       $data=mysqli_fetch_array($output);
@@ -160,16 +160,16 @@ class User extends Database{
         return false;
       }
       //If image size is greater than 6MB
-      else if ($imagesize > 6000000) {
+      elseif ($imagesize > 6000000) {
         $this->message = "File size too large";
           return false;
       }
 
-      elseif($imagetype != 'image/jpg' && $imagetype !='image/png' && $imagetype!= 'image/jpeg'){
+      elseif($imagetype != 'image/jpg' && $imagetype !='image/png' && $imagetype!= 'image/jpeg') {
         $this->message = "Invalid file type";
         return false;
       }
-      else{
+      else {
         return true;
       }
 
@@ -184,7 +184,7 @@ class User extends Database{
    *
    * @return boolean
    */
-  public function Upload_Image($filepath,$email){
+  public function Upload_Image($filepath , $email){
 
     $sql="Update Users SET Image = '".$filepath."' WHERE Email='".$email."' " ;
     $result=mysqli_query($this->link,$sql);

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once './vendor/autoload.php';
 
@@ -9,7 +9,7 @@ $Object_database = new Database();
 $Object_user = new User;
 
 
-if(isset($_POST['submit_register'])){
+if(isset($_POST['submit_register'])) {
 
 // Calling function Validate_Password to validate the password entered
 // by user. Password must contain 8 characters, in which there should be one
@@ -19,7 +19,8 @@ if($Object_user->Validate_Password($_POST['password'])){
 
 
 // If validation is succesfull store data inside the database and send a message
-$Signup = $Object_user->Signup_User($_POST['username'],$_POST['email'],$_POST['password'],$_POST['gender'],$_POST['bio']);
+$Signup = $Object_user->Signup_User($_POST['username'], $_POST['email'], $_POST['password'],
+$_POST['gender'], $_POST['bio']);
 if($Signup){
 
   $GLOBALS['signup'] = true;
@@ -30,7 +31,7 @@ if($Signup){
 
 // If validation has failed send error message
 else{
- 
+
   $GLOBALS['signup'] = false;
   $GLOBALS['signup_message'] = "Account alreay Exists";
 }

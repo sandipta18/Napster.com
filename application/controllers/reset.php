@@ -1,13 +1,13 @@
-<?php 
+<?php
 require_once './vendor/autoload.php';
 
 use Database\Database;
 use User\User;
 
-$Object_database = new Database();
-$Object_user = new User;
-if(isset($_POST['submit'])){
-if($Object_user->account_exists($_POST['mail'])){
+$objectDatabase = new Database();
+$objectUser = new User;
+if(isset($_POST['submit']))  {
+if($objectUser->account_exists($_POST['mail'])){
   require_once 'mailer.php';
   require_once './application/views/otp.php';
 }
