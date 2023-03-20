@@ -19,18 +19,6 @@ $(window).scroll(function () {
   }
 });
 
-// $(document).on('click', '#loadbtn', function (e) {
-//   $.ajax({
-//     type: "POST",
-//     url: "/home",
-//     dataType: "html",
-//     success: function (data) {
-//       $("#post").html(data);
-
-//     }
-//   });
-// });
-
 $(document).ready(() => {
   $("#imagePreview").css("display", "none");
   $("#create-post-media").change(function () {

@@ -11,15 +11,15 @@ function validatePassword(){
   var regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{7,}$/;
     if(regex.test(password)) {
       document.getElementById('password').style.borderColor = "green";
-    } 
+    }
     else{
       document.getElementById('password').style.borderColor = "red";
     }
 }
 
 function removeBorder() {
-
   document.getElementById('password').style.borderColor = "white";
+
 }
 
 //Check to see if the value for pass and confirmPass are the same

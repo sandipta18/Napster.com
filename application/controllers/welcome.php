@@ -25,6 +25,11 @@ if (isset($_POST['submit'])) {
   $tmp_name= $_FILES['video']['tmp_name'];
   move_uploaded_file($tmp_name,$path);
 
+  $audioname = $_FILES['audio']['name'];
+  $path = "public/assets/audio/" . $audioname;
+  $tmp_name = $_FILES['audio']['tmp_name'];
+  move_uploaded_file($tmp_name, $path);
+
   if ($Object_user->makePost($_SESSION['name'], $content, $filePath,$_SESSION['filepath'],$path)) {
     header('Location: home');
   }

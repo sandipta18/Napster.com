@@ -45,9 +45,9 @@ require_once 'navbar.php';
             <input type="file" name="video" id="create-post-media" accept=".mp4" />
           </button>
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
-            <i class="fa-solid fa-location-dot post-icon"></i>
-            Checkin
-            <input type="file" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
+            <i class="fa-solid fa-music post-icon"></i>
+            Audio
+            <input type="file" name = "audio" id="create-post-media" accept=".mp3" />
           </button>
           <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
             <i class="fa-solid fa-user-tag post-icon"></i>

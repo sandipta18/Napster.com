@@ -368,7 +368,9 @@ class User extends Database{
 
   }
 
+  public function uploadAudio($audio,$email) {
 
+  }
 
 }
 

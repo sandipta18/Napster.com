@@ -77,11 +77,10 @@ section .container .user .formBx form h2 {
 
 section .container .user .formBx form input {
   position: relative;
-  /* width: 100%; */
   padding: 10px;
   background: #f5f5f5;
   color: #333;
-  border: none;
+  border: 1px solid #e5e5e5;
   outline: none;
   box-shadow: none;
   margin: 8px 0;
@@ -220,4 +219,10 @@ section .container.active .signinBx .imgBx {
 
 .eye{
   transform: translateX(5px);
+}
+#check {
+  color: green;
+  font-family: 'Poppins',
+    sans-serif;
+
 }
