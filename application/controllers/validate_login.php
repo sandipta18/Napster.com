@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once './vendor/autoload.php';
 use Database\Database;
@@ -18,6 +18,7 @@ if($Login){
   $_SESSION['Login'] = TRUE;
   $_SESSION['info'] = $_POST['username'];
   $_SESSION['name'] = $Object_user->Get_Name($_POST['username']);
+  $GLOBALS['name'] =  $_SESSION['name'];
   $_SESSION['filepath'] = $Object_user->get_image($_SESSION['info']);
   $_SESSION['Bio'] = $Object_user->get_bio($_SESSION['info']);
   header('Location: home');

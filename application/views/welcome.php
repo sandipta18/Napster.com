@@ -96,7 +96,6 @@ require_once 'navbar.php';
             <span class="time">
               <?php echo round(abs(time() - strtotime($array[$i]['Post_time'])) /
                 3600) . " hours ago";
-              // echo $array[$i]['Pid'];
               ?>
             </span>
           </div>

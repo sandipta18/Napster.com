@@ -10,13 +10,12 @@
 body {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
-  
+
 }
 
 .navigation {
   position: fixed;
-  width: 60px;
-  height: 100%;
+  width: 65px;
   background: #FAF5EF;
   overflow: hidden;
   transition: 0.2s;
@@ -24,7 +23,7 @@ body {
 
 .navigation:hover,
 .navigation.active {
-  width: 200px;
+  width: 205px;
 }
 
 .navigation ul {
@@ -119,7 +118,7 @@ body {
 }
 
 .navigation{
-    height: 52%;
-    position: absolute;
+    height: 27%;
+    position: fixed;
     top: 0;
 }

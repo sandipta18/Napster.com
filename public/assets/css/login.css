@@ -77,7 +77,7 @@ section .container .user .formBx form h2 {
 
 section .container .user .formBx form input {
   position: relative;
-  width: 100%;
+  /* width: 100%; */
   padding: 10px;
   background: #f5f5f5;
   color: #333;
@@ -204,7 +204,7 @@ section .container.active .signinBx .imgBx {
 .option2{
   color: #B22222;
   text-decoration: none;
-  font-weight: 600; 
+  font-weight: 600;
 }
 .option2:hover{
   text-decoration: underline;
@@ -218,15 +218,6 @@ section .container.active .signinBx .imgBx {
   font-size: 18px;
 }
 
-/* .hideMeAfter5Seconds {
-  animation: hideAnimation 0s ease-in 2s;
-  animation-fill-mode: forwards;
+.eye{
+  transform: translateX(5px);
 }
-
-@keyframes hideAnimation {
-  to {
-    visibility: hidden;
-    width: 0;
-    height: 0;
-  }
-} */
