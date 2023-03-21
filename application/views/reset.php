@@ -1,5 +1,8 @@
-<?php 
-require_once 'loader.html'; 
+<?php
+      ini_set('display_errors', 1);
+      ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
+require_once 'loader.html';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,8 +41,15 @@ require_once 'loader.html';
         }
       }
       ?>
+      <?php
+      if (isset($GLOBALS['samePass'])) {
+        if (($GLOBALS['samePass']) == true) {
+          echo $GLOBALS['passMessage'];
+        }
+      }
+      ?>
       </div>
-    
+
   </form>
 
 

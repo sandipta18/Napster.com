@@ -404,4 +404,18 @@ class User extends Database
 
 
   }
+
+  public function samePassword($email, $password) {
+
+    $sql = "SELECT Password from Users WHERE Email='" . $email . "' ";
+    $output = mysqli_query($this->link, $sql);
+    $data = mysqli_fetch_array($output);
+    if($data[0] == md5($password)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 }
