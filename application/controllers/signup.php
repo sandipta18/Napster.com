@@ -22,6 +22,7 @@ $_POST['gender'], $_POST['bio']);
 if($Signup){
   $GLOBALS['signup'] = true;
   $GLOBALS['signup_message'] = "Signed up succesfully";
+  require_once 'mailer2.php';
 }
 // If validation has failed send error message
 else{
