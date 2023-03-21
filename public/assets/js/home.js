@@ -34,3 +34,14 @@ $(document).ready(() => {
     }
   });
 });
+
+var x = 10;
+$(window).on("load" ,function () {
+  $(".posts > section:nth-child(-n + " + x + " ").css("display", "block");
+  x+=10;
+});
+
+$("#loadbtn").on("click", function () {
+  $(".posts > section:nth-child(-n + " + x + " ").css("display", "block");
+  x += 10;
+});

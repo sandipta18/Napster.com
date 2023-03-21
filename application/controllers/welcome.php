@@ -36,14 +36,6 @@ if (isset($_POST['submit'])) {
 
 
 }
-$a=0;
-$b=10;
-if(isset($_POST['loadmore'])) {
-$array = $Object_user->getContent($a,$b+10);
-}
-else{
-  $array = $Object_user->getContent($a,$b);
-}
-
+$array = $Object_user->getContent($a,$b);
 require_once './application/views/welcome.php';
 ?>

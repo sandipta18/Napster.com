@@ -59,69 +59,69 @@ require_once 'navbar.php';
 
     </form>
   </section>
-  <?php
-  for ($i = 0; $i < count($array); $i++) { ?>
-    <section id="posts-container">
+  <div class="posts">
+    <?php
+    for ($i = 0; $i < count($array); $i++) { ?>
+      <section id="posts-container">
 
-      <article class="post">
+        <article class="post">
 
-        <img class="post__avatar" src="<?php echo $array[$i]['Display']; ?>" alt="" />
-        <div class="post__content">
-          <header class="post__header">
-            <p class="post__user">
-              <?php echo ucwords(strtolower($array[$i]['Username'])); ?>
-            </p>
-            <div class="post__meta">
+          <img class="post__avatar" src="<?php echo $array[$i]['Display']; ?>" alt="" />
+          <div class="post__content">
+            <header class="post__header">
+              <p class="post__user">
+                <?php echo ucwords(strtolower($array[$i]['Username'])); ?>
+              </p>
+              <div class="post__meta">
 
-              <button class="post__header-btn">
+                <button class="post__header-btn">
 
-              </button>
-              <button class="post__header-btn">
+                </button>
+                <button class="post__header-btn">
 
-              </button>
-            </div>
-          </header>
-          <div class="post__body">
-            <p class="caption"><?php echo $array[$i]['Content']; ?></p>
-            <img class="post__img" src="<?php echo $array[$i]['Image']; ?>" alt="">
-            <?php
-            if (strlen($array[$i]['Video']) > 20) {
-            ?>
-              <video class="post__img" controls src="<?php echo $array[$i]['Video']; ?>"></video>
-            <?php } ?>
-            <?php
-            if (strlen($array[$i]['Audio']) > 20) {
-            ?>
-              <audio class="post__img" controls type="audio/mpeg" src="<?php echo $array[$i]['Audio']; ?>"></audio>
-              <marquee direction="right">
+                </button>
+              </div>
+            </header>
+            <div class="post__body">
+              <p class="caption"><?php echo $array[$i]['Content']; ?></p>
+              <img class="post__img" src="<?php echo $array[$i]['Image']; ?>" alt="">
               <?php
-              $size = strlen($array[$i]['Audio']);
-              echo substr($array[$i]['Audio'], 20, $size);
-            }
+              if (strlen($array[$i]['Video']) > 20) {
               ?>
-              </marquee>
-          </div>
-          <div class="post__footer">
-            <i class="fa-regular fa-heart iconss"></i>
-            <i class="fa-regular fa-comment iconss"></i>
-            <span class="time">
-              <?php echo round(abs(time() - strtotime($array[$i]['Post_time'])) /
-                3600) . " hours ago";
+                <video class="post__img" controls src="<?php echo $array[$i]['Video']; ?>"></video>
+              <?php } ?>
+              <?php
+              if (strlen($array[$i]['Audio']) > 20) {
               ?>
-            </span>
+                <audio class="post__img" controls type="audio/mpeg" src="<?php echo $array[$i]['Audio']; ?>"></audio>
+                <marquee direction="right">
+                <?php
+                $size = strlen($array[$i]['Audio']);
+                echo substr($array[$i]['Audio'], 20, $size);
+              }
+                ?>
+                </marquee>
+            </div>
+            <div class="post__footer">
+              <i class="fa-regular fa-heart iconss"></i>
+              <i class="fa-regular fa-comment iconss"></i>
+              <span class="time">
+                <?php echo round(abs(time() - strtotime($array[$i]['Post_time'])) /
+                  3600) . " hours ago";
+                ?>
+              </span>
+            </div>
           </div>
-        </div>
 
-      </article>
-    </section>
-  <?php } ?>
-  <form enctype="multipart/form-data" action="home" method="POST">
+        </article>
+      </section>
+    <?php } ?>
+
     <button name="loadmore" id="loadbtn">Load More</button>
-  </form>
+</div>
 </body>
 
 </html>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 <script src="../../public/assets/js/home.js"></script>
-

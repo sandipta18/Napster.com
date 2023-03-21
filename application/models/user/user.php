@@ -362,9 +362,9 @@ class User extends Database{
    *
    * @return [type]
    */
-  public function getContent($a,$b) {
+  public function getContent() {
 
-    $sql = "SELECT * from Posts order by Pid DESC limit $a,$b ";
+    $sql = "SELECT * from Posts order by Pid DESC  ";
     return ($this->link->query($sql)->fetch_all(MYSQLI_ASSOC));
 
   }
