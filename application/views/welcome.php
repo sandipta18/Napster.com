@@ -61,12 +61,12 @@ require_once 'navbar.php';
   </section>
   <div class="posts">
     <?php
-    for ($i = 0; $i < count($array); $i++) { ?>
+    for ($i = count($array)-1 ; $i>=0; $i--) { ?>
       <section id="posts-container">
 
         <article class="post">
 
-          <img class="post__avatar" src="<?php echo $array[$i]['Display']; ?>" alt="" />
+          <img class="post__avatar" src="<?php echo $array[$i]['Image']; ?>" alt="" />
           <div class="post__content">
             <header class="post__header">
               <p class="post__user">
@@ -84,7 +84,7 @@ require_once 'navbar.php';
             </header>
             <div class="post__body">
               <p class="caption"><?php echo $array[$i]['Content']; ?></p>
-              <img class="post__img" src="<?php echo $array[$i]['Image']; ?>" alt="">
+              <img class="post__img" src="<?php echo $array[$i]['Image_Content']; ?>" alt="">
               <?php
               if (strlen($array[$i]['Video']) > 20) {
               ?>

@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 session_start();
 
 $Otp = $_POST['digit-1'] . $_POST['digit-2'] . $_POST['digit-3'] .$_POST['digit-4'] .$_POST['digit-5'] .$_POST['digit-6'];

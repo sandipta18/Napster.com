@@ -1,5 +1,4 @@
 <?php
-
 require_once './vendor/autoload.php';
 session_start();
 
@@ -30,12 +29,12 @@ if (isset($_POST['submit'])) {
   $tmp_name = $_FILES['audio']['tmp_name'];
   move_uploaded_file($tmp_name, $audiopath);
 
-  if ($Object_user->makePost($_SESSION['name'], $content, $filePath,$_SESSION['filepath'],$path,$audiopath)) {
+  if ($Object_user->makePost($_SESSION['name'], $content, $filePath,$_SESSION['filepath'],$path,$audiopath,$_SESSION['info'])) {
     header('Location: home');
   }
 
 
 }
-$array = $Object_user->getContent($a,$b);
+$array = $Object_user->getContent();
 require_once './application/views/welcome.php';
 ?>

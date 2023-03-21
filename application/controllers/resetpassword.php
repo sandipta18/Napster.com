@@ -21,7 +21,6 @@ if(isset($_POST['submit'])){
   else {
     $GLOBALS['updated'] = false;
     $GLOBALS['error'] = "Set a valid password";
-    session_destroy();
     require_once './application/views/reset.php';
   }
   }

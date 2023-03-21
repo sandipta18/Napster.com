@@ -74,14 +74,14 @@ class User extends Database
     $this->$password = $password;
 
     // The md5 functions is being used to encrypt the password inside database
-    $sql = "SELECT Uid from Users WHERE Email='" . $username . "' and Password='" . md5($password) . "'";
+    $sql = "SELECT * from Users WHERE Email='" . $username . "' and Password='" . md5($password) . "'";
     $output = mysqli_query($this->link, $sql);
     $data = mysqli_fetch_array($output);
     $row_count = $output->num_rows;
 
     if ($row_count == 1) {
       $_SESSION['logged_in'] = true;
-      $_SESSION['User_id'] = $data['Uid'];
+      // $_SESSION['User_id'] = $data['Uid'];
       return true;
     } else {
       return false;
@@ -339,10 +339,10 @@ class User extends Database
    * @return boolean
    *
    */
-  public function makePost($username, $content, $image, $display, $video, $audio)
+  public function makePost($username, $content, $image, $display, $video, $audio,$email)
   {
-    $sql = "INSERT INTO Posts (Username,Content,Image,Display,Video,Audio) VALUES
-    ('" . $username . "','" . $content . "','" . $image . "','" . $display . "','" . $video . "','" . $audio . "')";
+    $sql = "INSERT INTO Posts (Username,Content,Image_Content,Display,Video,Audio,Email) VALUES
+    ('" . $username . "','" . $content . "','" . $image . "','" . $display . "','" . $video . "','" . $audio . "','" . $email . "')";
     $result = mysqli_query($this->link, $sql);
     if ($result) {
       return true;
@@ -353,16 +353,17 @@ class User extends Database
 
 
   /**
+   *
    * This function is used to retrieve posts from the database
-   * @param mixed $a
-   * @param mixed $b
    *
    * @return [type]
    */
   public function getContent()
   {
-    $sql = "SELECT * from Posts order by Pid DESC  ";
+    // $sql = "SELECT * from Posts";
+    $sql = "SELECT Users.Image, Posts.Post_time, Users.Username, Users.Email, Posts.Image_Content, Posts.Content, Posts.Audio, Posts.Video FROM Users as Users JOIN Posts as Posts ON Posts.Email = Users.Email;";
     return ($this->link->query($sql)->fetch_all(MYSQLI_ASSOC));
+
   }
 
 
@@ -378,29 +379,29 @@ class User extends Database
   public function validateEmail($email)
   {
 
-    $client = new Client([
-      // Base URI is used with relative requests
-      'base_uri' => 'https://api.apilayer.com'
-    ]);
-    $response = $client->request('GET', 'email_verification/check?email=' . $email, [
-      'headers' => [
-        'apikey' => 'EgFVIMYLC78KM6VD65HlOY6k5VpA0CTB',
-      ]
-    ]);
+    // $client = new Client([
+    //   // Base URI is used with relative requests
+    //   'base_uri' => 'https://api.apilayer.com'
+    // ]);
+    // $response = $client->request('GET', 'email_verification/check?email=' . $email, [
+    //   'headers' => [
+    //     'apikey' => 'EgFVIMYLC78KM6VD65HlOY6k5VpA0CTB',
+    //   ]
+    // ]);
 
-    $body = $response->getBody();
-    $arr_body = json_decode($body);
-    if ($arr_body->format_valid && $arr_body->smtp_check) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
-
-    // if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    //   return true;
+    // $body = $response->getBody();
+    // $arr_body = json_decode($body);
+    // if ($arr_body->format_valid && $arr_body->smtp_check) {
+    //   return TRUE;
     // } else {
-    //   return false;
+    //   return FALSE;
     // }
+
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      return true;
+    } else {
+      return false;
+    }
 
 
   }
@@ -427,3 +428,7 @@ class User extends Database
   }
 
 }
+
+
+// ALTER table `Posts` add COLUMN Email VARCHAR(320) PRIMARY KEY NOT NULL ;
+// alter table Posts  ADD FOREIGN KEY (Email) REFERENCES Users(Email);

@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 require_once './vendor/autoload.php';
 use Database\Database;
 use User\User;
@@ -19,7 +19,7 @@ if (isset($_POST['submit_upload'])) {
   if($imagename) {
   // Calling function Validate_Image to validate the image entered by user
   if ($Object_user->Validate_Image($imagename, $imagesize, $imagetype)) {
-      session_start();
+
     // If image upload is succesfull storing the image in local directory
     // as well as inside the database
     $filePath = "public/assets/img/" . $imagename;
