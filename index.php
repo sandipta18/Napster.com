@@ -80,6 +80,10 @@ switch ($url) {
         require_once 'application/controllers/post.php';
         break;
 
+    case '/resend' :
+        require_once 'application/controllers/mailer3.php';
+        break;
+
     default :
         require_once 'application/controllers/error.php';
 

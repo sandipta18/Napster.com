@@ -164,10 +164,17 @@ a {
   font-weight: bolder;
   font-family: sans-serif;
   padding-top: 5px;
-
+  /* animation: hideAnimation 0s ease-in 15s;
+    animation-fill-mode: forwards; */
 
 }
-
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}
 .gender_field {
   padding-bottom: 15px;
   font-size: 1.2rem;

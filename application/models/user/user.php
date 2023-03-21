@@ -405,6 +405,14 @@ class User extends Database
 
   }
 
+  /**
+   * This function is used to check whether the password is same as previous
+   *
+   * @param mixed $email
+   * @param mixed $password
+   *
+   * @return boolean
+   */
   public function samePassword($email, $password) {
 
     $sql = "SELECT Password from Users WHERE Email='" . $email . "' ";

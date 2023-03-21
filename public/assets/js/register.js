@@ -65,6 +65,7 @@ $("#email").keyup(function () {
     }
     else {
         $("#btn").prop('disabled', false);
+        $("#message").html("");
     }
   }
   })

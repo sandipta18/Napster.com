@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:200");
-body, html {
+
+body,
+html {
   height: 100%;
   margin: 0;
   font-family: "Raleway", sans-serif;
@@ -27,6 +29,7 @@ body {
   color: white;
   margin: 0 2px;
 }
+
 .digit-group .splitter {
   padding: 0 5px;
   color: white;
@@ -39,11 +42,12 @@ body {
   color: white;
 }
 
-.error{
-  color:red;
+.error {
+  color: red;
   font-size: 20px;
   font-weight: bolder;
 }
+
 #hideMeAfter5Seconds {
   animation: hideAnimation 0s ease-in 3s;
   animation-fill-mode: forwards;
@@ -55,4 +59,24 @@ body {
     width: 0;
     height: 0;
   }
+}
+
+.option {
+  color: white;
+}
+
+.resend {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-family: "Raleway",
+    sans-serif;
+
+}
+#resend {
+  display: none;
+  padding-top: 20px;
+}
+.resend:hover {
+  text-decoration: underline;
 }

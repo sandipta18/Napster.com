@@ -9,7 +9,9 @@ function countdown() {
     if (seconds > 0) {
       setTimeout(tick, 1000);
     } else {
-      window.location.href = '/forgot';
+      // window.location.href = '/forgot';/
+      counter.style.display = 'none';
+      document.getElementById("resend").style.display = "block";
 
     }
   }

@@ -1,8 +1,5 @@
 <?php
 require_once 'loader.html';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +37,9 @@ error_reporting(E_ALL);
 	</div>
 	<div class="timer">
 		<?php require_once 'timer.php'; ?>
+	</div>
+	<div class="option">
+		<a href="resend" class="resend" id="resend">Resend OTP</a>
 	</div>
 	<script src="../../public/assets/js/otp.js"></script>
 </body>
