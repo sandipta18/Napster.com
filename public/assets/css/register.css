@@ -43,6 +43,7 @@ h1 {
   text-align: center;
   color: #a4243b;
 }
+
 h2 {
   text-align: center;
   font-size: 1.2rem;
@@ -103,8 +104,8 @@ h2 span {
   transition: all 0.3s ease;
 }
 
-.signup__input:focus + .signup__label,
-.signup__input:valid + .signup__label {
+.signup__input:focus+.signup__label,
+.signup__input:valid+.signup__label {
   top: 0;
   font-size: 1rem;
   background-color: white;
@@ -112,7 +113,7 @@ h2 span {
 
 /*  Button */
 button {
-   background: #1d3041;
+  background: #1d3041;
   color: white;
   padding: 12px 0;
   font-size: 1.2rem;
@@ -123,7 +124,8 @@ button {
 button:hover {
   background: #a4243b;
 }
-.message{
+
+.message {
   text-align: center;
   padding-top: 20px;
   color: red;
@@ -131,42 +133,60 @@ button:hover {
   font-family: sans-serif;
   font-size: 18px;
 }
-a:hover{
-  color: #a4243b;;
+
+a:hover {
+  color: #a4243b;
+  ;
 }
-a{
+
+a {
   color: #1d3041;
   font-weight: 800;
   font-size: 20px;
 }
-.success{
+
+.success {
   color: green;
   font-weight: bolder;
   font-family: sans-serif;
   font-size: 18px;
 }
-.error{
+
+.error {
   color: red;
   font-weight: bolder;
   font-family: sans-serif;
   padding-top: 5px;
 }
-.gender_field{
+
+#message {
+  color: red;
+  font-weight: bolder;
+  font-family: sans-serif;
+  padding-top: 5px;
+
+
+}
+
+.gender_field {
   padding-bottom: 15px;
   font-size: 1.2rem;
   display: flex;
   gap: 10px;
 }
-.wrapper{
+
+.wrapper {
   padding-bottom: 25px;
 }
+
 .wrapper h2 {
   color: #353842;
   font-size: 28px;
   text-align: center;
 }
+
 .wrapper textarea {
-  
+
   resize: none;
   height: 59px;
   outline: none;
@@ -178,17 +198,21 @@ a{
   caret-color: #4671ea;
   border: 1px solid #bfbfbf;
 }
+
 textarea::placeholder {
   color: #b3b3b3;
 }
-textarea:is(:focus, :valid) {
+
+textarea:is(:focus) {
   padding: 14px;
   border: 2px solid #a4243b;
 }
+
 textarea::-webkit-scrollbar {
   width: 0px;
 }
-#hideMeAfter5Seconds {
+
+#hideMeAfter3Seconds {
   animation: hideAnimation 0s ease-in 3s;
   animation-fill-mode: forwards;
 }

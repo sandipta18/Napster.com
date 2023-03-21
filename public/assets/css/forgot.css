@@ -151,4 +151,31 @@ a.demo {
   padding-top: 25px;
   font-size: 20px;
   font-weight: bolder;
+  animation: hideAnimation 0s ease-in 3s;
+  animation-fill-mode: forwards;
+}
+.back {
+  color: white;
+  font-size: 20px;
+  padding-top: 15px;
+}
+.back :hover {
+  text-decoration:underline 1px solid white;
+}
+
+#check {
+  color : lightgreen;
+  font-size: 20px;
+  margin: 0 auto;
+  padding-top: 25px;
+  font-weight: bold;
+  animation: hideAnimation 0s ease-in 15s;
+  animation-fill-mode: forwards;
+}
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
 }

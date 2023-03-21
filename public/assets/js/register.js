@@ -4,7 +4,7 @@ $(document).ready(function () {
     $("#username").keydown(function () {
       return /[a-z]/i.test(event.key);
     });
-    
+
 });
 
 function validateEmail() {
@@ -18,7 +18,7 @@ function validateEmail() {
   if(!regex.test(email)) {
     document.getElementById('error').innerHTML = "Invalid email address";
     document.getElementById('btn').disabled = true;
-  } 
+  }
   else{
     document.getElementById('error').innerHTML = "";
     document.getElementById('btn').disabled = false;
@@ -37,7 +37,7 @@ function validatePassword(){
     if(!regex.test(password)) {
       document.getElementById('error_pass').innerHTML = "Invalid password";
       document.getElementById('btn').disabled = true;
-    } 
+    }
     else{
       document.getElementById('error_pass').innerHTML = "";
       document.getElementById('btn').disabled = false;
@@ -50,4 +50,22 @@ textarea.addEventListener("keyup", (e) => {
   textarea.style.height = "63px";
   let scHeight = e.target.scrollHeight;
   textarea.style.height = `${scHeight}px`;
+});
+
+$("#email").keyup(function () {
+  $.ajax({
+    url: "/validate_ajax",
+    method: "POST",
+    data: { email: $(this).val() },
+    datatype: "text",
+    success: function (html) {
+      if(html){
+      $("#message").html(html);
+      $("#btn").prop('disabled', true);
+    }
+    else {
+        $("#btn").prop('disabled', false);
+    }
+  }
+  })
 });

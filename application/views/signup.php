@@ -1,5 +1,5 @@
-<?php 
-require_once 'loader.html'; 
+<?php
+require_once 'loader.html';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +26,7 @@ require_once 'loader.html';
     <div class="signup__field">
       <input class="signup__input" type="email" name="email" id="email" onkeyup="validateEmail()" required />
       <label class="signup__label" for="email">Email</label>
+      <span id="message"></span>
       <div id="error" class="error"></div>
     </div>
 
@@ -49,12 +50,18 @@ require_once 'loader.html';
     <div class="message" id="hideMeAfter5Seconds">
 
       <?php
+      if (isset($GLOBALS['email_validate']) && $GLOBALS['email_validate'] == false) {
+        echo $GLOBALS['validate_message'];
+        unset($GLOBALS['validate']);
+        unset($GLOBALS['password']);
+      }
+
       if (isset($GLOBALS['validate']) && $GLOBALS['validate'] == false) {
         echo $GLOBALS['password_message'];
         unset($GLOBALS['validate']);
         unset($GLOBALS['password']);
       }
-      
+
       ?>
       <?php
       if (isset($GLOBALS['signup']) && $GLOBALS['signup'] == false) {
