@@ -1,9 +1,11 @@
 <?php
 session_start();
 if ($_SESSION['Login'] == FALSE) {
+  session_destroy();
   header('location: /');
 }
 require_once 'loader.html';
+require_once 'navbar.php';
 ?>
 <html>
 
@@ -28,13 +30,13 @@ require_once 'loader.html';
         ?>
       </div>
       <form enctype="multipart/form-data" method="POST" action="upload" class="form">
-        <input type="text" placeholder = "Enter Username" class="textarea" name="name" value="<?php echo ucwords(strtolower($_SESSION['name'])); ?>">
-        <input type="text" placeholder = "Enter Email" class="textarea" name="email" value="<?php echo $_SESSION['info']; ?>">
-        <input class="textarea" placeholder = "Enter Bio" type="text" name="bio" id="bio" value="<?php echo $_SESSION['Bio']; ?> ">
+        <input type="text" placeholder = "Enter Username" class="textarea" name="name" value="<?php echo ucwords(strtolower($_SESSION['name'])); ?>" />
+        <input type="text"  class="textarea" name="email" value="<?php echo $_SESSION['info']; ?>" readonly>
+        <input class="textarea" placeholder = "Enter Bio" type="text" name="bio" id="bio" value="<?php echo $_SESSION['Bio']; ?> " />
         <input id="demo1" class="demo1" type="file" placeholder="Update Image" name="image" />
-        <input type="submit" value="Save Changes" class="btn btn-primary submit" name="submit_upload">
+        <input type="submit" value="Save Changes" class="btn btn-primary submit" name="submit_upload"/>
       </form>
-     
+
       <button class="btn btn-primary submit"> <a href="/home">Go back</a></button>
       <div class="message" id="hideMeAfter5Seconds">
         <?php

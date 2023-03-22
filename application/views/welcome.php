@@ -1,6 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['Login'] == FALSE) {
+  session_destroy();
   header('location: /');
 }
 require_once 'loader.html';
@@ -61,17 +62,19 @@ require_once 'navbar.php';
   </section>
   <div class="posts">
     <?php
-    for ($i = count($array)-1 ; $i>=0; $i--) { ?>
+    for ($i = count($array) - 1; $i >= 0; $i--) { ?>
       <section id="posts-container">
 
         <article class="post">
 
           <img class="post__avatar" src="<?php echo $array[$i]['Image']; ?>" alt="" />
-          <div class="post__content">
+          <div class="post__content" id="post_div">
             <header class="post__header">
+
               <p class="post__user">
                 <?php echo ucwords(strtolower($array[$i]['Username'])); ?>
               </p>
+
               <div class="post__meta">
 
                 <button class="post__header-btn">
@@ -84,7 +87,7 @@ require_once 'navbar.php';
             </header>
             <div class="post__body">
               <p class="caption"><?php echo $array[$i]['Content']; ?></p>
-              <img class="post__img" src="<?php echo $array[$i]['Image_Content']; ?>" alt="">
+              <img class="post__img" id="post_image" src="<?php echo $array[$i]['Image_Content']; ?>" alt="">
               <?php
               if (strlen($array[$i]['Video']) > 20) {
               ?>
@@ -103,8 +106,8 @@ require_once 'navbar.php';
                 </marquee>
             </div>
             <div class="post__footer">
-              <i class="fa-regular fa-heart iconss"></i>
-              <i class="fa-regular fa-comment iconss"></i>
+              <i class="fa-regular fa-heart iconss like"></i>
+              <span id="count"></span>
               <span class="time">
                 <?php echo round(abs(time() - strtotime($array[$i]['Post_time'])) /
                   3600) . " hours ago";
@@ -118,7 +121,7 @@ require_once 'navbar.php';
     <?php } ?>
 
     <button name="loadmore" id="loadbtn">Load More</button>
-</div>
+  </div>
 </body>
 
 </html>

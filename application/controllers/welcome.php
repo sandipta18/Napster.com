@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
   $tempname = $_FILES['post-img']['tmp_name'];
   $imagesize = $_FILES['post-img']['size'];
   $imagetype = $_FILES['post-img']['type'];
-  $content = $_POST['post-text'];
+  $content = htmlspecialchars($_POST['post-text'], ENT_QUOTES);
   $filePath = "public/assets/img/" . $imagename;
   move_uploaded_file($tempname, $filePath);
 

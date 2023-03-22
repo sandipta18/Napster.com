@@ -356,7 +356,7 @@ class User extends Database
    *
    * This function is used to retrieve posts from the database
    *
-   * @return [type]
+   * @return array
    */
   public function getContent()
   {
@@ -379,29 +379,29 @@ class User extends Database
   public function validateEmail($email)
   {
 
-    // $client = new Client([
-    //   // Base URI is used with relative requests
-    //   'base_uri' => 'https://api.apilayer.com'
-    // ]);
-    // $response = $client->request('GET', 'email_verification/check?email=' . $email, [
-    //   'headers' => [
-    //     'apikey' => 'EgFVIMYLC78KM6VD65HlOY6k5VpA0CTB',
-    //   ]
-    // ]);
+    $client = new Client([
+      // Base URI is used with relative requests
+      'base_uri' => 'https://api.apilayer.com'
+    ]);
+    $response = $client->request('GET', 'email_verification/check?email=' . $email, [
+      'headers' => [
+        'apikey' => 'EgFVIMYLC78KM6VD65HlOY6k5VpA0CTB',
+      ]
+    ]);
 
-    // $body = $response->getBody();
-    // $arr_body = json_decode($body);
-    // if ($arr_body->format_valid && $arr_body->smtp_check) {
-    //   return TRUE;
-    // } else {
-    //   return FALSE;
-    // }
-
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      return true;
+    $body = $response->getBody();
+    $arr_body = json_decode($body);
+    if ($arr_body->format_valid && $arr_body->smtp_check) {
+      return TRUE;
     } else {
-      return false;
+      return FALSE;
     }
+
+    // if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
 
 
   }
@@ -427,8 +427,22 @@ class User extends Database
     }
   }
 
+
+  public function ifExists($newEmail) {
+
+    $sql = "SELECT * from Users WHERE Email='" . $newEmail . "' ";
+    $output = mysqli_query($this->link, $sql);
+    $row_count = $output->num_rows;
+    if($row_count == 0) {
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
+
 }
 
 
-// ALTER table `Posts` add COLUMN Email VARCHAR(320) PRIMARY KEY NOT NULL ;
-// alter table Posts  ADD FOREIGN KEY (Email) REFERENCES Users(Email);
+

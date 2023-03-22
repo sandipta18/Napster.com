@@ -2,6 +2,8 @@
 :root {
   --primary-font: "Roboto", sans-serif;
   --secondary-font: "Montserrat", sans-serif;
+  --primary-color: white;
+  --secondary-color: black;
 }
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
 
@@ -20,6 +22,10 @@ body {
 }
 .darkmode {
    background-color: rgb(32, 31, 31);
+}
+.dark-theme{
+  --primary-color : black;
+  --secondary-color : white;
 }
 img {
   vertical-align: top;
@@ -41,7 +47,7 @@ img {
 }
 
 .create-post__form {
-  background-color: #fff;
+  background-color: var(--primary-color);
   padding: 20px;
   width: 100%;
   position: relative;
@@ -59,7 +65,7 @@ img {
   bottom: auto;
   border: 10px solid;
   border-color: transparent;
-  border-right-color: #fff;
+  border-right-color: var(--primary-color)
 }
 
 /* Dynamic height for text-area:
@@ -139,7 +145,9 @@ https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
-
+#create-post-txt{
+  background-color: var(--white);
+}
 #create-post-media {
   display: none;
 }
@@ -164,6 +172,7 @@ https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
   width: 100%;
   padding: 20px;
   position: relative;
+  background-color: var(--primary-color);
 }
 
 .post__content::after {
@@ -177,7 +186,7 @@ https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
   bottom: auto;
   border: 10px solid;
   border-color: transparent;
-  border-right-color: #fff;
+  border-right-color: var(--primary-color);
 }
 
 .post__header {
@@ -197,6 +206,7 @@ https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
   font-size: 20px;
   color :#5596e6;
   font-weight: bolder;
+
 }
 
 .post__meta {
@@ -221,9 +231,7 @@ https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ */
   width: 20px;
 }
 
-.post__content {
-  background-color: #fff;
-}
+
 
 .post__body {
   display: grid;
@@ -312,13 +320,19 @@ textarea{
   color: #5596e6;
 }
 .iconss:hover{
-  -webkit-text-stroke-width: 11px;
+  -webkit-text-stroke-width: 10.5px;
 -webkit-text-stroke-color: red;
+}
+.active{
+  -webkit-text-stroke-width: 10.5px;
+    -webkit-text-stroke-color: red;
+
 }
 .caption{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 18px;
   opacity: 0.8;
+  color: var(--secondary-color);
 }
 .post-icon{
   font-size: 20px;
@@ -328,10 +342,12 @@ textarea{
 }
 .welcome{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--secondary-color);
 }
 .post__user:hover{
  color: rgb(53, 53, 223);
  transform: scale(1.05);
+ cursor: pointer;
 }
 #loadbtn{
   width: 200px;
@@ -412,19 +428,22 @@ textarea{
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -8px;
-  margin-top: -12px;
+  margin-left: -11px;
+  margin-top: -18px;
   height: 0;
   width: 0;
-  border: 8px solid transparent;
+  border: 12px solid transparent;
   border-bottom-color: #ffffff;
 }
 
 #scroll:hover {
-  background-color: #e74c3c;
+  background-color: white;
   opacity: 1;
   filter: "alpha(opacity=100)";
   -ms-filter: "alpha(opacity=100)";
+}
+#scroll:hover span {
+  border-bottom-color: #3498db;
 }
 .time{
   font-size: 16px;
@@ -436,10 +455,17 @@ textarea{
   height: 60px;
 }
 marquee {
- width: 50%;
+ width: 100%;
  color: grey;
+
 }
 
 .posts > section  {
 display: none;
 }
+
+.post__content:hover {
+transform: scale(1.03);
+box-shadow: 0 45px 80px rgba(0,0,0,.8);
+}
+

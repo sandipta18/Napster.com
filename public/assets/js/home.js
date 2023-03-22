@@ -2,6 +2,7 @@
 function darkmode() {
   var element = document.body;
   element.classList.toggle("darkmode");
+  document.body.classList.toggle("dark-theme");
 }
 
   $('#scroll').click(function (e) {
@@ -45,3 +46,27 @@ $("#loadbtn").on("click", function () {
   $(".posts > section:nth-child(-n + " + x + " ").css("display", "block");
   x += 10;
 });
+
+$(document.querySelectorAll('.like')).on('click', function () {
+  if ($(this).attr('data-click-state') == 1) {
+    $(this).addClass('active');
+    $(this).attr('data-click-state', 0);
+
+  }
+  else {
+    $(this).attr('data-click-state', 1);
+    $(this).removeClass('active');
+  }
+});
+
+// $(document.querySelectorAll('.post__img')).on('dblclick', function () {
+//   if ($(document.querySelector('.like')).attr('data-click-state') == 1) {
+//     $(document.querySelector('.like')).addClass('active');
+//     $(document.querySelector('.like')).attr('data-click-state', 0);
+
+//   }
+//   else {
+//     $(document.querySelector('.like')).attr('data-click-state', 1);
+//     $(document.querySelector('.like')).removeClass('active');
+//   }
+// });

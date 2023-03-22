@@ -7,7 +7,6 @@ $Otp = $_POST['digit-1'] . $_POST['digit-2'] . $_POST['digit-3'] .$_POST['digit-
 if(isset($_POST['submit'])){
 $Otp = $_POST['digit-1'] . $_POST['digit-2'] . $_POST['digit-3'] .$_POST['digit-4'] .$_POST['digit-5'] .$_POST['digit-6'];
 if($Otp == $_SESSION['otp']){
-  // require_once './application/views/reset.php';
   header('Location: resetpage');
 }
 else{

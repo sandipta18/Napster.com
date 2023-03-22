@@ -1,15 +1,14 @@
 function countdown() {
-  var seconds = 59;
+  var seconds = 20;
 
   function tick() {
     var counter = document.getElementById("counter");
     seconds--;
     counter.innerHTML =
-      "You will be redirected in " + "0:" + (seconds < 10 ? "0" : "") + String(seconds) + " seconds" ;
+      "Reset otp option will appear in " + "0:" + (seconds < 10 ? "0" : "") + String(seconds) + " seconds" ;
     if (seconds > 0) {
       setTimeout(tick, 1000);
     } else {
-      // window.location.href = '/forgot';/
       counter.style.display = 'none';
       document.getElementById("resend").style.display = "block";
 

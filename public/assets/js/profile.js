@@ -110,7 +110,7 @@ function disable_Input(){
   if(input.disabled == false){
     input.disabled = true;
   }
-  
+
 }
 
 function enable(){
@@ -118,4 +118,9 @@ function enable(){
   if(input.disabled == true){
     input.disabled = false;
   }
+}
+
+function darkmode() {
+  var element = document.body;
+  element.classList.toggle("darkmode");
 }
