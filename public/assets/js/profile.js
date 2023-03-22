@@ -119,8 +119,15 @@ function enable(){
     input.disabled = false;
   }
 }
-
+var type = document.getElementById('mode');
 function darkmode() {
   var element = document.body;
   element.classList.toggle("darkmode");
+  document.body.classList.toggle("dark-theme");
+  if(document.body.classList.contains("dark-theme")) {
+  type.innerHTML = "Light Mode";
+  }
+  else {
+  type.innerHTML = "Dark Mode";
+  }
 }

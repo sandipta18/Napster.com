@@ -30,8 +30,8 @@ session_start();
     </li>
     <li>
       <a>
-        <span class="icon" onclick="darkmode()"><i class="fa-solid fa-moon"></i></span>
-        <span class="title">DarkMode</span>
+        <span class="icon" onclick="darkmode()"><i class="fa-solid fa-moon" id="icon"></i></span>
+        <span class="title" id="mode">DarkMode</span>
       </a>
     </li>
     <li>

@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
+:root {
+  --primary-color: white;
+  --secondary-color: black;
+}
+.dark-theme {
+  --primary-color: black;
+  --secondary-color: white;
+}
 * {
   padding: 0;
   margin: 0;
@@ -16,7 +24,7 @@ body {
 .navigation {
   position: fixed;
   width: 65px;
-  background: #FAF5EF;
+  background: var(--primary-color);
   overflow: hidden;
   transition: 0.2s;
 }
@@ -74,6 +82,7 @@ body {
   line-height: 60px;
   text-align: start;
   white-space: nowrap;
+  color: var(--secondary-color);
 }
 
 .toggle {
@@ -121,4 +130,7 @@ body {
     height: 27%;
     position: fixed;
     top: 0;
+}
+.icon{
+  color: var(--secondary-color);
 }

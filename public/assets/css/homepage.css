@@ -65,7 +65,7 @@ img {
   bottom: auto;
   border: 10px solid;
   border-color: transparent;
-  border-right-color: var(--primary-color)
+  border-right-color: var(--primary-color);
 }
 
 /* Dynamic height for text-area:
