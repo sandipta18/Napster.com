@@ -1,5 +1,9 @@
 <?php
 session_start();
+if ($_SESSION['Login'] == FALSE) {
+  session_destroy();
+  header('location: /');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -32,22 +32,19 @@ require_once 'loader.html';
       </p>
       <div class="error">
       <?php
-      if (isset($GLOBALS['updated'])) {
-        if (($GLOBALS['updated']) == true) {
-          echo $GLOBALS['success'];
-        } else {
-          echo $GLOBALS['error'];
-        }
-      }
-      ?>
-      <?php
       if (isset($GLOBALS['samePass'])) {
         if (($GLOBALS['samePass']) == true) {
           echo $GLOBALS['passMessage'];
         }
       }
+      elseif (isset($GLOBALS['updated'])) {
+                if ($GLOBALS['updated'] == true) {
+                  echo  $GLOBALS["success"];
+                }
+      }
       ?>
       </div>
+    <a href="/" class="back">Go Back</a>
 
   </form>
 

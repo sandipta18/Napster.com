@@ -21,12 +21,15 @@ if (isset($_POST['submit_register'])) {
     htmlspecialchars($_POST['bio'], ENT_QUOTES);
     if ($Object_user->Validate_Password($_POST['password'])) {
       // If validation is succesfull store data inside the database and send a message
+      // $defaultImage = "public/assets/img/" . 'profile.jpg';
+      $defaultImage = "../../public/assets/img/profile.jpg";
       $Signup = $Object_user->Signup_User(
         $_POST['username'],
         $_POST['email'],
         $_POST['password'],
         $_POST['gender'],
-        htmlspecialchars($_POST['bio'], ENT_QUOTES)
+        htmlspecialchars($_POST['bio'], ENT_QUOTES),
+        $defaultImage
       );
       if ($Signup) {
         $GLOBALS['signup'] = true;

@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     session_destroy();
     $GLOBALS['updated'] = true;
     $GLOBALS['success'] = "Password Updated";
-    require_once './application/views/login.php';
+    require_once './application/views/reset.php';
   }
   else {
     $GLOBALS['updated'] = false;

@@ -9,7 +9,6 @@ use User\User;
 $Object_user = new User;
 
 if (isset($_POST['submit'])) {
-
   $imagename = $_FILES['post-img']['name'];
   $tempname = $_FILES['post-img']['tmp_name'];
   $imagesize = $_FILES['post-img']['size'];
@@ -28,12 +27,12 @@ if (isset($_POST['submit'])) {
   $audiopath = "public/assets/audio/" . $audioname;
   $tmp_name = $_FILES['audio']['tmp_name'];
   move_uploaded_file($tmp_name, $audiopath);
-
+  if(!empty($content) or !empty($imagename) or !empty($videoname) or !empty($audioname)){
   if ($Object_user->makePost($_SESSION['name'], $content, $filePath,$_SESSION['filepath'],$path,$audiopath,$_SESSION['info'])) {
     header('Location: home');
   }
 
-
+}
 }
 $array = $Object_user->getContent();
 require_once './application/views/welcome.php';

@@ -8,11 +8,7 @@ use GuzzleHttp\Client;
 
 use Database\Database;
 
-/**
- *
- * @method Signup_User
- *
- */
+
 class User extends Database
 {
 
@@ -35,7 +31,7 @@ class User extends Database
    *
    */
 
-  public function Signup_User($username, $email, $password, $gender, $bio)
+  public function Signup_User($username, $email, $password, $gender, $bio, $image)
   {
 
     $this->username = $username;
@@ -50,7 +46,7 @@ class User extends Database
     $row_count = $check->num_rows;
 
     if ($row_count == 0) {
-      $sql1 = "INSERT INTO Users (Username,Password,Email,Gender,Bio) VALUES ('" . $username . "','" . md5($password) . "','" . $email . "','" . $gender . "','" . $bio . "')";
+      $sql1 = "INSERT INTO Users (Username,Password,Email,Gender,Bio,Image) VALUES ('" . $username . "','" . md5($password) . "','" . $email . "','" . $gender . "','" . $bio . "','" . $image . "')";
       $result = mysqli_query($this->link, $sql1);
       return $result;
     } else {
@@ -341,6 +337,7 @@ class User extends Database
    */
   public function makePost($username, $content, $image, $display, $video, $audio,$email)
   {
+    if(!empty($content) or !empty($image) or !empty($video) or !empty($audio)) {
     $sql = "INSERT INTO Posts (Username,Content,Image_Content,Display,Video,Audio,Email) VALUES
     ('" . $username . "','" . $content . "','" . $image . "','" . $display . "','" . $video . "','" . $audio . "','" . $email . "')";
     $result = mysqli_query($this->link, $sql);
@@ -349,6 +346,7 @@ class User extends Database
     } else {
       return false;
     }
+  }
   }
 
 
@@ -361,7 +359,9 @@ class User extends Database
   public function getContent()
   {
     // $sql = "SELECT * from Posts";
-    $sql = "SELECT Users.Image, Posts.Post_time, Users.Username, Users.Email, Posts.Image_Content, Posts.Content, Posts.Audio, Posts.Video FROM Users as Users JOIN Posts as Posts ON Posts.Email = Users.Email;";
+    $sql = "SELECT Users.Image, Posts.Post_time, Users.Username, Users.Email,
+    Posts.Image_Content, Posts.Content, Posts.Audio, Posts.Video FROM Users as
+    Users JOIN Posts as Posts ON Posts.Email = Users.Email;";
     return ($this->link->query($sql)->fetch_all(MYSQLI_ASSOC));
 
   }
@@ -379,29 +379,29 @@ class User extends Database
   public function validateEmail($email)
   {
 
-    $client = new Client([
-      // Base URI is used with relative requests
-      'base_uri' => 'https://api.apilayer.com'
-    ]);
-    $response = $client->request('GET', 'email_verification/check?email=' . $email, [
-      'headers' => [
-        'apikey' => 'EgFVIMYLC78KM6VD65HlOY6k5VpA0CTB',
-      ]
-    ]);
+    // $client = new Client([
+    //   // Base URI is used with relative requests
+    //   'base_uri' => 'https://api.apilayer.com'
+    // ]);
+    // $response = $client->request('GET', 'email_verification/check?email=' . $email, [
+    //   'headers' => [
+    //     'apikey' => 'EgFVIMYLC78KM6VD65HlOY6k5VpA0CTB',
+    //   ]
+    // ]);
 
-    $body = $response->getBody();
-    $arr_body = json_decode($body);
-    if ($arr_body->format_valid && $arr_body->smtp_check) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
-
-    // if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    //   return true;
+    // $body = $response->getBody();
+    // $arr_body = json_decode($body);
+    // if ($arr_body->format_valid && $arr_body->smtp_check) {
+    //   return TRUE;
     // } else {
-    //   return false;
+    //   return FALSE;
     // }
+
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      return true;
+    } else {
+      return false;
+    }
 
 
   }

@@ -109,8 +109,14 @@ require_once 'navbar.php';
               <i class="fa-regular fa-heart iconss like"></i>
               <span id="count"></span>
               <span class="time">
-                <?php echo round(abs(time() - strtotime($array[$i]['Post_time'])) /
-                  3600) . " hours ago";
+                <?php
+                $time = round(abs(time() - strtotime($array[$i]['Post_time'])) /3600);
+                if($time >=24) {
+                  echo floor($time/24) . "  Day Ago";
+                }
+                else {
+                  echo round(abs(time() - strtotime($array[$i]['Post_time'])) / 3600) . " Hours Ago";
+                }
                 ?>
               </span>
             </div>

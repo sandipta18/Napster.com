@@ -1,8 +1,16 @@
 
 function darkmode() {
   var element = document.body;
+  var type = document.getElementById('mode');
   element.classList.toggle("darkmode");
   document.body.classList.toggle("dark-theme");
+  if (document.body.classList.contains("dark-theme")) {
+    type.innerHTML = "Light Mode";
+  }
+  else {
+    type.innerHTML = "Dark Mode";
+  }
+
 }
 
   $('#scroll').click(function (e) {

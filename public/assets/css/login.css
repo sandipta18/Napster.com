@@ -232,14 +232,31 @@ section .container.active .signinBx .imgBx {
   color: green;
   font-family: 'Poppins',
     sans-serif;
-  animation: hideAnimation 0s ease-in 15s;
-  animation-fill-mode: forwards;
+  /* animation: hideAnimation 0s ease-in 15s;
+  animation-fill-mode: forwards; */
 
 }
-@keyframes hideAnimation {
+/* @keyframes hideAnimation {
   to {
     visibility: hidden;
     width: 0;
     height: 0;
   }
+} */
+.icon{
+  font-size: 18px;
+
+}
+
+.google {
+text-decoration: none;
+color: black;
+}
+.google:hover{
+color: blue;
+}
+.eye{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

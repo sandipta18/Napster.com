@@ -25,12 +25,11 @@ require_once 'loader.html';
         <div class="formBx">
           <form enctype="multipart/form-data" id="login_form" method="POST" action="welcome">
             <h2>Sign In</h2>
-            <input type="email" name="username" placeholder="Email" id="email" onkeypress="validateEmail()"
-             onblur="removeBorder()" required />
+            <input type="email" name="username" placeholder="Email" id="email" onkeypress="validateEmail()" onblur="removeBorder()" required />
             <span id="check"></span>
-            <input type="password" name="password" placeholder="Password" id="password"
-            onkeypress="validatePassword()" required onblur="removeBorder()" />
-            <i class="fa fa-eye eye" aria-hidden="true" onclick="toggleFunction()"></i>
+            <span class="eye">
+              <input type="password" name="password" placeholder="Password" id="password" onkeypress="validatePassword()" required onblur="removeBorder()" />
+              <i class="fa fa-eye eye" aria-hidden="true" onclick="toggleFunction()"></i></span>
             <input type="submit" name="submit_login" value="Login" id="button" />
             <div id="error">
               <?php
@@ -42,10 +41,6 @@ require_once 'loader.html';
                     unset($GLOBALS['Login']);
                   }
                 }
-              } elseif (isset($GLOBALS['updated'])) {
-                if ($GLOBALS['updated'] == true) {
-                  echo '<span class="success">' . $GLOBALS["success"] . '</span>';
-                }
               }
               ?>
 
@@ -56,7 +51,10 @@ require_once 'loader.html';
             </p>
             <p class="reset">
               Forgot your Password ?
-              <a href="../../forgot" class="option2">Reset Password.</a>
+              <a href="../../forgot" class="option2">Reset Now.</a>
+            </p>
+            <p class="signup">
+              Continue with <a href="" class="google"><i class="fa-brands fa-google icon"></i></a> instead ?
             </p>
           </form>
         </div>

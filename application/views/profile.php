@@ -37,7 +37,8 @@ require_once 'navbar.php';
         <input type="submit" value="Save Changes" class="btn btn-primary submit" name="submit_upload"/>
       </form>
 
-      <button class="btn btn-primary submit"> <a href="/home">Go back</a></button>
+      <button class="btn btn-primary submit"> <a href="/home" class
+      ="back" >Go back</a></button>
       <div class="message" id="hideMeAfter5Seconds">
         <?php
         if (isset($_SESSION['message'])) {
