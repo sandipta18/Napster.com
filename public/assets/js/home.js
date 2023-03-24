@@ -55,17 +55,17 @@ $("#loadbtn").on("click", function () {
   x += 10;
 });
 
-$(document.querySelectorAll('.like')).on('click', function () {
-  if ($(this).attr('data-click-state') == 1) {
-    $(this).addClass('active');
-    $(this).attr('data-click-state', 0);
+// $(document.querySelectorAll('.like')).on('click', function () {
+//   if ($(this).attr('data-click-state') == 1) {
+//     $(this).addClass('active');
+//     $(this).attr('data-click-state', 0);
 
-  }
-  else {
-    $(this).attr('data-click-state', 1);
-    $(this).removeClass('active');
-  }
-});
+//   }
+//   else {
+//     $(this).attr('data-click-state', 1);
+//     $(this).removeClass('active');
+//   }
+// });
 
 // $(document.querySelectorAll('.post__img')).on('dblclick', function () {
 //   if ($(document.querySelector('.like')).attr('data-click-state') == 1) {
@@ -78,3 +78,7 @@ $(document.querySelectorAll('.like')).on('click', function () {
 //     $(document.querySelector('.like')).removeClass('active');
 //   }
 // });
+
+$(".fa-regular").click(function() {
+  $(this).toggleClass("fa-solid");
+});

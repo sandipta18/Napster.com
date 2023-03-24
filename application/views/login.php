@@ -29,7 +29,7 @@ require_once 'loader.html';
             <span id="check"></span>
             <span class="eye">
               <input type="password" name="password" placeholder="Password" id="password" onkeypress="validatePassword()" required onblur="removeBorder()" />
-              <i class="fa fa-eye eye" aria-hidden="true" onclick="toggleFunction()"></i></span>
+              <i class="fa fa-eye eye" aria-hidden="true" id="eye"></i></span>
             <input type="submit" name="submit_login" value="Login" id="button" />
             <div id="error">
               <?php
@@ -54,7 +54,7 @@ require_once 'loader.html';
               <a href="../../forgot" class="option2">Reset Now.</a>
             </p>
             <p class="signup">
-              Continue with <a href="" class="google"><i class="fa-brands fa-google icon"></i></a> instead ?
+              <!-- Continue with <a href="google" class="google"><i class="fa-brands fa-google icon"></i></a> instead ? -->
             </p>
           </form>
         </div>
