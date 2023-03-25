@@ -2,86 +2,90 @@
 
 $url = $_SERVER['REQUEST_URI'];
 $url = rtrim($url);
-
-switch ($url) {
-    case '/' :
+$url = explode("/",$url);
+switch ($url[1]) {
+    case '' :
         require_once 'application/controllers/login.php';
         break;
 
-    case '/login' :
+    case 'login' :
         require_once 'application/controllers/login.php';
         break;
 
-    case '/signin' :
+    case 'signin' :
         require_once 'application/controllers/login.php';
         break;
 
-    case '/register' :
+    case 'register' :
         require_once 'application/controllers/signup.php';
         break;
 
-    case '/signup' :
+    case 'signup' :
         require_once 'application/controllers/login.php';
         break;
 
-    case '/registration' :
+    case 'registration' :
         require_once 'application/controllers/signup.php';
         break;
 
-    case '/welcome' :
+    case 'welcome' :
         require_once 'application/controllers/validate_login.php';
         break;
 
-    case '/check' :
+    case 'check' :
          require_once 'application/controllers/signin.php';
          break;
 
-    case '/home' :
+    case 'home' :
         require_once 'application/controllers/welcome.php';
         break;
 
-    case '/signout':
+    case 'signout':
         require_once 'application/controllers/logout.php';
         break;
 
-    case '/upload' :
+    case 'upload' :
         require_once 'application/controllers/upload.php';
         break;
 
-    case '/profile' :
+    case 'profile' :
         require_once 'application/controllers/profile.php';
         break;
 
-    case '/forgot' :
+    case 'forgot' :
         require_once 'application/controllers/forgot.php';
         break;
 
-    case '/reset' :
+    case 'reset' :
         require_once 'application/controllers/reset.php';
         break;
 
-    case '/validateotp' :
+    case 'validateotp' :
         require_once 'application/controllers/validate_otp.php';
         break;
 
-    case '/resetpassword' :
+    case 'resetpassword' :
         require_once 'application/controllers/resetpassword.php';
         break;
 
-    case '/validate_ajax' :
+    case 'validate_ajax' :
         require_once 'application/controllers/validate_ajax.php';
         break;
 
-    case '/resetpage' :
+    case 'resetpage' :
         require_once 'application/controllers/resetemplate.php';
         break;
 
-    case '/post' :
+    case 'post' :
         require_once 'application/controllers/post.php';
         break;
 
-    case '/resend' :
+    case 'resend' :
         require_once 'application/controllers/mailer3.php';
+        break;
+
+    case 'self' :
+        require_once 'application/controllers/self.php';
         break;
 
     default :

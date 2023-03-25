@@ -428,6 +428,11 @@ class User extends Database
   }
 
 
+  /**
+   * @param mixed $newEmail
+   *
+   * @return boolean
+   */
   public function ifExists($newEmail) {
 
     $sql = "SELECT * from Users WHERE Email='" . $newEmail . "' ";
@@ -442,7 +447,22 @@ class User extends Database
 
   }
 
+  /**
+   * @param mixed $email
+   *
+   * @return array
+   */
+  public function getPosts($email) {
+
+    // $sql = "SELECT * from Posts WHERE Email='" . $email . "' ";
+    $sql = "SELECT Users.Image, Posts.Post_time, Users.Username, Users.Email,
+    Posts.Image_Content, Posts.Content, Posts.Audio, Posts.Video FROM Users as
+    Users JOIN Posts as Posts ON Posts.Email = Users.Email Where Posts.Email = '" . $email . "'
+    and Users.Email = '" . $email . "'";
+    return ($this->link->query($sql)->fetch_all(MYSQLI_ASSOC));
+
+  }
+
+
+
 }
-
-
-

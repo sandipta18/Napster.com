@@ -56,23 +56,24 @@ $("#email").keyup(function () {
   })
 });
 
+
 $(function () {
 
   $('#eye').click(function () {
 
-    if ($(this).hasClass('fa-eye-slash')) {
+    if ($(this).hasClass('fa-eye')) {
 
-      $(this).removeClass('fa-eye-slash');
+      $(this).removeClass('fa-eye');
 
-      $(this).addClass('fa-eye');
+      $(this).addClass('fa-eye-slash');
 
       $('#password').attr('type', 'text');
 
     } else {
 
-      $(this).removeClass('fa-eye');
+      $(this).removeClass('fa-eye-slash');
 
-      $(this).addClass('fa-eye-slash');
+      $(this).addClass('fa-eye');
 
       $('#password').attr('type', 'password');
     }

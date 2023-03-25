@@ -71,9 +71,9 @@ require_once 'navbar.php';
           <div class="post__content" id="post_div">
             <header class="post__header">
 
-              <p class="post__user">
+              <a class="post__user" href="self/<?php echo $array[$i]['Email']; ?>">
                 <?php echo ucwords(strtolower($array[$i]['Username'])); ?>
-              </p>
+              </a>
 
               <div class="post__meta">
 
