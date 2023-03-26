@@ -22,111 +22,124 @@ require_once 'navbar.php';
 </head>
 
 <body>
-  <a href="#" id="scroll"><span></span></a>
-  <section class="create-post">
-    <img class="post__avatar" src="<?php echo  $_SESSION['filepath']; ?>" alt="" />
-    <form enctype="multipart/form-data" id="create-post-form" class="create-post__form" action="home" method="POST">
-      <span class="welcome"><?php echo 'Hello ' . ucwords(strtolower($_SESSION['name'])); ?> </span>
-      <div class="create-post__text-wrap">
-        <textarea aria-label="Share something ..." name="post-text" id="create-post-txt" oninput="this.parentNode.dataset.replicatedValue = this.value" placeholder="Write something here..."></textarea>
-      </div>
-      <div class="create-post__media-wrap" id="create-post-media-wrap"></div>
-      <div class="create-post__buttons">
-        <div class="create-post__assets-buttons">
-          <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
-            <i class="fa-solid fa-image post-icon"></i>
-            Photo
-            <img id="imagePreview" />
-            <input type="file" name="post-img" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
-          </button>
-          <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
-            <i class="fa-solid fa-video post-icon"></i>
-            Video
-            <input type="file" name="video" id="create-post-media" accept=".mp4" />
-          </button>
-          <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
-            <i class="fa-solid fa-music post-icon"></i>
-            Audio
-            <input type="file" name="audio" id="create-post-media" accept=".mp3" />
-          </button>
-          <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
-            <i class="fa-solid fa-user-tag post-icon"></i>
-            TagUsers
-            <input type="file" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
-          </button>
+  <div class="container">
+    <div class="search-result">
+      <div class="search">
+        <div class="search-box">
+          <input class="search-input" name="search" type="text" placeholder="Search.." id="search" autocomplete="off">
+          <a class="search-btn">
+            <i class="fas fa-search"></i>
+          </a>
         </div>
-        <button class="create-post__submit" type="submit" id="create-post-submit-btn" name="submit">Post</button>
       </div>
-
-    </form>
-  </section>
-  <div class="posts">
-    <?php
-    for ($i = count($array) - 1; $i >= 0; $i--) { ?>
-      <section id="posts-container">
-
-        <article class="post">
-
-          <img class="post__avatar" src="<?php echo $array[$i]['Image']; ?>" alt="" />
-          <div class="post__content" id="post_div">
-            <header class="post__header">
-
-              <a class="post__user" href="self/<?php echo $array[$i]['Email']; ?>">
-                <?php echo ucwords(strtolower($array[$i]['Username'])); ?>
-              </a>
-
-              <div class="post__meta">
-
-                <button class="post__header-btn">
-
-                </button>
-                <button class="post__header-btn">
-
-                </button>
-              </div>
-            </header>
-            <div class="post__body">
-              <p class="caption"><?php echo $array[$i]['Content']; ?></p>
-              <img class="post__img" id="post_image" src="<?php echo $array[$i]['Image_Content']; ?>" alt="">
-              <?php
-              if (strlen($array[$i]['Video']) > 20) {
-              ?>
-                <video class="post__img" controls src="<?php echo $array[$i]['Video']; ?>"></video>
-              <?php } ?>
-              <?php
-              if (strlen($array[$i]['Audio']) > 20) {
-              ?>
-                <audio class="post__img" controls type="audio/mpeg" src="<?php echo $array[$i]['Audio']; ?>"></audio>
-                <marquee direction="right">
-                <?php
-                $size = strlen($array[$i]['Audio']);
-                echo substr($array[$i]['Audio'], 20, $size);
-              }
-                ?>
-                </marquee>
-            </div>
-            <div class="post__footer">
-              <i class="fa-regular fa-heart iconss like"></i>
-              <span id="count"></span>
-              <span class="time">
-                <?php
-                $time = round(abs(time() - strtotime($array[$i]['Post_time'])) /3600);
-                if($time >=24) {
-                  echo floor($time/24) . "  Day Ago";
-                }
-                else {
-                  echo round(abs(time() - strtotime($array[$i]['Post_time'])) / 3600) . " Hours Ago";
-                }
-                ?>
-              </span>
-            </div>
+      <span id="result">
+      </span>
+    </div>
+    <a href="#" id="scroll"><span></span></a>
+    <section class="create-post">
+      <img class="post__avatar" src="<?php echo  $_SESSION['filepath']; ?>" alt="" />
+      <form enctype="multipart/form-data" id="create-post-form" class="create-post__form" action="home" method="POST">
+        <span class="welcome"><?php echo 'Hello ' . ucwords(strtolower($_SESSION['name'])); ?> </span>
+        <div class="create-post__text-wrap">
+          <textarea aria-label="Share something ..." name="post-text" id="create-post-txt" oninput="this.parentNode.dataset.replicatedValue = this.value" placeholder="Write something here..."></textarea>
+        </div>
+        <div class="create-post__media-wrap" id="create-post-media-wrap"></div>
+        <div class="create-post__buttons">
+          <div class="create-post__assets-buttons">
+            <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
+              <i class="fa-solid fa-image post-icon"></i>
+              Photo
+              <img id="imagePreview" />
+              <input type="file" name="post-img" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
+            </button>
+            <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
+              <i class="fa-solid fa-video post-icon"></i>
+              Video
+              <input type="file" name="video" id="create-post-media" accept=".mp4" />
+            </button>
+            <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
+              <i class="fa-solid fa-music post-icon"></i>
+              Audio
+              <input type="file" name="audio" id="create-post-media" accept=".mp3" />
+            </button>
+            <button type="button" aria-label="Add an image to the post" class="create-post__asset-btn" for="create-post-media" onclick="this.querySelector('input').click()">
+              <i class="fa-solid fa-user-tag post-icon"></i>
+              TagUsers
+              <input type="file" id="create-post-media" accept=".png, .jpg, .jpeg, .gif" />
+            </button>
           </div>
+          <button class="create-post__submit" type="submit" id="create-post-submit-btn" name="submit">Post</button>
+        </div>
 
-        </article>
-      </section>
-    <?php } ?>
+      </form>
+    </section>
+    <div class="posts">
+      <?php
+      for ($i = count($array) - 1; $i >= 0; $i--) { ?>
+        <section id="posts-container">
 
-    <button name="loadmore" id="loadbtn">Load More</button>
+          <article class="post">
+
+            <img class="post__avatar" src="<?php echo $array[$i]['Image']; ?>" alt="" />
+            <div class="post__content" id="post_div">
+              <header class="post__header">
+
+                <a class="post__user" href="self/<?php echo $array[$i]['Email']; ?>">
+                  <?php echo ucwords(strtolower($array[$i]['Username'])); ?>
+                </a>
+
+                <div class="post__meta">
+
+                  <button class="post__header-btn">
+
+                  </button>
+                  <button class="post__header-btn">
+
+                  </button>
+                </div>
+              </header>
+              <div class="post__body">
+                <p class="caption"><?php echo $array[$i]['Content']; ?></p>
+                <img class="post__img" id="post_image" src="<?php echo $array[$i]['Image_Content']; ?>" alt="">
+                <?php
+                if (strlen($array[$i]['Video']) > 20) {
+                ?>
+                  <video class="post__img" controls src="<?php echo $array[$i]['Video']; ?>"></video>
+                <?php } ?>
+                <?php
+                if (strlen($array[$i]['Audio']) > 20) {
+                ?>
+                  <audio class="post__img" controls type="audio/mpeg" src="<?php echo $array[$i]['Audio']; ?>"></audio>
+                  <marquee direction="right">
+                  <?php
+                  $size = strlen($array[$i]['Audio']);
+                  echo substr($array[$i]['Audio'], 20, $size);
+                }
+                  ?>
+                  </marquee>
+              </div>
+              <div class="post__footer">
+                <i class="fa-regular fa-heart iconss like"></i>
+                <span id="count"></span>
+                <span class="time">
+                  <?php
+                  $time = round(abs(time() - strtotime($array[$i]['Post_time'])) / 3600);
+                  if ($time >= 24) {
+                    echo floor($time / 24) . "  Day Ago";
+                  } else {
+                    echo round(abs(time() - strtotime($array[$i]['Post_time'])) / 3600) . " Hours Ago";
+                  }
+                  ?>
+                </span>
+              </div>
+            </div>
+
+          </article>
+        </section>
+      <?php } ?>
+
+      <button name="loadmore" id="loadbtn">Load More</button>
+    </div>
   </div>
 </body>
 
@@ -134,3 +147,4 @@ require_once 'navbar.php';
 <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 <script src="../../public/assets/js/home.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>

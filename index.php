@@ -88,6 +88,10 @@ switch ($url[1]) {
         require_once 'application/controllers/self.php';
         break;
 
+    case 'search' :
+        require_once 'application/controllers/search.php';
+        break;
+        
     default :
         require_once 'application/controllers/error.php';
 

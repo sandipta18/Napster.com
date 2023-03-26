@@ -19,6 +19,7 @@ body {
   /* background-color: rgb(32, 31, 31); */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 100%;
+  overflow-x: hidden;
 }
 .darkmode {
    background-color: rgb(32, 31, 31);
@@ -466,4 +467,108 @@ box-shadow: 0 45px 80px rgba(0,0,0,.8);
 
 a{
   text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.search {
+  top : 66px;
+  position: relative;
+  left: 60%;
+  /* border: 1px solid black; */
+  width: 50%;
+}
+ .searchbox {
+  margin: 0 auto;
+  position: relative;
+  left: 105%;
+  padding: 10px 0px;
+}
+
+.search-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0%,-120%);
+  background: #5596e6;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.search-btn {
+  color: var(--primary-color);
+  float: right;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #5596e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+}
+
+.fa-search {
+  background: #5596e6;
+  font-size: 24px;
+}
+
+.search-input {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: var(--primary-color);
+  font-size: 20px;
+  transition: 0.4s;
+  line-height: 50px;
+  width: 0;
+}
+
+.search-box:hover > .search-input {
+  width: 250px;
+  padding: 0 7px;
+}
+
+::placeholder {
+  color: var(--primary-color);
+}
+#result a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  /* padding-top: 20px; */
+  padding-left: 5px;
+}
+#result a:hover {
+  color: blue;
+}
+#result {
+  width: 250px;
+  position: relative;
+  left: 86%;
+  margin-top: 60px;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 20px;
+}
+.search-result {
+  display: flex;
+  flex-direction: column;
+
+}
+.name {
+  padding: 4px 0px;
+  border-bottom: 1px solid grey;
+}
+.name:last-child {
+  border:none;
+
 }

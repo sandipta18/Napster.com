@@ -62,3 +62,30 @@ $(".fa-regular").click(function() {
 });
 
 
+$("#search").keyup(function(){
+  var input = $(this).val();
+  if(input != "") {
+
+    $.ajax({
+      url: "search",
+      method: "POST",
+      data: { search: input },
+      datatype: "text",
+      success: function (html) {
+        $("#result").html(html);
+        $("#result").css("opacity", "1");
+        $("#search").focusout(function () {
+          $('#result').css('opacity', '0');
+        });
+        $("#search").focusin(function () {
+          $('#result').css('opacity', '1');
+        });
+      },
+    })
+
+  }
+  else {
+    $("#result").css("opacity", "0");
+  }
+
+});

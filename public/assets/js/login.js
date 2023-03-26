@@ -44,7 +44,7 @@ function removeBorder() {
 
 
 $("#email").keyup(function () {
-  console.log($(this).val());
+  // console.log($(this).val());
   $.ajax({
     url: "/validate_ajax",
     method: "POST",
