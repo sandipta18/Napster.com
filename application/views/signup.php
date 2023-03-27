@@ -3,10 +3,12 @@ require_once 'loader.html';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4285f4" />
   <link rel="stylesheet" href="../../public/assets/css/register.css">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
@@ -44,7 +46,7 @@ require_once 'loader.html';
       <input type="radio" name="gender" id="others" value="others">
     </div>
     <div class="wrapper">
-      <textarea spellcheck="false" placeholder="Enter Bio..." name="bio" ></textarea>
+      <textarea spellcheck="false" placeholder="Enter Bio..." name="bio"></textarea>
     </div>
     <button name="submit_register" id="btn">Sign up</button>
     <div class="message" id="hideMeAfter5Seconds">

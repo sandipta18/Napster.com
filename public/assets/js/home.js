@@ -13,6 +13,33 @@ function darkmode() {
 
 }
 
+document.cookie = "theme=dark expires=Fri, 31 Dec 9999 23:59:59 GMT /*Not to expire*/" //when switching dark mode
+document.cookie = "theme=light expires=Fri, 31 Dec 9999 23:59:59 GMT /*Not to expire*/" //when switching light mode
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+window.addEventListener("load", function () {
+  if (getCookie("theme") == "light") {
+    darkmode();
+  } else if (getCookie("theme") == "dark") {
+    darkmode();
+  }
+});
+
   $('#scroll').click(function (e) {
     e.preventDefault();
     $('html, body').animate({ scrollTop: 0 }, '1000');
@@ -89,3 +116,59 @@ $("#search").keyup(function(){
   }
 
 });
+
+
+var element = document.body;
+var type = document.getElementById('mode');
+function darkmode() {
+
+  element.classList.toggle("darkmode");
+  document.body.classList.toggle("dark-theme");
+
+  if (document.body.classList.contains("dark-theme")) {
+    type.innerHTML = "Light Mode";
+    theme = "light";
+  }
+  else {
+    type.innerHTML = "Dark Mode";
+    theme = "dark";
+  }
+  localStorage.setItem("PageTheme", JSON.stringify(theme));
+
+}
+
+setInterval(() => {
+  var element = document.body;
+  let getTheme = JSON.parse(localStorage.getItem("PageTheme"));
+  if (getTheme === "dark") {
+    document.body.classList.remove("dark-theme");
+    element.classList.remove("darkmode");
+    type.innerHTML = "Dark Mode";
+  } else {
+    document.body.classList.add("dark-theme");
+    element.classList.add("darkmode");
+    type.innerHTML = "Light Mode";
+  }
+}, 1);
+
+// themeBtn.onclick = function () {
+//   var theme;
+//   document.body.classList.toggle("dark-theme");
+//   if (document.body.classList.contains("dark-theme")) {
+//     themeText.innerHTML = "Light theme";
+//     theme = "light";
+//   }
+//   else {
+//     themeText.innerHTML = "Dark theme";
+//     theme = "dark";
+//   }
+//   localStorage.setItem("PageTheme", JSON.stringify(theme));
+// }
+// setInterval(() => {
+//   let getTheme = JSON.parse(localStorage.getItem("PageTheme"));
+//   if (getTheme === "dark") {
+//     document.body.classList.remove("dark-theme");
+//   } else {
+//     document.body.classList.add("dark-theme");
+//   }
+// }, 5);

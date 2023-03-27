@@ -35,7 +35,7 @@ if ($_SESSION['Login'] == FALSE) {
     <li>
       <a>
         <span class="icon" onclick="darkmode()"><i class="fa-solid fa-moon" id="icon"></i></span>
-        <span class="title" id="mode">DarkMode</span>
+        <span class="title" id="mode">Dark Mode</span>
       </a>
     </li>
     <li>

@@ -465,7 +465,7 @@ class User extends Database
 
 
   public function searchByUsername($username) {
-    $sql = "SELECT Username,Email from Users WHERE Username LIKE '$username%' ";
+    $sql = "SELECT Username,Email from Users WHERE Username LIKE  '$username%' ";
     $output = mysqli_query($this->link, $sql);
     $row_count = $output->num_rows;
     if ($row_count > 0) {

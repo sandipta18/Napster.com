@@ -8,7 +8,7 @@ $array = $objectUser->searchByUsername($_POST['search']);
 if($array!=NULL) {
 for ($i = 0; $i < count($array); $i++) { ?>
 
-  <a class="name" href="self/<?php echo $array[$i]['Email']; ?>">
+  <a class="name" href="self/<?php echo base64_encode($array[$i]['Email']); ?>">
     <?php echo $array[$i]['Username']; ?></a>
 
 <?php

@@ -7,8 +7,8 @@ use User\User;
 $objectUser = new User;
 $uri = $_SERVER['REQUEST_URI'];
 $uri = explode("/",$uri);
-$email = $uri[2];
-// echo $email;
+$email = base64_decode($uri[2]);
+
 
 
 $array = $objectUser->getPosts($email);

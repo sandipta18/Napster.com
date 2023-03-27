@@ -1,5 +1,5 @@
-<?php 
-require_once 'loader.html'; 
+<?php
+require_once 'loader.html';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +8,7 @@ require_once 'loader.html';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4285f4" />
   <link rel="stylesheet" href="../../public/assets/css/errorstyle.css">
   <title>Error Page</title>
 </head>
@@ -20,9 +21,7 @@ require_once 'loader.html';
         is also possible that you made a small typo when entering the address. Go to the main page.
       </p>
       <div class="bl_page404__wrapper">
-        <img
-          src="https://github.com/BlackStar1991/Pictures-for-sharing-/blob/master/404/bigBoom/cloud_warmcasino.png?raw=true"
-          alt="cloud_warmcasino.png">
+        <img src="https://github.com/BlackStar1991/Pictures-for-sharing-/blob/master/404/bigBoom/cloud_warmcasino.png?raw=true" alt="cloud_warmcasino.png">
         <div class="bl_page404__el1"></div>
         <div class="bl_page404__el2"></div>
         <div class="bl_page404__el3"></div>

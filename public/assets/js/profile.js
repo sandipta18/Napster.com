@@ -119,15 +119,35 @@ function enable(){
     input.disabled = false;
   }
 }
+var element = document.body;
 var type = document.getElementById('mode');
 function darkmode() {
-  var element = document.body;
+
   element.classList.toggle("darkmode");
   document.body.classList.toggle("dark-theme");
-  if(document.body.classList.contains("dark-theme")) {
-  type.innerHTML = "Light Mode";
+
+  if (document.body.classList.contains("dark-theme")) {
+    type.innerHTML = "Light Mode";
+    theme = "light";
   }
   else {
-  type.innerHTML = "Dark Mode";
+    type.innerHTML = "Dark Mode";
+    theme = "dark";
   }
+  localStorage.setItem("PageTheme", JSON.stringify(theme));
+
 }
+
+setInterval(() => {
+  var element = document.body;
+  let getTheme = JSON.parse(localStorage.getItem("PageTheme"));
+  if (getTheme === "dark") {
+    document.body.classList.remove("dark-theme");
+    element.classList.remove("darkmode");
+    type.innerHTML = "Dark Mode";
+  } else {
+    document.body.classList.add("dark-theme");
+    element.classList.add("darkmode");
+    type.innerHTML = "Light Mode";
+  }
+}, 1);

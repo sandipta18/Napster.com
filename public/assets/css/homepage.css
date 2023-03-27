@@ -572,3 +572,9 @@ a{
   border:none;
 
 }
+.fb {
+  /* vertical-align: none; */
+  background-size: 30px;
+  transform: translateY(7px);
+  padding-right: 10px;
+}

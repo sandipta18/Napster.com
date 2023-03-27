@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /home
+Disallow: /profile
+Disallow: /self
+
+
