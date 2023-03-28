@@ -1,10 +1,10 @@
 // This function is used to facilitate user scrolling to the top
 function scrollTop(e) {
   e.preventDefault();
-  $('html, body').animate({ scrollTop: 0 }, '1000');
+  $('html, body').animate({ scrollTop: 0 });
 };
 // This function is used show a go to top option when user scrolls down
-$(window).on('scroll', scroller);
+$(document).on('scroll', scroller);
 
 function scroller() {
   var scroll = $(window).scrollTop();
@@ -57,7 +57,7 @@ $(".fa-regular").on('click', function () {
 
 // This is the search user functionality
 
-$("#search").on('keyup', searchUser);
+$("#search").on('keydown', $.debounce(500,searchUser));
 
 function searchUser() {
   var input = $(this).val();
@@ -88,7 +88,7 @@ function searchUser() {
 };
 
 
-
+// This function is used to toggle between dark and light mode
 var type = document.getElementById('mode');
 function darkmode() {
 
@@ -106,7 +106,7 @@ function darkmode() {
   localStorage.setItem("PageTheme", JSON.stringify(theme));
 
 }
-
+// This function is used to preserve the light mode
 setInterval(() => {
   var element = document.body;
   let getTheme = JSON.parse(localStorage.getItem("PageTheme"));

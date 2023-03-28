@@ -1,4 +1,4 @@
-$("#email").on('keyup', ifExists);
+$("#email").on('keyup', $.debounce(500,ifExists));
 
 function ifExists ()
 {

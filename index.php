@@ -92,6 +92,10 @@ switch ($url[1]) {
         require_once 'application/controllers/search.php';
         break;
 
+    case 'cookie_ajax' :
+        require_once 'application/controllers/cookie.php';
+        break;
+
     default :
         require_once 'application/controllers/error.php';
 

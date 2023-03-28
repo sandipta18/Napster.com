@@ -474,5 +474,16 @@ class User extends Database
 
   }
 
+  public function setCookie($value,$email) {
+   $sql = "Update Users SET Cookie = '" . $value . "' WHERE Email='" . $email . "' ";
+   $result = mysqli_query($this->link, $sql);
+   if($result) {
+    return true;
+   }
+   else {
+    return false;
+   }
+  }
+
 
 }

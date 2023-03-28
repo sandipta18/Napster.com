@@ -9,6 +9,7 @@ require_once 'loader.html';
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f95801" />
+  <script src="http://benalman.com/code/projects/jquery-throttle-debounce/jquery.ba-throttle-debounce.js"></script>
   <link rel="stylesheet" href="../../public/assets/css/errorstyle.css">
   <title>Error Page</title>
 </head>

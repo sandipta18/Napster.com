@@ -53,7 +53,10 @@ textarea.addEventListener("keydown", (e) => {
   textarea.style.height = `${scHeight}px`;
 });
 
-$("#email").on('keydown',function () {
+$("#email").on('keydown',$.debounce(500,ifExists));
+
+function ifExists()
+{
   $.ajax({
     url: "/validate_ajax",
     method: "POST",
@@ -70,4 +73,4 @@ $("#email").on('keydown',function () {
       }
     }
   })
-});
+};

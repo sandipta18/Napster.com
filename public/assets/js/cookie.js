@@ -1,22 +1,41 @@
+$("#accept").on('click',$.debounce(500,cookieTrue));
+function cookieTrue()
+{
+  $(".wrapper").removeClass("show");
+  localStorage.setItem("btnClicked", true);
+  $.ajax({
+    url: "cookie_ajax",
+    method: "POST",
+    data: {value : 1},
+    datatype: "text",
+  })
+};
 
-$("#accept").click(function () {
-  $(".wrapper").removeClass("show").delay(500);
-  sessionStorage.setItem("btnClicked", true);
-});
-$("#reject").click(function () {
-  $(".wrapper").removeClass("show").delay(500);
-  sessionStorage.setItem("btnClicked", false);
-});
+$("#reject").on('click',$.debounce(500,cookieFalse));
+function cookieFalse()
+{
+  $(".wrapper").removeClass("show");
+  localStorage.setItem("btnClicked", false);
+  $.ajax({
+    url: "cookie_ajax",
+    method: "POST",
+    data: { value: 0 },
+    datatype: "text",
+  })
+};
 
-
-$(document).ready(function () {
-  var clicked = sessionStorage.getItem("btnClicked");
-  console.log(clicked);
+$(document).on('ready',function () {
+  var clicked = localStorage.getItem("btnClicked");
   if (clicked) {
-    $(".wrapper").removeClass("show").delay(500);
+    $(".wrapper").removeClass("show");
   }
   else {
-    $(".wrapper").addClass("show").delay(500);
+    $(".wrapper").addClass("show");
   }
 });
+
+setTimeout(check, 0.1);
+function check() {
+  $(".wrapper").removeClass("show");
+}
 

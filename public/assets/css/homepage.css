@@ -416,6 +416,7 @@ textarea{
   text-indent: -9999px;
   border-radius: 50px;
   display: none;
+  transform: translateX(-100px);
 }
 #scroll.show {
   display: block;

@@ -43,7 +43,9 @@ function removeBorder(event) {
 }
 
 
-$("#email").on('keydown', function () {
+$("#email").on('keydown', $.debounce(500,ifExists));
+function ifExists()
+{
   $.ajax({
     url: "/validate_ajax",
     method: "POST",
@@ -53,10 +55,7 @@ $("#email").on('keydown', function () {
       $("#check").html(html);
     },
   })
-});
-
-
-
+};
 
 $('#eye').on('click', changeIcon);
 
@@ -83,7 +82,7 @@ $("#reject").click(function () {
 });
 $(document).ready(function () {
   var clicked = localStorage.getItem("btnClicked");
-  // console.log(clicked);
+  console.log(clicked);
   if (clicked) {
     $(".wrapper").removeClass("show");
   }
@@ -91,7 +90,7 @@ $(document).ready(function () {
     $(".wrapper").addClass("show");
   }
 });
-setTimeout(check(), 0.1);
-function check() {
+setTimeout(display, 0.1);
+function display() {
   $(".wrapper").removeClass("show");
 }
