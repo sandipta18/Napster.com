@@ -1,10 +1,10 @@
-function toggleFunction() {
- var pass = document.getElementById("password");
-  if(pass.type == "password") {
+function togglePassword() {
+  var pass = document.getElementById("password");
+  if (pass.type == "password") {
     pass.type = "text";
     event.target.classList.add("fa-eye-slash ");
   }
-  else{
+  else {
     pass.type = "password";
   }
 }
@@ -29,22 +29,21 @@ function validatePassword() {
   var password = document.getElementById('password').value;
   var regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{7,}$/;
   if (regex.test(password)) {
-    event.target.style.borderColor = "green";
+    document.getElementById('password').style.borderColor = "green";
     document.getElementById("button").disabled = false;
   }
   else {
-    event.target.style.borderColor = "red";
+    document.getElementById('password').style.borderColor = "red";
     document.getElementById("button").disabled = true;
   }
 }
 
-function removeBorder() {
+function removeBorder(event) {
   event.target.style.borderColor = "white";
 }
 
 
-$("#email").keyup(function () {
-  // console.log($(this).val());
+$("#email").on('keydown', function () {
   $.ajax({
     url: "/validate_ajax",
     method: "POST",
@@ -57,51 +56,42 @@ $("#email").keyup(function () {
 });
 
 
-$(function () {
-
-  $('#eye').click(function () {
-
-    if ($(this).hasClass('fa-eye')) {
-
-      $(this).removeClass('fa-eye');
-
-      $(this).addClass('fa-eye-slash');
-
-      $('#password').attr('type', 'text');
-
-    } else {
-
-      $(this).removeClass('fa-eye-slash');
-
-      $(this).addClass('fa-eye');
-
-      $('#password').attr('type', 'password');
-    }
-  });
-});
 
 
+$('#eye').on('click', changeIcon);
 
-// ---- ---- Const ---- ---- //
-const cookiesBox = document.querySelector('.wrapper'),
-  buttons = document.querySelectorAll('.button');
-
-// ---- ---- Show ---- ---- //
-const executeCodes = () => {
-  if (document.cookie.includes('AlexGolovanov')) return;
-  cookiesBox.classList.add('show');
-
-  // ---- ---- Button ---- ---- //
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      cookiesBox.classList.remove('show');
-
-      if (button.id == 'acceptBtn') {
-        document.cookie =
-          'cookieBy= AlexGolovanov; max-age=' + 60 * 60 * 24 * 30;
-      }
-    });
-  });
+function changeIcon() {
+  if ($(this).hasClass('fa-eye')) {
+    $(this).removeClass('fa-eye');
+    $(this).addClass('fa-eye-slash');
+    $('#password').attr('type', 'text');
+  } else {
+    $(this).removeClass('fa-eye-slash');
+    $(this).addClass('fa-eye');
+    $('#password').attr('type', 'password');
+  }
 };
 
-window.addEventListener('load', executeCodes);
+
+$("#accept").click(function () {
+  $(".wrapper").removeClass("show");
+  localStorage.setItem("btnClicked", true);
+});
+$("#reject").click(function () {
+  $(".wrapper").removeClass("show");
+  localStorage.setItem("btnClicked", false);
+});
+$(document).ready(function () {
+  var clicked = localStorage.getItem("btnClicked");
+  // console.log(clicked);
+  if (clicked) {
+    $(".wrapper").removeClass("show");
+  }
+  else {
+    $(".wrapper").addClass("show");
+  }
+});
+setTimeout(check(), 0.1);
+function check() {
+  $(".wrapper").removeClass("show");
+}

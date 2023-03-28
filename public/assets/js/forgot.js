@@ -1,4 +1,7 @@
-$("#email").keyup(function () {
+$("#email").on('keyup', ifExists);
+
+function ifExists ()
+{
   $.ajax({
     url: "/validate_ajax",
     method: "POST",
@@ -8,4 +11,4 @@ $("#email").keyup(function () {
       $("#check").html(html);
     },
   })
-});
+};

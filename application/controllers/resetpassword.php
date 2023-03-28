@@ -6,13 +6,13 @@ require_once './vendor/autoload.php';
 use Database\Database;
 use User\User;
 
-$Object_database = new Database();
-$Object_user = new User;
+$objectDatabase = new Database();
+$objectUser = new User;
 if(isset($_POST['submit'])){
   session_start();
-  if(!$Object_user->samePassword($_SESSION['mail'], $_POST['password'])){
-  if($Object_user->Validate_Password($_POST['password'])){
-    $Object_user->update_password($_SESSION['mail'],$_POST['password']);
+  if(!$objectUser->samePassword($_SESSION['mail'], $_POST['password'])){
+  if($objectUser->Validate_Password($_POST['password'])){
+    $objectUser->update_password($_SESSION['mail'],$_POST['password']);
     session_destroy();
     $GLOBALS['updated'] = true;
     $GLOBALS['success'] = "Password Updated";

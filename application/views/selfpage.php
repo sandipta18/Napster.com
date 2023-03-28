@@ -1,6 +1,6 @@
 <?php
-    require_once 'loader.html';
-    require_once 'navbar.php';
+require_once 'loader.html';
+require_once 'navbar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,12 +9,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1d3041" />
   <link rel="stylesheet" href="../../public/assets/css/homepage.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
   <title>Posts</title>
 </head>
 <img src="public/assets/img/seeya.png" alt="">
+
 <body>
   <div class="posts">
     <?php
@@ -23,7 +25,7 @@
 
         <article class="post">
 
-          <img class="post__avatar" src="<?php echo '../../'.$array[$i]['Image']; ?>" alt="" />
+          <img class="post__avatar" src="<?php echo '../../' . $array[$i]['Image']; ?>" alt="" />
           <div class="post__content" id="post_div">
             <header class="post__header">
 
@@ -43,7 +45,7 @@
             </header>
             <div class="post__body">
               <p class="caption"><?php echo $array[$i]['Content']; ?></p>
-              <img class="post__img" id="post_image" src="<?php  echo '../../' . $array[$i]['Image_Content']; ?>" alt="">
+              <img class="post__img" id="post_image" src="<?php echo '../../' . $array[$i]['Image_Content']; ?>" alt="">
               <?php
               if (strlen($array[$i]['Video']) > 20) {
               ?>
@@ -52,7 +54,7 @@
               <?php
               if (strlen($array[$i]['Audio']) > 20) {
               ?>
-                <audio class="post__img" controls type="audio/mpeg" src="<?php echo '../../' .$array[$i]['Audio']; ?>"></audio>
+                <audio class="post__img" controls type="audio/mpeg" src="<?php echo '../../' . $array[$i]['Audio']; ?>"></audio>
                 <marquee direction="right">
                 <?php
                 $size = strlen($array[$i]['Audio']);

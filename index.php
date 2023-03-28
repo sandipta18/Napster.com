@@ -2,7 +2,7 @@
 
 $url = $_SERVER['REQUEST_URI'];
 $url = rtrim($url);
-$url = explode("/",$url);
+$url = explode( "/", $url);
 switch ($url[1]) {
     case '' :
         require_once 'application/controllers/login.php';
@@ -91,7 +91,7 @@ switch ($url[1]) {
     case 'search' :
         require_once 'application/controllers/search.php';
         break;
-        
+
     default :
         require_once 'application/controllers/error.php';
 

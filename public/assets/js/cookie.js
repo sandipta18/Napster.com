@@ -1,24 +1,22 @@
 
-// ---- ---- Const ---- ---- //
-const cookiesBox = document.querySelector('.wrapper'),
-  buttons = document.querySelectorAll('.button');
+$("#accept").click(function () {
+  $(".wrapper").removeClass("show").delay(500);
+  sessionStorage.setItem("btnClicked", true);
+});
+$("#reject").click(function () {
+  $(".wrapper").removeClass("show").delay(500);
+  sessionStorage.setItem("btnClicked", false);
+});
 
-// ---- ---- Show ---- ---- //
-const executeCodes = () => {
-  if (document.cookie.includes('AlexGolovanov')) return;
-  cookiesBox.classList.add('show');
 
-  // ---- ---- Button ---- ---- //
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      cookiesBox.classList.remove('show');
+$(document).ready(function () {
+  var clicked = sessionStorage.getItem("btnClicked");
+  console.log(clicked);
+  if (clicked) {
+    $(".wrapper").removeClass("show").delay(500);
+  }
+  else {
+    $(".wrapper").addClass("show").delay(500);
+  }
+});
 
-      if (button.id == 'acceptBtn') {
-        document.cookie =
-          'cookieBy= AlexGolovanov; max-age=' + 60 * 60 * 24 * 30;
-      }
-    });
-  });
-};
-
-window.addEventListener('load', executeCodes);

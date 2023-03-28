@@ -8,7 +8,7 @@ require_once 'loader.html';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#4285f4" />
+  <meta name="theme-color" content="#f95801" />
   <link rel="stylesheet" href="../../public/assets/css/errorstyle.css">
   <title>Error Page</title>
 </head>

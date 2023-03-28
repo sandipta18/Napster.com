@@ -95,7 +95,7 @@ jQuery(document).ready(function ($) {
 });
 
 
-function enable_Input() {
+function enableInput() {
   let input = document.getElementById('bio');
   if(input.disabled == true){
     input.disabled = false;
@@ -105,7 +105,7 @@ function enable_Input() {
   }
 }
 
-function disable_Input(){
+function disableInput(){
   let input = document.getElementById('bio');
   if(input.disabled == false){
     input.disabled = true;
@@ -119,25 +119,7 @@ function enable(){
     input.disabled = false;
   }
 }
-var element = document.body;
-var type = document.getElementById('mode');
-function darkmode() {
-
-  element.classList.toggle("darkmode");
-  document.body.classList.toggle("dark-theme");
-
-  if (document.body.classList.contains("dark-theme")) {
-    type.innerHTML = "Light Mode";
-    theme = "light";
-  }
-  else {
-    type.innerHTML = "Dark Mode";
-    theme = "dark";
-  }
-  localStorage.setItem("PageTheme", JSON.stringify(theme));
-
-}
-
+// This following block of code is to preserve the color mode
 setInterval(() => {
   var element = document.body;
   let getTheme = JSON.parse(localStorage.getItem("PageTheme"));
