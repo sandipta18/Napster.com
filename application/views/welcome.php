@@ -1,5 +1,4 @@
 <?php
-session_start();
 if ($_SESSION['Login'] == FALSE) {
   session_destroy();
   header('location: /');
@@ -124,7 +123,7 @@ require_once 'cookie.html';
               </div>
               <div class="post__footer">
                 <i class="fa-regular fa-heart iconss like"></i>
-                 <a href="https://www.facebook.com/sharer.php?s=100&p[images][0]=<?php echo $array[$i]['Image_Content']; ?>&p[title]=<?php echo $array[$i]['Content']; ?>"><i class="fa-brands fa-facebook iconss"></i></a>
+                <a href="https://www.facebook.com/sharer.php?s=100&p[images][0]=<?php echo $array[$i]['Image_Content']; ?>&p[title]=<?php echo $array[$i]['Content']; ?>"><i class="fa-brands fa-facebook iconss"></i></a>
                 <a target="_blank" href="http://twitter.com/share?text=<?php echo $array[$i]['Content']; ?> &images = <?php echo $array[$i]['Image_Content']; ?>"> <i class="fa-brands fa-twitter iconss"></i> </a>
                 <span id="count"></span>
                 <span class="time">
@@ -154,3 +153,4 @@ require_once 'cookie.html';
 </html>
 <script src="../../public/assets/js/home.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -31,7 +31,7 @@ class User extends Database
    *
    */
 
-  public function Signup_User($username, $email, $password, $gender, $bio, $image,$cookie)
+  public function Signup_User($username, $email, $password, $gender, $bio, $image, $cookie)
   {
 
     $this->username = $username;
@@ -62,7 +62,6 @@ class User extends Database
    * @return boolean
    *
    */
-
   public function validate_login($username, $password)
   {
 
@@ -335,18 +334,18 @@ class User extends Database
    * @return boolean
    *
    */
-  public function makePost($username, $content, $image, $display, $video, $audio,$email)
+  public function makePost($username, $content, $image, $display, $video, $audio, $email)
   {
-    if(!empty($content) or !empty($image) or !empty($video) or !empty($audio)) {
-    $sql = "INSERT INTO Posts (Username,Content,Image_Content,Display,Video,Audio,Email) VALUES
+    if (!empty($content) or !empty($image) or !empty($video) or !empty($audio)) {
+      $sql = "INSERT INTO Posts (Username,Content,Image_Content,Display,Video,Audio,Email) VALUES
     ('" . $username . "','" . $content . "','" . $image . "','" . $display . "','" . $video . "','" . $audio . "','" . $email . "')";
-    $result = mysqli_query($this->link, $sql);
-    if ($result) {
-      return true;
-    } else {
-      return false;
+      $result = mysqli_query($this->link, $sql);
+      if ($result) {
+        return true;
+      } else {
+        return false;
+      }
     }
-  }
   }
 
 
@@ -363,7 +362,6 @@ class User extends Database
     Posts.Image_Content, Posts.Content, Posts.Audio, Posts.Video FROM Users as
     Users JOIN Posts as Posts ON Posts.Email = Users.Email;";
     return ($this->link->query($sql)->fetch_all(MYSQLI_ASSOC));
-
   }
 
 
@@ -402,8 +400,6 @@ class User extends Database
     } else {
       return false;
     }
-
-
   }
 
   /**
@@ -414,15 +410,15 @@ class User extends Database
    *
    * @return boolean
    */
-  public function samePassword($email, $password) {
+  public function samePassword($email, $password)
+  {
 
     $sql = "SELECT Password from Users WHERE Email='" . $email . "' ";
     $output = mysqli_query($this->link, $sql);
     $data = mysqli_fetch_array($output);
-    if($data[0] == md5($password)) {
+    if ($data[0] == md5($password)) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
@@ -433,18 +429,17 @@ class User extends Database
    *
    * @return boolean
    */
-  public function ifExists($newEmail) {
+  public function ifExists($newEmail)
+  {
 
     $sql = "SELECT * from Users WHERE Email='" . $newEmail . "' ";
     $output = mysqli_query($this->link, $sql);
     $row_count = $output->num_rows;
-    if($row_count == 0) {
+    if ($row_count == 0) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
-
   }
 
   /**
@@ -452,7 +447,8 @@ class User extends Database
    *
    * @return array
    */
-  public function getPosts($email) {
+  public function getPosts($email)
+  {
 
     // $sql = "SELECT * from Posts WHERE Email='" . $email . "' ";
     $sql = "SELECT Users.Image, Posts.Post_time, Users.Username, Users.Email,
@@ -460,7 +456,6 @@ class User extends Database
     Users JOIN Posts as Posts ON Posts.Email = Users.Email Where Posts.Email = '" . $email . "'
     and Users.Email = '" . $email . "'";
     return ($this->link->query($sql)->fetch_all(MYSQLI_ASSOC));
-
   }
 
 
@@ -472,14 +467,14 @@ class User extends Database
    * @return array
    *
    */
-  public function searchByUsername($username) {
+  public function searchByUsername($username)
+  {
     $sql = "SELECT Username,Email from Users WHERE Username LIKE  '$username%' ";
     $output = mysqli_query($this->link, $sql);
     $row_count = $output->num_rows;
     if ($row_count > 0) {
       return ($this->link->query($sql)->fetch_all(MYSQLI_ASSOC));
     }
-
   }
 
   /**
@@ -491,16 +486,14 @@ class User extends Database
    * @return boolean
    *
    */
-  public function setCookie($value,$email) {
-   $sql = "Update Users SET Cookie = '" . $value . "' WHERE Email='" . $email . "' ";
-   $result = mysqli_query($this->link, $sql);
-   if($result) {
-    return true;
-   }
-   else {
-    return false;
-   }
+  public function setCookie($value, $email)
+  {
+    $sql = "Update Users SET Cookie = '" . $value . "' WHERE Email='" . $email . "' ";
+    $result = mysqli_query($this->link, $sql);
+    if ($result) {
+      return true;
+    } else {
+      return false;
+    }
   }
-
-
 }

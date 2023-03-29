@@ -1,2 +1,3 @@
 vendor/
 application/controllers/facebookconfig.php
+application/controllers/googleconfig.php

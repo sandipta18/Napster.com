@@ -457,9 +457,7 @@ marquee {
 
 }
 
-.posts > section  {
-display: none;
-}
+
 
 .post__content:hover {
 transform: scale(1.03);
@@ -574,8 +572,10 @@ a{
 
 }
 .fb {
-  /* vertical-align: none; */
   background-size: 30px;
   transform: translateY(7px);
   padding-right: 10px;
+}
+.posts>section {
+  display: none;
 }

@@ -1,7 +1,6 @@
 <?php
 require_once 'loader.html';
 require_once 'navmenu.html';
-// require_once 'cookie.html';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +58,7 @@ require_once 'navmenu.html';
               <a href="../../forgot" class="option2">Reset Now.</a>
             </p>
             <p class="signup">
-              <!-- Continue with <a href="google" class="google"><i class="fa-brands fa-google icon"></i></a> instead ? -->
+              <a class="google"> Continue with <i class="fa-brands fa-google icon"></i> instead ?</a>
             </p>
           </form>
         </div>

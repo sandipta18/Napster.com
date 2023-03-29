@@ -96,10 +96,14 @@ function darkmode() {
   if (document.body.classList.contains("dark-theme")) {
     type.innerHTML = "Light Mode";
     theme = "light";
+    $("#icon").removeClass('fa-moon');
+    $("#icon").addClass('fa-sun');
   }
   else {
     type.innerHTML = "Dark Mode";
     theme = "dark";
+    $("#icon").removeClass('fa-sun');
+    $("#icon").addClass('fa-moon');
   }
   localStorage.setItem("PageTheme", JSON.stringify(theme));
 
@@ -112,11 +116,13 @@ setInterval(() => {
     document.body.classList.remove("dark-theme");
     element.classList.remove("darkmode");
     type.innerHTML = "Dark Mode";
+    $("#icon").removeClass('fa-sun');
+    $("#icon").addClass('fa-moon');
   } else {
     document.body.classList.add("dark-theme");
     element.classList.add("darkmode");
     type.innerHTML = "Light Mode";
+    $("#icon").removeClass('fa-moon');
+    $("#icon").addClass('fa-sun');
   }
 }, 1);
-
-

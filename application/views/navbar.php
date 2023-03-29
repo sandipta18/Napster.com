@@ -1,5 +1,4 @@
 <?php
-session_start();
 if ($_SESSION['Login'] == FALSE) {
   session_destroy();
   header('location: /');
@@ -28,7 +27,7 @@ if ($_SESSION['Login'] == FALSE) {
       <a href="/profile">
         <span class="icon"><i class="fa-solid fa-user"></i></span>
         <span class="title">
-        <?php echo $_SESSION['name']; ?>'s Profile
+        <?php echo ucwords(strtolower($_SESSION['name'])); ?>'s Profile
         </span>
       </a>
     </li>
