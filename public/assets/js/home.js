@@ -1,22 +1,20 @@
-// This function is used to facilitate user scrolling to the top
-function scrollTop(e) {
+
+$('#scroll').on('click',function (e) {
   e.preventDefault();
-  $('html, body').animate({ scrollTop: 0 });
-};
-// This function is used show a go to top option when user scrolls down
-$(document).on('scroll', scroller);
+  $('html, body').animate({ scrollTop: 0 }, '1000');
+});
 
-function scroller() {
+$(window).on('scroll',scroller);
+
+function scroller ()
+{
   var scroll = $(window).scrollTop();
-
   if (scroll >= 300) {
     $("#scroll").addClass("show");
   } else {
     $("#scroll").removeClass("show");
   }
 };
-
-// This function is used to preview the image before it is uploaded
 
 $(document).ready(() => {
   $("#imagePreview").css("display", "none");

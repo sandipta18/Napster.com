@@ -82,7 +82,6 @@ $("#reject").click(function () {
 });
 $(document).ready(function () {
   var clicked = localStorage.getItem("btnClicked");
-  console.log(clicked);
   if (clicked) {
     $(".wrapper").removeClass("show");
   }
@@ -94,3 +93,5 @@ setTimeout(display, 0.1);
 function display() {
   $(".wrapper").removeClass("show");
 }
+
+

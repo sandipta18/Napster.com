@@ -18,8 +18,8 @@ require_once 'loader.html';
 
 <body>
   <form enctype="multipart/form-data" id="signup_form" method="POST" action="registration" class="signup" autocomplete="off">
-    <h1>Create account</h1>
-    <h2>Already have an account? <a href="/login">Sign in</a></h2>
+    <h1 class="title">Create account</h1>
+
 
     <div class="signup__field">
       <input class="signup__input" type="text" name="username" id="username" required />
@@ -49,7 +49,24 @@ require_once 'loader.html';
     <div class="wrapper">
       <textarea spellcheck="false" placeholder="Enter Bio..." name="bio"></textarea>
     </div>
+    <div class="popup" data-popup="popup-1">
+      <div class="popup-inner">
+        <h2>Terms and Conditions</h2>
+        <div class="popup-scroll">
+          <p>
+            Privacy on internet is a myth my friend. But we promise we won't exploit you hehe.
+            We use cookie to offer you top notch experience. Please accept for optimal performance bruv.
+          </p>
+        </div>
+        <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+      </div>
+    </div>
+    <div class="wrapper ">
+      <input id="checkbox" type="checkbox" value= "clicked" name= "cookie"/>
+      <label for="checkbox"> I agree to these <a href="#" data-popup-open="popup-1" class="button">Terms and Conditions</a>.</label>
+    </div>
     <button name="submit_register" id="btn">Sign up</button>
+    <h2 class="signin">Already have an account? <a href="/login">Sign in</a></h2>
     <div class="message" id="hideMeAfter5Seconds">
 
       <?php

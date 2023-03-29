@@ -96,6 +96,10 @@ switch ($url[1]) {
         require_once 'application/controllers/cookie.php';
         break;
 
+    case 'cookie_anonymous' :
+        require_once 'application/controllers/cookieanonymous.php';
+        break;
+
     default :
         require_once 'application/controllers/error.php';
 

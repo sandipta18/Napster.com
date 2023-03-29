@@ -8,4 +8,5 @@ $objectUser = new User;
 setcookie('cookie', $_POST['value']);
 $objectUser->setCookie($_POST['value'],$_SESSION['info']);
 
+
 ?>

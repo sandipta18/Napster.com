@@ -31,7 +31,7 @@ class User extends Database
    *
    */
 
-  public function Signup_User($username, $email, $password, $gender, $bio, $image)
+  public function Signup_User($username, $email, $password, $gender, $bio, $image,$cookie)
   {
 
     $this->username = $username;
@@ -46,7 +46,7 @@ class User extends Database
     $row_count = $check->num_rows;
 
     if ($row_count == 0) {
-      $sql1 = "INSERT INTO Users (Username,Password,Email,Gender,Bio,Image) VALUES ('" . $username . "','" . md5($password) . "','" . $email . "','" . $gender . "','" . $bio . "','" . $image . "')";
+      $sql1 = "INSERT INTO Users (Username,Password,Email,Gender,Bio,Image,Cookie) VALUES ('" . $username . "','" . md5($password) . "','" . $email . "','" . $gender . "','" . $bio . "','" . $image . "','" . $cookie . "')";
       $result = mysqli_query($this->link, $sql1);
       return $result;
     } else {
@@ -464,6 +464,14 @@ class User extends Database
   }
 
 
+  /**
+   *
+   *
+   * @param mixed $username
+   *
+   * @return array
+   *
+   */
   public function searchByUsername($username) {
     $sql = "SELECT Username,Email from Users WHERE Username LIKE  '$username%' ";
     $output = mysqli_query($this->link, $sql);
@@ -474,6 +482,15 @@ class User extends Database
 
   }
 
+  /**
+   *
+   *
+   * @param mixed $value
+   * @param mixed $email
+   *
+   * @return boolean
+   *
+   */
   public function setCookie($value,$email) {
    $sql = "Update Users SET Cookie = '" . $value . "' WHERE Email='" . $email . "' ";
    $result = mysqli_query($this->link, $sql);

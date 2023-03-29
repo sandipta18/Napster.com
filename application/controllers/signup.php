@@ -1,5 +1,4 @@
-<?php
-
+ <?php
 require_once './vendor/autoload.php';
 
 use Database\Database;
@@ -22,6 +21,12 @@ if (isset($_POST['submit_register'])) {
     if ($Object_user->Validate_Password($_POST['password'])) {
       // If validation is succesfull store data inside the database and send a message
       // $defaultImage = "public/assets/img/" . 'profile.jpg';
+      if(isset($_POST['cookie'])) {
+        $cookie = 1;
+      }
+      else {
+        $cookie = 0;
+      }
       $defaultImage = "../../public/assets/img/profile.jpg";
       $Signup = $Object_user->Signup_User(
         $_POST['username'],
@@ -29,7 +34,8 @@ if (isset($_POST['submit_register'])) {
         $_POST['password'],
         $_POST['gender'],
         htmlspecialchars($_POST['bio'], ENT_QUOTES),
-        $defaultImage
+        $defaultImage,
+        $cookie
       );
       if ($Signup) {
         $GLOBALS['signup'] = true;

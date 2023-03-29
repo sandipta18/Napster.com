@@ -8,4 +8,9 @@ $fb = new Facebook\Facebook([
   'default_graph_version' => Api_Version,
 ]);
 
+$helper = $fb->getRedirectLoginHelper();
+$permissions = ['email'];
+$loginUrl = $helper->getLoginUrl('https://napster.com/home', $permissions);
+header("location: " . $loginUrl);
+
 ?>
