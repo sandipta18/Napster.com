@@ -26,7 +26,14 @@ require_once 'navbar.php';
 
         <article class="post">
 
-          <img class="post__avatar" src="<?php echo '../../' . $array[$i]['Image']; ?>" alt="" />
+          <img class="post__avatar" src="<?php
+
+            if (substr($array[$i]['Image'], 0, 1) == "h") {
+              echo $array[$i]['Image'];
+            } else {
+                echo '../../' . $array[$i]['Image'];
+            }
+                                          ?>" alt="" />
           <div class="post__content" id="post_div">
             <header class="post__header">
 
