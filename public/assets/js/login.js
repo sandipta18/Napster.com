@@ -97,6 +97,6 @@ function display() {
 $(".google").on("click", googleLogin);
 function googleLogin()
 {
-  $(window.location)[0].replace("https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&access_type=online&client_id=479024800599-o144fiup1pcai6k4nes7rgagrdnsd6bd.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Fnapster.com%2F&state&scope=email%20profile&approval_prompt=auto&service=lso&o2v=2&flowName=GeneralOAuthFlow");
+  $(window.location)[0].replace("https://accounts.google.com/o/oauth2/v2/auth?response_type=code&access_type=online&client_id=479024800599-o144fiup1pcai6k4nes7rgagrdnsd6bd.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Fnapster.com%2Ftemp&state&scope=email%20profile&approval_prompt=auto");
 };
 

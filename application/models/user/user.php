@@ -205,6 +205,21 @@ class User extends Database
   }
 
   /**
+   * This function is used to fetch gender of the user from database
+   *
+   * @param mixed $email
+   *
+   * @return array
+   *
+   */
+  public function getGender($email)
+  {
+    $sql = "SELECT Gender from Users WHERE Email='" . $email . "'";
+    $output = mysqli_query($this->link, $sql);
+    $data = mysqli_fetch_array($output);
+    return $data[0];
+  }
+  /**
    * @param mixed $email
    *
    * @return [type]
@@ -229,6 +244,18 @@ class User extends Database
   {
     $this->email = $email;
     $sql = "Update Users SET Bio = '" . $bio . "' WHERE Email='" . $email . "' ";
+    $result = mysqli_query($this->link, $sql);
+    if ($result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function uploadGender($gender, $email)
+  {
+
+    $sql = "Update Users SET Gender = '" . $gender . "' WHERE Email='" . $email . "' ";
     $result = mysqli_query($this->link, $sql);
     if ($result) {
       return true;
@@ -492,6 +519,21 @@ class User extends Database
     $result = mysqli_query($this->link, $sql);
     if ($result) {
       return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function createAccount($username,$password,$email,$image,$cookie) {
+    $sql = "SELECT * FROM Users WHERE Email='" . $email . "'";
+
+    $check = $this->link->query($sql);
+    $row_count = $check->num_rows;
+
+    if ($row_count == 0) {
+      $sql1 = "INSERT INTO Users (Username,Password,Email,Image,Cookie) VALUES ('" . $username . "','" . md5($password) . "','" . $email . "','" . $image . "','" . $cookie . "')";
+      $result = mysqli_query($this->link, $sql1);
+      return $result;
     } else {
       return false;
     }

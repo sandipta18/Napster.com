@@ -119,7 +119,32 @@ function enable(){
     input.disabled = false;
   }
 }
+
+// This function is used to toggle dark mode
+var type = document.getElementById('mode');
+function darkmode() {
+
+  document.body.classList.toggle("darkmode");
+  document.body.classList.toggle("dark-theme");
+
+  if (document.body.classList.contains("dark-theme")) {
+    type.innerHTML = "Light Mode";
+    theme = "light";
+    $("#icon").removeClass('fa-moon');
+    $("#icon").addClass('fa-sun');
+  }
+  else {
+    type.innerHTML = "Dark Mode";
+    theme = "dark";
+    $("#icon").removeClass('fa-sun');
+    $("#icon").addClass('fa-moon');
+  }
+  localStorage.setItem("PageTheme", JSON.stringify(theme));
+
+}
+
 // This following block of code is to preserve the color mode
+
 setInterval(() => {
   var element = document.body;
   let getTheme = JSON.parse(localStorage.getItem("PageTheme"));

@@ -21,6 +21,7 @@ if($Login){
   $GLOBALS['name'] =  $_SESSION['name'];
   $_SESSION['filepath'] = $Object_user->get_image($_SESSION['info']);
   $_SESSION['Bio'] = $Object_user->get_bio($_SESSION['info']);
+  $_SESSION['gender'] = $Object_user->getGender($_SESSION['info']);
   header('Location: home');
 }
 else {

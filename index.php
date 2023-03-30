@@ -2,41 +2,43 @@
 
 $url = $_SERVER['REQUEST_URI'];
 $url = rtrim($url);
-$url = explode( "/", $url);
-switch ($url[1]) {
-    case '' :
+$url = explode("/", $url);
+$temp = $url[1];
+$temp = explode("?", $temp);
+switch ($temp[0]) {
+    case '':
         require_once 'application/controllers/login.php';
         break;
 
-    case 'login' :
+    case 'login':
         require_once 'application/controllers/login.php';
         break;
 
-    case 'signin' :
+    case 'signin':
         require_once 'application/controllers/login.php';
         break;
 
-    case 'register' :
+    case 'register':
         require_once 'application/controllers/signup.php';
         break;
 
-    case 'signup' :
+    case 'signup':
         require_once 'application/controllers/login.php';
         break;
 
-    case 'registration' :
+    case 'registration':
         require_once 'application/controllers/signup.php';
         break;
 
-    case 'welcome' :
+    case 'welcome':
         require_once 'application/controllers/validate_login.php';
         break;
 
-    case 'check' :
-         require_once 'application/controllers/signin.php';
-         break;
+    case 'check':
+        require_once 'application/controllers/signin.php';
+        break;
 
-    case 'home' :
+    case 'home':
         require_once 'application/controllers/welcome.php';
         break;
 
@@ -44,67 +46,66 @@ switch ($url[1]) {
         require_once 'application/controllers/logout.php';
         break;
 
-    case 'upload' :
+    case 'upload':
         require_once 'application/controllers/upload.php';
         break;
 
-    case 'profile' :
+    case 'profile':
         require_once 'application/controllers/profile.php';
         break;
 
-    case 'forgot' :
+    case 'forgot':
         require_once 'application/controllers/forgot.php';
         break;
 
-    case 'reset' :
+    case 'reset':
         require_once 'application/controllers/reset.php';
         break;
 
-    case 'validateotp' :
+    case 'validateotp':
         require_once 'application/controllers/validate_otp.php';
         break;
 
-    case 'resetpassword' :
+    case 'resetpassword':
         require_once 'application/controllers/resetpassword.php';
         break;
 
-    case 'validate_ajax' :
+    case 'validate_ajax':
         require_once 'application/controllers/validate_ajax.php';
         break;
 
-    case 'resetpage' :
+    case 'resetpage':
         require_once 'application/controllers/resetemplate.php';
         break;
 
-    case 'post' :
+    case 'post':
         require_once 'application/controllers/post.php';
         break;
 
-    case 'resend' :
+    case 'resend':
         require_once 'application/controllers/mailer3.php';
         break;
 
-    case 'self' :
+    case 'self':
         require_once 'application/controllers/self.php';
         break;
 
-    case 'search' :
+    case 'search':
         require_once 'application/controllers/search.php';
         break;
 
-    case 'cookie_ajax' :
+    case 'cookie_ajax':
         require_once 'application/controllers/cookie.php';
         break;
 
-    case 'cookie_anonymous' :
+    case 'cookie_anonymous':
         require_once 'application/controllers/cookieanonymous.php';
         break;
 
-    default :
+    case 'temp' :
+        require_once 'application/controllers/temp.php';
+        break;
+
+    default:
         require_once 'application/controllers/error.php';
-
-
 }
-
-
-?>

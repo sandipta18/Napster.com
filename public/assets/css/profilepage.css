@@ -303,3 +303,6 @@ input {
 .back{
   color: white;
 }
+::placeholder {
+  color : var(--secondary-color);
+}

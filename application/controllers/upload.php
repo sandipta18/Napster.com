@@ -38,12 +38,15 @@ if (isset($_POST['submit_upload'])) {
 
     $bio = htmlspecialchars($_POST['bio'], ENT_QUOTES);
     $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
+    $gender =htmlspecialchars($_POST['gender'], ENT_QUOTES);
     $email = $_POST['email'];
     $Object_user->Upload_bio($bio, $_SESSION['info']);
     $Object_user->upload_name($name, $_SESSION['info']);
+    $Object_user->uploadGender($gender,$_SESSION['info']);
     $_SESSION['info'] = $email;
     $_SESSION['Bio'] = $Object_user->get_bio($_SESSION['info']);
     $_SESSION['name'] = $Object_user->Get_Name($_SESSION['info']);
+    $_SESSION['gender']= $Object_user->getGender($_SESSION['info']);
     $_SESSION['message'] = "Profile Updated";
     header('Location: profile');
   }
