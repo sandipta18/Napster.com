@@ -12,17 +12,19 @@ function validateEmail() {
   var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   if (email.length < 1) {
     document.getElementById('btn').disabled = true;
+    $('#error_email').css("display", "block");
     return false;
   }
   else {
     if (!regex.test(email)) {
       document.getElementById('btn').disabled = true;
-      return true;
+      $('#error_email').css("display", "block");
+      return false;
     }
     else {
-      // document.getElementById('error').innerHTML = "";
       document.getElementById('btn').disabled = false;
-      return false;
+      $('#error_email').css("display", "none");
+      return true;
     }
   }
 }
@@ -32,15 +34,18 @@ function validatePassword() {
   var regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
   if (password.length < 1) {
     document.getElementById('btn').disabled = true;
+    $('#error_pass').css("display","block");
     return false;
   }
   else {
     if (!regex.test(password)) {
       document.getElementById('btn').disabled = true;
-      return true;
+      $('#error_pass').css("display", "block");
+      return false;
     }
     else {
       document.getElementById('btn').disabled = false;
+      $('#error_pass').css("display", "none");
       return true;
     }
   }
@@ -90,3 +95,14 @@ function ifExists()
   });
 
 
+$('#error_pass').on("focus",remove);
+
+function remove () {
+  $('#error_pass').css("display","none");
+}
+
+$('#error_email').on("focus", remove);
+
+function remove() {
+  $('#error_email').css("display", "none");
+}

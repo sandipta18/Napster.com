@@ -39,12 +39,14 @@ require_once 'loader.html';
         }
       } elseif (isset($GLOBALS['updated'])) {
         if ($GLOBALS['updated'] == true) {
-          echo  $GLOBALS["success"];
+          echo  $GLOBALS["success"];?>
+          <a class="redirect" href="/">Login Now</a>
+          <?php
         }
       }
       ?>
     </div>
-    <a href="/" class="back">Go Back</a>
+    <a href="/" class="back">Cancel</a>
 
   </form>
 

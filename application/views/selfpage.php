@@ -16,24 +16,40 @@ require_once 'navbar.php';
   <script src="http://benalman.com/code/projects/jquery-throttle-debounce/jquery.ba-throttle-debounce.js"></script>
   <title>Posts</title>
 </head>
-<img src="public/assets/img/seeya.png" alt="">
 
 <body>
+  <section class="create-post">
+    <img class="post__avatar" src="<?php
+    if (substr($image, 0, 1) == "h") {
+      echo $image;
+    } else {
+      echo '../../' . $image;
+    } ?>" alt="" />
+    <div id="create-post-form" class="create-post__form">
+      <span class="welcome"><?php echo $name . "'s Profile"; ?> </span>
+      <div class="create-post__text-wrap">
+        <span class="info">Bio : <?php echo $bio; ?></span>
+        <span class="info">Email : <?php echo $email; ?></span>
+        <span class="info">Gender : <?php echo $gender; ?> </span>
+      </div>
+      <div class="create-post__media-wrap" id="create-post-media-wrap"></div>
+      <div class="create-post__buttons">
+        <div class="create-post__assets-buttons">
+        </div>
+      </div>
+    </div>
+  </section>
   <div class="posts">
     <?php
     for ($i = count($array) - 1; $i >= 0; $i--) { ?>
       <section id="posts-container">
-
         <article class="post">
-
           <img class="post__avatar" src="<?php
-
             if (substr($array[$i]['Image'], 0, 1) == "h") {
               echo $array[$i]['Image'];
             } else {
-                echo '../../' . $array[$i]['Image'];
-            }
-                                          ?>" alt="" />
+            echo '../../' . $array[$i]['Image'];
+            } ?>" alt="" />
           <div class="post__content" id="post_div">
             <header class="post__header">
 

@@ -122,3 +122,10 @@ input[type="submit"] {
 .back:hover {
   text-decoration: underline;
 }
+.redirect {
+  text-decoration: none;
+  color: blue;
+}
+.redirect:hover {
+  text-decoration: underline;
+}

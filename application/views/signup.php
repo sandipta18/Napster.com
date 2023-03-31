@@ -27,16 +27,21 @@ require_once 'loader.html';
     </div>
 
     <div class="signup__field">
-      <input class="signup__input" type="email" name="email" id="email" onkeyup="validateEmail()" required />
+      <input class="signup__input" type="email" name="email" id="email" onblur="validateEmail()" required />
       <label class="signup__label" for="email">Email</label>
+      <div id="error_email" class="error">
+        Invalid Email
+      </div>
       <span id="message"></span>
       <div id="error" class="error"></div>
     </div>
 
     <div class="signup__field">
-      <input class="signup__input" type="password" name="password" id="password" onkeyup="validatePassword()" required />
+      <input class="signup__input" type="password" name="password" id="password" onblur="validatePassword()" required />
       <label class="signup__label" for="password">Password</label>
-      <div id="error_pass" class="error"></div>
+      <div id="error_pass" class="error">
+        Password must contain one special,upper,lower & numeric character
+      </div>
     </div>
     <div class="gender_field">
       <label for="male">Male</label>
@@ -62,7 +67,7 @@ require_once 'loader.html';
       </div>
     </div>
     <div class="wrapper ">
-      <input id="checkbox" type="checkbox" value= "clicked" name= "cookie"/>
+      <input id="checkbox" type="checkbox" value="clicked" name="cookie" />
       <label for="checkbox"> I agree to these <a href="#" data-popup-open="popup-1" class="button">Terms and Conditions</a>.</label>
     </div>
     <button name="submit_register" id="btn">Sign up</button>
@@ -89,7 +94,9 @@ require_once 'loader.html';
         unset($GLOBALS['signup_message']);
         unset($GLOBALS['signup']);
       } elseif (isset($GLOBALS['signup']) && $GLOBALS['signup'] == true) {
-        echo '<span class="success">' . $GLOBALS["signup_message"] . '</span>';
+        echo '<span class="success">' . $GLOBALS["signup_message"] . '</span>'; ?>
+        <span><a class="redirect" href="/">Login Now</a></span>
+      <?php
         unset($GLOBALS['signup_message']);
         unset($GLOBALS['signup']);
       }

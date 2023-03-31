@@ -8,7 +8,6 @@ use GuzzleHttp\Client;
 
 use Database\Database;
 
-
 class User extends Database
 {
 
@@ -219,6 +218,13 @@ class User extends Database
     $data = mysqli_fetch_array($output);
     return $data[0];
   }
+
+  public function getName($email) {
+    $sql = "SELECT Username from Users WHERE Email='" . $email . "'";
+    $output = mysqli_query($this->link, $sql);
+    $data = mysqli_fetch_array($output);
+    return $data[0];
+  }
   /**
    * @param mixed $email
    *
@@ -252,9 +258,17 @@ class User extends Database
     }
   }
 
+  /**
+   * This function is used to update Gender
+   *
+   * @param mixed $gender
+   * @param mixed $email
+   *
+   * @return [type]
+   *
+   */
   public function uploadGender($gender, $email)
   {
-
     $sql = "Update Users SET Gender = '" . $gender . "' WHERE Email='" . $email . "' ";
     $result = mysqli_query($this->link, $sql);
     if ($result) {
@@ -262,6 +276,17 @@ class User extends Database
     } else {
       return false;
     }
+
+  }
+
+  public function validateGender($gender) {
+  if(strcasecmp($gender,"male")==0 or strcasecmp($gender, "female") == 0 or
+      strcasecmp($gender, "others") == 0) {
+        return true;
+      }
+  else {
+    return false;
+  }
   }
 
   /**
@@ -524,6 +549,18 @@ class User extends Database
     }
   }
 
+  /**
+   * This function is used to facilitate making an account using google
+   *
+   * @param mixed $username
+   * @param mixed $password
+   * @param mixed $email
+   * @param mixed $image
+   * @param mixed $cookie
+   *
+   * @return boolean
+   *
+   */
   public function createAccount($username,$password,$email,$image,$cookie) {
     $sql = "SELECT * FROM Users WHERE Email='" . $email . "'";
 

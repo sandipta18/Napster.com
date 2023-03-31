@@ -12,6 +12,10 @@ $email = base64_decode($uri[2]);
 
 
 $array = $objectUser->getPosts($email);
+$bio = $objectUser->get_bio($email);
+$name = $objectUser->getName($email);
+$gender =  $objectUser->getGender($email);
+$image = $objectUser->get_image($email);
 require_once './application/views/selfpage.php';
 
 ?>

@@ -74,7 +74,6 @@ require_once 'cookie.html';
           </div>
           <button class="create-post__submit" type="submit" id="create-post-submit-btn" name="submit">Post</button>
         </div>
-
       </form>
     </section>
     <div class="posts">
