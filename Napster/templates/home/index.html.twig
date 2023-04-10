@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/login.css')}}">
+{% endblock %}
+{% block title %}Welcome Homie
+{% endblock %}
+{% block javascripts %}
+	<script src="{{asset('js/login.js')}}"></script>
+{% endblock %}
+{% block body %}
+	<section>
+		<div class="container">
+			<div class="user signinBx">
+				<div class="imgBx">
+					<img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img1.jpg" alt=""/>
+				</div>
+				<div class="formBx">
+					<form enctype="multipart/form-data" id="login_form" method="POST" action="/welcome">
+						<h2>Sign In</h2>
+						<input type="email" name="username" placeholder="Email" id="email" onkeypress="validateEmail()" onblur="removeBorder()" required/>
+						<span id="check"></span>
+						<span class="eye">
+							<input type="password" name="password" placeholder="Password" id="password" onkeypress="validatePassword()" required onblur="removeBorder()"/>
+							<i class="fa fa-eye eye" aria-hidden="true" id="eye"></i>
+						</span>
+						<input type="submit" name="submit_login" value="Login" id="button"/>
+						<div id="error">
+							<span class="success">
+								{{success_message}}
+							</span>
+							{{error_message}}
+						</div>
+						<p class="signup">
+							Don't have an account ?
+							<a href="signup" class="option">Sign Up.</a>
+						</p>
+						<p class="reset">
+							Forgot your Password ?
+							<a href="reset" class="option2">Reset Now.</a>
+						</p>
+						<p class="signup">
+							<a class="google">
+								Continue with
+								<i class="fa-brands fa-google icon"></i>
+								instead ?</a>
+						</p>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+	<div class="wrapper">
+		<div class="title-box">
+			<i class="bx bx-cookie"></i>
+			<h3>Cookies Consent</h3>
+		</div>
+		<div class="info">
+			<p>
+				This website use cookies to help you have a superior and more relevant browsing experience on the website.
+				<a href="#">
+					Read more...</a>
+			</p>
+		</div>
+		<div class="buttons">
+			<button class="button" id="accept">Accept</button>
+			<button class="button" id="reject">Decline</button>
+		</div>
+	</div>
+{% endblock %}
