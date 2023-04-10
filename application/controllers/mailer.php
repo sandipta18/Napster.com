@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 require './vendor/autoload.php';
@@ -9,8 +8,8 @@ use PHPMailer\PHPMailer\Exception;
   $mail->isSMTP();
   $mail->Host = 'smtp.gmail.com';
   $mail->SMTPAuth = true;
-  $mail->Username = 'sandiptasardar99@gmail.com';
-  $mail->Password = 'lwkbmdihsqvbqple';
+  $mail->Username = 'sandysardar1800@gmail.com';
+  $mail->Password = 'lrnkyfhmrwyhkbii';
   $mail->SMTPSecure = 'ssl';
   $mail->Port = 465;
   $mail->setFrom('sandiptasardar99@gmail.com');
@@ -23,5 +22,4 @@ use PHPMailer\PHPMailer\Exception;
   $mail->Subject = 'OTP';
   $mail->Body = $otp;
   $mail->send();
-
 ?>

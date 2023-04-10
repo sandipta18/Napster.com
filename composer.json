@@ -1,9 +1,7 @@
 {
     "autoload": {
-        
         "classmap": [
             "application/models/"
-            
         ]
     },
     "require": {

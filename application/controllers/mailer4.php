@@ -25,5 +25,3 @@ to login </h2>
 $mail->send();
 
 ?>
-
-

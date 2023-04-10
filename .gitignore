@@ -1,3 +1,7 @@
 vendor/
 application/controllers/facebookconfig.php
 application/controllers/googleconfig.php
+application/controllers/mailer.php
+application/controllers/mailer2.php
+application/controllers/mailer3.php
+application/controllers/mailer4.php
