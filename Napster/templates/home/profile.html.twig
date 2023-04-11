@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/profile.css')}}">
+{% endblock %}
+{% block title %}
+Profile Page
+{% endblock %}
+{% block body %}
+{{include ('home/navbar.html.twig')}}
+<div class="container">
+	<div class="box">
+		<div id="camera" class="camera">
+			<img src="{{userValue.getImage()}}" alt="" height="300" width="auto">
+		</div>
+		<form enctype="multipart/form-data" method="POST" action="upload" class="form">
+			<input type="text" placeholder="Enter Username" class="textarea" name="name" value="{{userValue.getUsername()}}"/>
+			<input type="text" class="textarea" name="email" value="{{userValue.getEmail()}}" readonly>
+			<input class="textarea" placeholder="Enter Bio" type="text" name="bio" id="bio" value="{{userValue.getBio()}}"/>
+			<input type="text" placeholder="Gender" class="textarea" name="gender" value="{{userValue.getGender()}}"/>
+			<input id="demo1" class="demo1" type="file" placeholder="Update Image" name="image"/>
+			<input type="submit" value="Save Changes" class="btn btn-primary submit" name="submit_upload"/>
+		</form>
+		<button class="btn btn-primary submit">
+			<a href="home" class="back">Go back</a>
+		</button>
+		<div class="message" id="hideMeAfter5Seconds">
+			{# <?php
+        if (isset($_SESSION['message'])) {
+          echo $_SESSION['message'];
+          $_SESSION['message'] = "";
+          unset($_SESSION['message']);
+        }
+        ?> #}
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block javascripts %}
+<script src="{{asset('js/profile.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/navbar.css')}}">
+{% endblock %}
+{% block body %}
+<div class="navigation">
+	<ul>
+		<li><a href="home"><span class="icon"><i class="fa-solid fa-house"></i></span><span class="title">Home</span></a></li>
+		<li><a href="profile"><span class="icon"><i class="fa-solid fa-user"></i></span>
+		<span class="title">{{userValue.getUsername()}}'s Profile</span></a></li>
+		<li><a><span class="icon" onclick="darkmode()"><i class="fa-solid fa-moon" id="icon"></i></span><span class="title" id="mode">Dark Mode</span></a></li>
+		<li><a href="/signout"><span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span><span class="title">SignOut</span></a></li>
+	</ul>
+</div>
+
+</div>{% endblock %}
+

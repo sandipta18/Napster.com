@@ -4,9 +4,6 @@
 {% endblock %}
 {% block title %}Welcome Homie
 {% endblock %}
-{% block javascripts %}
-	<script src="{{asset('js/login.js')}}"></script>
-{% endblock %}
 {% block body %}
 	<section>
 		<div class="container">
@@ -15,24 +12,28 @@
 					<img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img1.jpg" alt=""/>
 				</div>
 				<div class="formBx">
-					<form enctype="multipart/form-data" id="login_form" method="POST" action="/welcome">
+					<form enctype="multipart/form-data" id="login_form" method="POST" action="/home">
 						<h2>Sign In</h2>
-						<input type="email" name="username" placeholder="Email" id="email" onkeypress="validateEmail()" onblur="removeBorder()" required/>
+						<input type="email" name="username" placeholder="Email" id="email" onkeypress="validateEmail()" required/>
 						<span id="check"></span>
 						<span class="eye">
-							<input type="password" name="password" placeholder="Password" id="password" onkeypress="validatePassword()" required onblur="removeBorder()"/>
+							<input type="password" name="password" placeholder="Password" id="password" onkeypress="validatePassword()" required />
 							<i class="fa fa-eye eye" aria-hidden="true" id="eye"></i>
 						</span>
 						<input type="submit" name="submit_login" value="Login" id="button"/>
 						<div id="error">
 							<span class="success">
+							{% if success_message is defined %}
 								{{success_message}}
+							{% endif %}
 							</span>
-							{{error_message}}
+              {% if error_message is defined %}
+							  {{error_message}}
+							{% endif %}
 						</div>
 						<p class="signup">
 							Don't have an account ?
-							<a href="signup" class="option">Sign Up.</a>
+							<a href="registration" class="option">Sign Up.</a>
 						</p>
 						<p class="reset">
 							Forgot your Password ?
@@ -45,7 +46,6 @@
 								instead ?</a>
 						</p>
 					</form>
-
 				</div>
 			</div>
 		</div>
@@ -68,4 +68,5 @@
 			<button class="button" id="reject">Decline</button>
 		</div>
 	</div>
+<script src="{{asset('js/login.js')}}"></script>
 {% endblock %}
