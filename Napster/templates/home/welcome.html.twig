@@ -23,7 +23,7 @@
 	</a>
 	<section class="create-post">
 		<img class="post__avatar" src="{{userValue.getImage()}}" alt=""/>
-		<form enctype="multipart/form-data" id="create-post-form" class="create-post__form" action="home" method="POST">
+		<form enctype="multipart/form-data" name="postform" id="create-post-form" class="create-post__form" action="makepost" method="POST">
 			<span class="welcome">
 				Hello
 				{{userValue.getUsername()}}

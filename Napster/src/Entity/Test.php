@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TestRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TestRepository::class)]
@@ -33,6 +35,14 @@ class Test
 
     #[ORM\Column(nullable: true)]
     private ?int $Cookie = null;
+
+    #[ORM\OneToMany(mappedBy: 'Email', targetEntity: Posts::class)]
+    private Collection $posts;
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +129,36 @@ class Test
     public function setCookie(?int $Cookie): self
     {
         $this->Cookie = $Cookie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Posts>
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(Posts $post): self
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts->add($post);
+            $post->setEmail($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(Posts $post): self
+    {
+        if ($this->posts->removeElement($post)) {
+            // set the owning side to null (unless already changed)
+            if ($post->getEmail() === $this) {
+                $post->setEmail(null);
+            }
+        }
 
         return $this;
     }

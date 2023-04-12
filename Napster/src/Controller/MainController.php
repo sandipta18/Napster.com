@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Posts;
 use App\Entity\Test;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,8 +36,6 @@ class MainController extends AbstractController
       'controller_name' => 'UserController',
     ]);
   }
-
-
 
   /**
    * ResetController
@@ -182,7 +181,7 @@ class MainController extends AbstractController
   }
 
   /**
-   * [Description for redirecti]
+   * Used to redirect the user
    *
    * @Route("homepage",name="redirect")
    *
@@ -197,5 +196,41 @@ class MainController extends AbstractController
       'userValue'=>$userData
     ]);
 
+  }
+
+  /**
+   * This function is used to allow the user to make a post
+   *
+   * @param Request $rq
+   * @param EntityManagerInterface $entityManager
+   *
+   * @Route("makepost",name="post")
+   *
+   */
+  public function makePost(Request $rq,EntityManagerInterface $entityManager)
+  {
+     $text=$rq->get("post-text");
+    //  $user = new Test();
+    //  $post = new Posts();
+    //  $post->setUsername("Sandipta");
+    //  $post->setPostTime("123");
+    //  $post->setEmail($user);
+    //  $post->setContent($text);
+    //  $entityManager->persist($post);
+    //  $entityManager->persist($user);
+    //  $entityManager->flush();
+    $post = new Posts;
+    $user = new Test;
+    $user = $entityManager->getRepository(Test::class)->findOneBy([
+    'Email'=>"sandipta.sardar@innoraft.com"
+    ]);
+    $post->setEmail($user);
+    $post->setUsername("Sandipta");
+    $post->setPostTime("123");
+    $post->setContent($text);
+      $entityManager->persist($post);
+     $entityManager->persist($user);
+     $entityManager->flush();
+     dd($post);
   }
 }
