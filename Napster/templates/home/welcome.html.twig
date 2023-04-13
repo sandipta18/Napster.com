@@ -65,11 +65,11 @@
 		{% for user in postData %}
 		<section id="posts-container">
 			<article class="post">
-				<img class="post__avatar" src="<?php echo $array[$i]['Image']; ?>" alt=""/>
+				<img class="post__avatar" src="{{user.getEmail().getImage()}}" alt=""/>
 				<div class="post__content" id="post_div">
 					<header class="post__header">
-						<a class="post__user" href="self/<?php echo base64_encode($array[$i]['Email']); ?>">
-							{{user.getUsername()}}
+						<a class="post__user" href="self?user={{user.getEmail().getEmail()}}">
+							{{user.getEmail().getUsername()}}
 						</a>
 						<div class="post__meta">
 							<button class="post__header-btn"></button>
@@ -78,10 +78,8 @@
 					</header>
 					<div class="post__body">
 						<p class="caption">{{user.getContent()}}</p>
-						{# <img class="post__img" id="post_image" src="<?php echo $array[$i]['Image_Content']; ?>" alt=""> #}
-
+						<img class="post__img" id="post_image" src="{{user.getDisplay()}}" alt="">
 						{# <video class="post__img" controls src="<?php echo $array[$i]['Video']; ?>"></video> #}
-
 						{# <audio class="post__img" controls type="audio/mpeg" src="<?php echo $array[$i]['Audio']; ?>"></audio> #}
 						<marquee direction="right">
 							{# <?php
@@ -99,7 +97,6 @@
 									</a>
 									<span id="count"></span>
 									<span class="time">
-
 									</span>
 								</div>
 							</div>
@@ -107,7 +104,6 @@
 						</article>
 					</section>
         {% endfor %}
-
 				<button name="loadmore" id="loadbtn">Load More</button>
 			</div>
 		</div>

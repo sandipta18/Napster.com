@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Query;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\Validate;
@@ -212,13 +213,22 @@ class MainController extends AbstractController
    */
   public function makePost(Request $rq, EntityManagerInterface $entityManager)
   {
-    if($rq->get('post-text')) {
-    $text = $rq->get("post-text");
     $post = new Posts;
     $user = new Test;
     $user = $entityManager->getRepository(Test::class)->findOneBy([
       'Email' => base64_decode($_COOKIE['userinfo'])
     ]);
+    $text = $rq->get("post-text");
+    if ($rq->files->get('post-img') != NULL) {
+      $image = $rq->files->get("post-img");
+      $imageExtension = $image->guessExtension();
+      $imageFileName = time() . $imageExtension;
+      $image->move(
+        $this->getParameter('kernel.project_dir') . '/public/images/',
+        $imageFileName
+      );
+      $post->setDisplay('/images/' . $imageFileName);
+    }
     $post->setEmail($user);
     $post->setUsername($user->getUsername());
     $post->setPostTime(time());
@@ -226,11 +236,23 @@ class MainController extends AbstractController
     $entityManager->persist($post);
     $entityManager->persist($user);
     $entityManager->flush();
-    // $allPosts = $entityManager->getRepository(Posts::class)->findAll();
     return $this->redirectToRoute("redirect");
-  } else {
-    return $this->redirectToRoute("redirect");
-  }
   }
 
+  /**
+   * [Description for selfProfilePage]
+   *
+   * @param Request $rq
+   * @param EntityManagerInterface $entityManager
+   *
+   * @Route("self","self")
+   *
+   */
+  public function selfProfilePage(Request $rq, EntityManagerInterface $entityManager) {
+    // $url = $_SERVER['REQUEST_URI'];
+    // $item = explode("/",$url);
+    // $email = explode("?",$item[1]);
+    // dd($email[1]);
+    dd($rq->query->get("user"));
+  }
 }
