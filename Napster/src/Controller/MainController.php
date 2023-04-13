@@ -249,10 +249,6 @@ class MainController extends AbstractController
    *
    */
   public function selfProfilePage(Request $rq, EntityManagerInterface $entityManager) {
-    // $url = $_SERVER['REQUEST_URI'];
-    // $item = explode("/",$url);
-    // $email = explode("?",$item[1]);
-    // dd($email[1]);
     dd($rq->query->get("user"));
   }
 }
