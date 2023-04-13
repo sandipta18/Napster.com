@@ -23,7 +23,7 @@ class MainController extends AbstractController
    * @Route("",name="login")
    *
    */
-  public function LoginController(Request $rq): Response
+  public function loginController(Request $rq): Response
   {
     if ($rq->get('error_message') != NULL) {
       $error = base64_decode($rq->get('error_message'));
@@ -43,7 +43,7 @@ class MainController extends AbstractController
    * @Route("reset",name="reset");
    *
    */
-  public function ResetController(): Response
+  public function resetController(): Response
   {
     return $this->render('home/reset.html.twig', [
       'controller_name' => 'UserController',
@@ -62,7 +62,7 @@ class MainController extends AbstractController
    * @return Response
    *
    */
-  public function registration(Request $rq, EntityManagerInterface $entityManager): Response
+  public function registrationController(Request $rq, EntityManagerInterface $entityManager): Response
   {
     $objectValidate = new Validate;
     $email = $rq->get("email");
@@ -79,21 +79,22 @@ class MainController extends AbstractController
         } else {
           $cookie = 0;
         }
-        if($objectValidate->validateEmail($email) and $objectValidate->
-        validatePassword($password)) {
-        $test = new Test();
-        $test->setUsername($userName);
-        $test->setEmail($email);
-        $test->setBio($bio);
-        $test->setPassword($password);
-        $test->setGender($gender);
-        $test->setCookie($cookie);
-        $test->setImage("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
-        $entityManager->persist($test);
-        $entityManager->flush();
-        return $this->render("home/index.html.twig", [
-          'success_message' => "Signed up succesfully",
-        ]);
+        if (
+          $objectValidate->validateEmail($email) and $objectValidate->validatePassword($password)
+        ) {
+          $test = new Test();
+          $test->setUsername($userName);
+          $test->setEmail($email);
+          $test->setBio($bio);
+          $test->setPassword($password);
+          $test->setGender($gender);
+          $test->setCookie($cookie);
+          $test->setImage("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
+          $entityManager->persist($test);
+          $entityManager->flush();
+          return $this->render("home/index.html.twig", [
+            'success_message' => "Signed up succesfully",
+          ]);
         } else {
           $errorDetails = $objectValidate->errorMessage;
           return $this->render("home/signup.html.twig", [
@@ -121,7 +122,7 @@ class MainController extends AbstractController
    *
    */
 
-  public function login(Request $rq, EntityManagerInterface $entityManager): Response
+  public function loginValidate(Request $rq, EntityManagerInterface $entityManager): Response
   {
 
     if ($rq->get('submit_login')) {
@@ -133,7 +134,7 @@ class MainController extends AbstractController
       if ($userData != NULL) {
         $encodedValue = base64_encode($userData->getEmail());
         setcookie("userinfo", $encodedValue, time() + (86400 * 30), "/");
-        return $this->render('home/welcome.html.twig',[
+        return $this->redirectToRoute("redirect", [
           'userValue' => $userData
         ]);
       }
@@ -154,7 +155,7 @@ class MainController extends AbstractController
    * @return Response
    *
    */
-  public function profile(Request $rq, EntityManagerInterface $entityManager): Response
+  public function profileController(Request $rq, EntityManagerInterface $entityManager): Response
   {
     $userData = $_COOKIE['userinfo'];
     $userData = base64_decode($userData);
@@ -175,7 +176,7 @@ class MainController extends AbstractController
    * @Route("/signout",name="signout")
    *
    */
-  public function signout(Request $rq, EntityManagerInterface $entityManager)
+  public function signoutController(Request $rq, EntityManagerInterface $entityManager)
   {
     return $this->redirectToRoute("login");
   }
@@ -186,16 +187,18 @@ class MainController extends AbstractController
    * @Route("homepage",name="redirect")
    *
    */
-  public function redirecti(Request $rq,EntityManagerInterface $entityManager)
+  public function redirectiUser(Request $rq, EntityManagerInterface $entityManager)
   {
     $cookieData = base64_decode($_COOKIE['userinfo']);
     $userData = $entityManager->getRepository(Test::class)->findOneBy([
-    'Email'=>$cookieData
+      'Email' => $cookieData
     ]);
-    return $this->render("home/welcome.html.twig",[
-      'userValue'=>$userData
+    $post = new Posts;
+    $allPosts = $entityManager->getRepository(Posts::class)->findAll();
+    return $this->render("home/welcome.html.twig", [
+      'userValue' => $userData,
+      'postData' => $allPosts,
     ]);
-
   }
 
   /**
@@ -207,30 +210,27 @@ class MainController extends AbstractController
    * @Route("makepost",name="post")
    *
    */
-  public function makePost(Request $rq,EntityManagerInterface $entityManager)
+  public function makePost(Request $rq, EntityManagerInterface $entityManager)
   {
-     $text=$rq->get("post-text");
-    //  $user = new Test();
-    //  $post = new Posts();
-    //  $post->setUsername("Sandipta");
-    //  $post->setPostTime("123");
-    //  $post->setEmail($user);
-    //  $post->setContent($text);
-    //  $entityManager->persist($post);
-    //  $entityManager->persist($user);
-    //  $entityManager->flush();
+    if($rq->get('post-text')) {
+    $text = $rq->get("post-text");
     $post = new Posts;
     $user = new Test;
     $user = $entityManager->getRepository(Test::class)->findOneBy([
-    'Email'=>"sandipta.sardar@innoraft.com"
+      'Email' => base64_decode($_COOKIE['userinfo'])
     ]);
     $post->setEmail($user);
-    $post->setUsername("Sandipta");
-    $post->setPostTime("123");
+    $post->setUsername($user->getUsername());
+    $post->setPostTime(time());
     $post->setContent($text);
-      $entityManager->persist($post);
-     $entityManager->persist($user);
-     $entityManager->flush();
-     dd($post);
+    $entityManager->persist($post);
+    $entityManager->persist($user);
+    $entityManager->flush();
+    // $allPosts = $entityManager->getRepository(Posts::class)->findAll();
+    return $this->redirectToRoute("redirect");
+  } else {
+    return $this->redirectToRoute("redirect");
   }
+  }
+
 }
