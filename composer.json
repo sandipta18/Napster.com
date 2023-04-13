@@ -1,0 +1,20 @@
+{
+    "autoload": {
+        "classmap": [
+            "application/models/"
+        ]
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.8",
+        "guzzlehttp/guzzle": "^7.5",
+        "google/apiclient": "^2.12.1",
+        "facebook/graph-sdk": "^4.0",
+        "joelbutcher/facebook-graph-sdk": "^6.0",
+        "php-http/guzzle7-adapter": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
